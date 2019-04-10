@@ -4,14 +4,27 @@ import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Profile {
 	
 	@Id 
-	// Cannot be auto generated. Must get it's ID from USER ID!
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@OneToOne
+	@JoinColumn(name="user_id")
+	private User user;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -29,9 +42,13 @@ public class Profile {
 //	private Image image;
 	
 	@Column(name="created_at")
+	@CreationTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
 	
 	@Column(name="updated_at")
+	@UpdateTimestamp
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
 	public Profile() {
