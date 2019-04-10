@@ -1,5 +1,6 @@
 package com.skilldistillery.bandbuilder.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,6 +13,7 @@ public class BandSocialMedia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(name="social_media")
 	private SocialMedia socialMedia;
 	
 	private Band band;

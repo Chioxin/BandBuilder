@@ -48,10 +48,30 @@ public class Band {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 	
-//	private List<BandSocialMedia> bandSocialMedias;
+	private List<BandSocialMedia> bandSocialMedias;
+	
+	private List<Image> images;
+	
+	private List<Event> events;
 
 	public Band() {
 		super();
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+	
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+	
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 
 	public int getId() {
@@ -142,13 +162,13 @@ public class Band {
 		this.updatedAt = updatedAt;
 	}
 
-//	public List<BandSocialMedia> getBandSocialMedias() {
-//		return bandSocialMedias;
-//	}
-//
-//	public void setBandSocialMedias(List<BandSocialMedia> bandSocialMedias) {
-//		this.bandSocialMedias = bandSocialMedias;
-//	}
+	public List<BandSocialMedia> getBandSocialMedias() {
+		return bandSocialMedias;
+	}
+
+	public void setBandSocialMedias(List<BandSocialMedia> bandSocialMedias) {
+		this.bandSocialMedias = bandSocialMedias;
+	}
 
 	@Override
 	public int hashCode() {
