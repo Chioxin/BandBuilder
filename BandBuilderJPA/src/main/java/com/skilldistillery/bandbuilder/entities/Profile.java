@@ -9,7 +9,8 @@ import javax.persistence.Id;
 @Entity
 public class Profile {
 	
-	@Id
+	@Id 
+	// Cannot be auto generated. Must get it's ID from USER ID!
 	private int id;
 	
 	@Column(name="first_name")
@@ -20,14 +21,17 @@ public class Profile {
 	
 	private String email;
 	
+	@Column(name="about_me")
 	private String aboutMe;
 	
 	private Address address;
 	
 //	private Image image;
 	
+	@Column(name="created_at")
 	private Date createdAt;
 	
+	@Column(name="updated_at")
 	private Date updatedAt;
 
 	public Profile() {
