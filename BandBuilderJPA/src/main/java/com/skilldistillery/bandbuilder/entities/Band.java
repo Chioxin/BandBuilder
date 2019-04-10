@@ -1,6 +1,7 @@
 package com.skilldistillery.bandbuilder.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,7 +27,7 @@ public class Band {
 	
 	private String genre;
 	
-//	private List<BandMember> bandMembers;
+	private List<BandMember> bandMembers;
 	
 	private Address address;
 	
@@ -85,13 +86,13 @@ public class Band {
 		this.genre = genre;
 	}
 
-//	public List<BandMember> getBandMembers() {
-//		return bandMembers;
-//	}
-//
-//	public void setBandMembers(List<BandMember> bandMembers) {
-//		this.bandMembers = bandMembers;
-//	}
+	public List<BandMember> getBandMembers() {
+		return bandMembers;
+	}
+
+	public void setBandMembers(List<BandMember> bandMembers) {
+		this.bandMembers = bandMembers;
+	}
 
 	public Address getAddress() {
 		return address;
