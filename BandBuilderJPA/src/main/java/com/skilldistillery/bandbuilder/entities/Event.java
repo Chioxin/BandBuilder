@@ -14,7 +14,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-public class BandEvent {
+public class Event {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,7 +40,7 @@ public class BandEvent {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
-	public BandEvent() {
+	public Event() {
 		super();
 	}
 
@@ -116,7 +116,7 @@ public class BandEvent {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BandEvent other = (BandEvent) obj;
+		Event other = (Event) obj;
 		if (id != other.id)
 			return false;
 		return true;
