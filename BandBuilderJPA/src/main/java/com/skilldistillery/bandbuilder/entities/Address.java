@@ -31,7 +31,7 @@ public class Address {
 
 	private int zip;
 
-	private int phone;
+	private Integer phone;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
