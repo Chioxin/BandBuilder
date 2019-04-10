@@ -6,19 +6,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class User {
-
+public class Image {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	private String username;
+	private String url;
 	
-	private boolean active;
-	
-	private String role;
+	private String description;
 
-	public User() {
+	public Image() {
 		super();
 	}
 
@@ -30,28 +28,20 @@ public class User {
 		this.id = id;
 	}
 
-	public String getUsername() {
-		return username;
+	public String getUrl() {
+		return url;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUrl(String url) {
+		this.url = url;
 	}
 
-	public boolean isActive() {
-		return active;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	@Override
@@ -70,7 +60,7 @@ public class User {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		User other = (User) obj;
+		Image other = (Image) obj;
 		if (id != other.id)
 			return false;
 		return true;
@@ -78,9 +68,10 @@ public class User {
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", active=" + active + ", role=" + role + "]";
+		return "Image [id=" + id + ", url=" + url + ", description=" + description + "]";
 	}
+	
+	
 
-	
-	
 }
+
