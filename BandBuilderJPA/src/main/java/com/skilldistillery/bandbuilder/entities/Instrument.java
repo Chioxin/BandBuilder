@@ -1,6 +1,5 @@
 package com.skilldistillery.bandbuilder.entities;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,8 +16,7 @@ public class Instrument {
 	
 	private boolean approved;
 	
-	@Column(name = "image_id")
-	private int imageId;
+//	private Image image;
 	
 	private String description;
 
@@ -50,26 +48,12 @@ public class Instrument {
 		this.approved = approved;
 	}
 
-	public int getImageId() {
-		return imageId;
-	}
-
-	public void setImageId(int imageId) {
-		this.imageId = imageId;
-	}
-
 	public String getDescription() {
 		return description;
 	}
 
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	@Override
-	public String toString() {
-		return "Instrument [id=" + id + ", name=" + name + ", approved=" + approved + ", imageId=" + imageId
-				+ ", description=" + description + "]";
 	}
 
 	@Override
@@ -92,6 +76,12 @@ public class Instrument {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Instrument [id=" + id + ", name=" + name + ", approved=" + approved + ", description=" + description
+				+ "]";
 	}
 	
 }
