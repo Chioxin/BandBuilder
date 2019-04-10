@@ -6,22 +6,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Instrument {
+public class UserInstrument {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	private String name;
 	
-	private boolean approved;
+//	private Profile profile;
 	
-//	private Image image;
+//	private Instrument instrument;
+	
+	private String experience;
 	
 	private String description;
-
-	public Instrument() {
-		super();
-	}
 
 }
