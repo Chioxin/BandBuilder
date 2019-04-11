@@ -10,18 +10,18 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class BandSocialMedia {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@ManyToOne
-	@JoinColumn(name="social_media_id")
-	@Column(name="social_media")
+	@JoinColumn(name = "social_media_id")
+	@Column(name = "social_media")
 	private SocialMedia socialMedia;
-	
+
 	@ManyToOne
-	@JoinColumn(name="band_id")
+	@JoinColumn(name = "band_id")
 	private Band band;
 
 	public BandSocialMedia() {
@@ -76,9 +76,7 @@ public class BandSocialMedia {
 
 	@Override
 	public String toString() {
-		return "BandSocialMedia [id=" + id + "]";
+		return "BandSocialMedia [id=" + id + ", socialMedia=" + socialMedia + ", band=" + band + "]";
 	}
-	
-	
 
 }

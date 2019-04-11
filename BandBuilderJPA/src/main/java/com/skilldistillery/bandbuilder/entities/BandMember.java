@@ -24,15 +24,15 @@ public class BandMember {
 	private int id;
 
 	@ManyToOne
-	@JoinColumn(name="band_id")
+	@JoinColumn(name = "band_id")
 	private Band band;
 
 	@OneToOne
-	@JoinColumn(name="instrument_id")
+	@JoinColumn(name = "instrument_id")
 	private Instrument instrument;
 
 	@ManyToOne
-	@JoinColumn(name="profile_id")
+	@JoinColumn(name = "profile_id")
 	private Profile profile;
 
 	private String description;

@@ -17,29 +17,29 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Event {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@OneToOne
-	@JoinColumn(name="address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
+
 	private String description;
-	
-	@Column(name="start_date")
+
+	@Column(name = "start_date")
 	private Date startDate;
-	
-	@Column(name="end_date")
+
+	@Column(name = "end_date")
 	private Date endDate;
-	
-	@Column(name="created_at")
+
+	@Column(name = "created_at")
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
-	
-	@Column(name="update_at")
+
+	@Column(name = "update_at")
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
@@ -128,10 +128,8 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "BandEvent [id=" + id + ", description=" + description + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Event [id=" + id + ", address=" + address + ", description=" + description + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-	
-	
-	
+
 }
