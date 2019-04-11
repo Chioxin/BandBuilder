@@ -17,86 +17,59 @@ import javax.persistence.TemporalType;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Profile {
-	
-	@Id 
+
+	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@OneToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@Column(name="first_name")
+
+	@Column(name = "first_name")
 	private String firstName;
-	
-	@Column(name="last_name")
+
+	@Column(name = "last_name")
 	private String lastName;
-	
+
 	private String email;
-	
-	@Column(name="about_me")
+
+	@Column(name = "about_me")
 	private String aboutMe;
-	
+
 	@OneToOne
-	@JoinColumn(name="address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
+
 	@OneToOne
-	@JoinColumn(name="image_id")
+	@JoinColumn(name = "image_id")
 	private Image image;
-	
-	@Column(name="created_at")
+
+	@Column(name = "created_at")
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
-	
-	@Column(name="updated_at")
+
+	@Column(name = "updated_at")
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
-	
-	@OneToMany(mappedBy="leader")
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "leader")
 	private List<Band> bands;
-	
-	@OneToMany(mappedBy="profile")
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "profile")
 	private List<BandMember> bandMembers;
-	
-	@OneToMany(mappedBy="profile")
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "profile")
 	private List<UserInstrument> instruments;
-
-	public List<BandMember> getBandMembers() {
-		return bandMembers;
-	}
-
-	public void setBandMembers(List<BandMember> bandMembers) {
-		this.bandMembers = bandMembers;
-	}
-
-	public List<UserInstrument> getInstruments() {
-		return instruments;
-	}
-
-	public void setInstruments(List<UserInstrument> instruments) {
-		this.instruments = instruments;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
-	}
-
-	public List<Band> getBands() {
-		return bands;
-	}
-
-	public void setBands(List<Band> bands) {
-		this.bands = bands;
-	}
 
 	public Profile() {
 		super();
@@ -108,6 +81,14 @@ public class Profile {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getFirstName() {
@@ -174,6 +155,30 @@ public class Profile {
 		this.updatedAt = updatedAt;
 	}
 
+	public List<Band> getBands() {
+		return bands;
+	}
+
+	public void setBands(List<Band> bands) {
+		this.bands = bands;
+	}
+
+	public List<BandMember> getBandMembers() {
+		return bandMembers;
+	}
+
+	public void setBandMembers(List<BandMember> bandMembers) {
+		this.bandMembers = bandMembers;
+	}
+
+	public List<UserInstrument> getInstruments() {
+		return instruments;
+	}
+
+	public void setInstruments(List<UserInstrument> instruments) {
+		this.instruments = instruments;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -198,10 +203,9 @@ public class Profile {
 
 	@Override
 	public String toString() {
-		return "Profile [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", aboutMe=" + aboutMe + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Profile [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", aboutMe=" + aboutMe + ", address=" + address + ", image=" + image
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-	
-	
 
 }

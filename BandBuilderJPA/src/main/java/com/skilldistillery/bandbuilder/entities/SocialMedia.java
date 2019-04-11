@@ -8,19 +8,18 @@ import javax.persistence.Id;
 
 @Entity
 public class SocialMedia {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String name;
-	
-	@Column(name="image_url")
+
+	@Column(name = "image_url")
 	private String imageURL;
 
-	public SocialMedia(int id) {
+	public SocialMedia() {
 		super();
-		this.id = id;
 	}
 
 	public int getId() {
@@ -73,7 +72,5 @@ public class SocialMedia {
 	public String toString() {
 		return "SocialMedia [id=" + id + ", name=" + name + ", imageURL=" + imageURL + "]";
 	}
-	
-	
 
 }

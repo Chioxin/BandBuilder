@@ -7,13 +7,13 @@ import javax.persistence.Id;
 
 @Entity
 public class Image {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String url;
-	
+
 	private String description;
 
 	public Image() {
@@ -70,8 +70,5 @@ public class Image {
 	public String toString() {
 		return "Image [id=" + id + ", url=" + url + ", description=" + description + "]";
 	}
-	
-	
 
 }
-
