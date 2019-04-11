@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class BandSocialMedia {
@@ -13,9 +15,13 @@ public class BandSocialMedia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
+	@ManyToOne
+	@JoinColumn(name="social_media_id")
 	@Column(name="social_media")
 	private SocialMedia socialMedia;
 	
+	@ManyToOne
+	@JoinColumn(name="band_id")
 	private Band band;
 
 	public BandSocialMedia() {

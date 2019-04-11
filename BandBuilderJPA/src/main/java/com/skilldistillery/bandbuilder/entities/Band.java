@@ -8,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -27,10 +31,15 @@ public class Band {
 	
 	private String genre;
 	
+	@OneToMany(mappedBy="band")
 	private List<BandMember> bandMembers;
 	
+	@OneToOne
+	@JoinColumn(name="address_id")
 	private Address address;
 	
+	@ManyToOne
+	@JoinColumn(name="leader_id")
 	private Profile leader;
 	
 	private String email;
@@ -48,10 +57,13 @@ public class Band {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 	
+	@OneToMany(mappedBy="band")
 	private List<BandSocialMedia> bandSocialMedias;
 	
+	@OneToMany(mappedBy="band")
 	private List<Image> images;
 	
+	@OneToMany(mappedBy="band")
 	private List<Event> events;
 
 	public Band() {

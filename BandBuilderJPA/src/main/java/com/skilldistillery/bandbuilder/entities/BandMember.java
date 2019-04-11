@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,10 +23,16 @@ public class BandMember {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@ManyToOne
+	@JoinColumn(name="band_id")
 	private Band band;
 
+	@OneToOne
+	@JoinColumn(name="instrument_id")
 	private Instrument instrument;
 
+	@ManyToOne
+	@JoinColumn(name="profile_id")
 	private Profile profile;
 
 	private String description;
