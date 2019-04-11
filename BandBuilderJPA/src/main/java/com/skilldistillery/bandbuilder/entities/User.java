@@ -11,11 +11,11 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	private String username;
-	
+
 	private boolean active;
-	
+
 	private String role;
 
 	public User() {
@@ -81,6 +81,4 @@ public class User {
 		return "User [id=" + id + ", username=" + username + ", active=" + active + ", role=" + role + "]";
 	}
 
-	
-	
 }

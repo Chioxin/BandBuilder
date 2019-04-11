@@ -1,27 +1,29 @@
 package com.skilldistillery.bandbuilder.entities;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BandSocialMedia {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
+//	@Column(name = "social_media")
+	@OneToMany
+	@JoinColumn(name = "social_media_id")
+	private List<SocialMedia> socialMedia;
+
 	@ManyToOne
-	@JoinColumn(name="social_media_id")
-	@Column(name="social_media")
-	private SocialMedia socialMedia;
-	
-	@ManyToOne
-	@JoinColumn(name="band_id")
+	@JoinColumn(name = "band_id")
 	private Band band;
 
 	public BandSocialMedia() {
@@ -36,13 +38,13 @@ public class BandSocialMedia {
 		this.id = id;
 	}
 
-	public SocialMedia getSocialMedia() {
-		return socialMedia;
-	}
-
-	public void setSocialMedia(SocialMedia socialMedia) {
-		this.socialMedia = socialMedia;
-	}
+//	public SocialMedia getSocialMedia() {
+//		return socialMedia;
+//	}
+//
+//	public void setSocialMedia(SocialMedia socialMedia) {
+//		this.socialMedia = socialMedia;
+//	}
 
 	public Band getBand() {
 		return band;
@@ -76,9 +78,7 @@ public class BandSocialMedia {
 
 	@Override
 	public String toString() {
-		return "BandSocialMedia [id=" + id + "]";
+		return "BandSocialMedia [id=" + id + ", socialMedia=" + socialMedia + ", band=" + band + "]";
 	}
-	
-	
 
 }

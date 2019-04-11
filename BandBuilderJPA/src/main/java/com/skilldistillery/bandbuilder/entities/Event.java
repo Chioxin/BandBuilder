@@ -1,13 +1,13 @@
 package com.skilldistillery.bandbuilder.entities;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -17,33 +17,37 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Event {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@OneToOne
-	@JoinColumn(name="address_id")
+	@JoinColumn(name = "address_id")
 	private Address address;
-	
+
 	private String description;
-	
-	@Column(name="start_date")
+
+	@Column(name = "start_date")
 	private Date startDate;
-	
-	@Column(name="end_date")
+
+	@Column(name = "end_date")
 	private Date endDate;
-	
-	@Column(name="created_at")
+
+	@Column(name = "created_at")
 	@CreationTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date createdAt;
-	
-	@Column(name="update_at")
+
+	@Column(name = "update_at")
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
+	@ManyToOne
+	@JoinColumn(name= "band_id")
+	private Band band;
+	
 	public Event() {
 		super();
 	}
@@ -103,6 +107,14 @@ public class Event {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
+ 
+	public Band getBand() {
+		return band;
+	}
+
+	public void setBand(Band band) {
+		this.band = band;
+	}
 
 	@Override
 	public int hashCode() {
@@ -128,10 +140,8 @@ public class Event {
 
 	@Override
 	public String toString() {
-		return "BandEvent [id=" + id + ", description=" + description + ", startDate=" + startDate + ", endDate="
-				+ endDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+		return "Event [id=" + id + ", address=" + address + ", description=" + description + ", startDate=" + startDate
+				+ ", endDate=" + endDate + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
 	}
-	
-	
-	
+
 }
