@@ -1,12 +1,14 @@
 package com.skilldistillery.bandbuilder.entities;
 
-import javax.persistence.Column;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class BandSocialMedia {
@@ -15,10 +17,10 @@ public class BandSocialMedia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@ManyToOne
+//	@Column(name = "social_media")
+	@OneToMany
 	@JoinColumn(name = "social_media_id")
-	@Column(name = "social_media")
-	private SocialMedia socialMedia;
+	private List<SocialMedia> socialMedia;
 
 	@ManyToOne
 	@JoinColumn(name = "band_id")
@@ -36,13 +38,13 @@ public class BandSocialMedia {
 		this.id = id;
 	}
 
-	public SocialMedia getSocialMedia() {
-		return socialMedia;
-	}
-
-	public void setSocialMedia(SocialMedia socialMedia) {
-		this.socialMedia = socialMedia;
-	}
+//	public SocialMedia getSocialMedia() {
+//		return socialMedia;
+//	}
+//
+//	public void setSocialMedia(SocialMedia socialMedia) {
+//		this.socialMedia = socialMedia;
+//	}
 
 	public Band getBand() {
 		return band;
