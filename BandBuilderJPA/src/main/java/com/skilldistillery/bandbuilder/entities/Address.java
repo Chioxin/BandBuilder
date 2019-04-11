@@ -29,9 +29,9 @@ public class Address {
 
 	private String state;
 
-	private int zip;
+	private String zip;
 
-	private Integer phone;
+	private String phone;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	@CreationTimestamp
@@ -87,19 +87,19 @@ public class Address {
 		this.state = state;
 	}
 
-	public int getZip() {
+	public String getZip() {
 		return zip;
 	}
 
-	public void setZip(int zip) {
+	public void setZip(String zip) {
 		this.zip = zip;
 	}
 
-	public Integer getPhone() {
+	public String getPhone() {
 		return phone;
 	}
 
-	public void setPhone(Integer phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 
