@@ -1,5 +1,7 @@
 package com.skilldistillery.bandbuilder.entities;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,7 +23,7 @@ public class UserInstrument {
 
 	@OneToMany
 	@JoinColumn(name = "instrument_id")
-	private Instrument instrument;
+	private List<Instrument> instrument;
 
 	private String experience;
 
@@ -47,13 +49,13 @@ public class UserInstrument {
 		this.profile = profile;
 	}
 
-	public Instrument getInstrument() {
-		return instrument;
-	}
-
-	public void setInstrument(Instrument instrument) {
-		this.instrument = instrument;
-	}
+//	public Instrument getInstrument() {
+//		return instrument;
+//	}
+//
+//	public void setInstrument(Instrument instrument) {
+//		this.instrument = instrument;
+//	}
 
 	public String getExperience() {
 		return experience;

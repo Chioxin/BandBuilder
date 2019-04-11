@@ -1,13 +1,13 @@
 package com.skilldistillery.bandbuilder.entities;
 
 import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -44,6 +44,10 @@ public class Event {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
 
+	@ManyToOne
+	@JoinColumn(name= "band_id")
+	private Band band;
+	
 	public Event() {
 		super();
 	}
@@ -102,6 +106,14 @@ public class Event {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+ 
+	public Band getBand() {
+		return band;
+	}
+
+	public void setBand(Band band) {
+		this.band = band;
 	}
 
 	@Override
