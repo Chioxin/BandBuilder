@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class UserInstrument {
@@ -12,8 +15,12 @@ public class UserInstrument {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
+	@ManyToOne
+	@JoinColumn(name="profile_id")
 	private Profile profile;
 
+	@OneToMany
+	@JoinColumn(name="instrument_id")
 	private Instrument instrument;
 
 	private String experience;

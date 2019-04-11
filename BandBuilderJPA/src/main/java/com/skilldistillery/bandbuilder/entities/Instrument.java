@@ -4,6 +4,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Instrument {
@@ -16,6 +18,8 @@ public class Instrument {
 
 	private boolean approved;
 
+	@OneToOne
+	@JoinColumn(name="image_id")
 	private Image image;
 
 	private String description;

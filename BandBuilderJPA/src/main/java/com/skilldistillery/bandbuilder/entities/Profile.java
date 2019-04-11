@@ -1,6 +1,7 @@
 package com.skilldistillery.bandbuilder.entities;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -37,9 +39,13 @@ public class Profile {
 	@Column(name="about_me")
 	private String aboutMe;
 	
+	@OneToOne
+	@JoinColumn(name="address_id")
 	private Address address;
 	
-//	private Image image;
+	@OneToOne
+	@JoinColumn(name="image_id")
+	private Image image;
 	
 	@Column(name="created_at")
 	@CreationTimestamp
@@ -50,6 +56,47 @@ public class Profile {
 	@UpdateTimestamp
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date updatedAt;
+	
+	@OneToMany(mappedBy="leader")
+	private List<Band> bands;
+	
+	@OneToMany(mappedBy="profile")
+	private List<BandMember> bandMembers;
+	
+	@OneToMany(mappedBy="profile")
+	private List<UserInstrument> instruments;
+
+	public List<BandMember> getBandMembers() {
+		return bandMembers;
+	}
+
+	public void setBandMembers(List<BandMember> bandMembers) {
+		this.bandMembers = bandMembers;
+	}
+
+	public List<UserInstrument> getInstruments() {
+		return instruments;
+	}
+
+	public void setInstruments(List<UserInstrument> instruments) {
+		this.instruments = instruments;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public List<Band> getBands() {
+		return bands;
+	}
+
+	public void setBands(List<Band> bands) {
+		this.bands = bands;
+	}
 
 	public Profile() {
 		super();
@@ -103,13 +150,13 @@ public class Profile {
 		this.address = address;
 	}
 
-//	public Image getImage() {
-//		return image;
-//	}
-//
-//	public void setImage(Image image) {
-//		this.image = image;
-//	}
+	public Image getImage() {
+		return image;
+	}
+
+	public void setImage(Image image) {
+		this.image = image;
+	}
 
 	public Date getCreatedAt() {
 		return createdAt;
