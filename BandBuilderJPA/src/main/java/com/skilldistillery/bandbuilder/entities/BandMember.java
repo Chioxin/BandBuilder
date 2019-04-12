@@ -18,7 +18,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
-@Table(name="band_member")
+@Table(name = "band_member")
 public class BandMember {
 
 	@Id
@@ -50,6 +50,8 @@ public class BandMember {
 	@UpdateTimestamp
 	@Column(name = "joined_at")
 	private Date joinedAt;
+
+	private boolean active;
 
 	public BandMember() {
 		super();
@@ -117,6 +119,14 @@ public class BandMember {
 
 	public void setJoinedAt(Date joinedAt) {
 		this.joinedAt = joinedAt;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

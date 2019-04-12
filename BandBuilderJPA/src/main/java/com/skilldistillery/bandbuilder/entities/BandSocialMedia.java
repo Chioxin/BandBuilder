@@ -31,6 +31,8 @@ public class BandSocialMedia {
 
 	private String url;
 
+	private boolean active;
+
 	public BandSocialMedia() {
 		super();
 	}
@@ -65,6 +67,14 @@ public class BandSocialMedia {
 
 	public void setUrl(String url) {
 		this.url = url;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

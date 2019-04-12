@@ -43,6 +43,8 @@ public class Address {
 	@Column(name = "updated_at")
 	private Date updatedAt;
 
+	private boolean active;
+
 	public Address() {
 		super();
 	}
@@ -117,6 +119,14 @@ public class Address {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
