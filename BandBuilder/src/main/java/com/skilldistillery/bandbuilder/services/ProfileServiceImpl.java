@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.skilldistillery.bandbuilder.datatransferobjects.RegistrationDTO;
 import com.skilldistillery.bandbuilder.entities.Profile;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
 
@@ -31,7 +32,10 @@ public class ProfileServiceImpl implements ProfileService {
 	}
 
 	@Override
-	public Profile createProfile(Profile profile) {
+	public Profile createProfile(RegistrationDTO regInfo) {
+		Profile profile = new Profile();
+		// Needs ADDRESS and USER Services to work
+		
 		return profileRepo.saveAndFlush(profile);
 	}
 
