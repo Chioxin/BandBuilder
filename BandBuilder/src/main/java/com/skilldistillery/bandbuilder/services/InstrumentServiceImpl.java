@@ -6,13 +6,18 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.skilldistillery.bandbuilder.datatransferobjects.InstrumentDTO;
+import com.skilldistillery.bandbuilder.entities.Image;
 import com.skilldistillery.bandbuilder.entities.Instrument;
+import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 import com.skilldistillery.bandbuilder.repositories.InstrumentRepository;
 
 public class InstrumentServiceImpl implements InstrumentService {
 
 	@Autowired
 	private InstrumentRepository instrumentRepo;
+	
+	@Autowired
+	private ImageRepository imageRepo;
 	
 	@Override
 	public List<Instrument> getAllInstruments() {
@@ -33,8 +38,23 @@ public class InstrumentServiceImpl implements InstrumentService {
 
 	@Override
 	public Instrument createInstrument(InstrumentDTO instrumentInfo) {
-		// Can't do this until image is built.
-		return null;
+		
+		// Building Image
+		Image image = new Image();
+		image.setUrl(instrumentInfo.getImageURL());
+		image.setAlt(instrumentInfo.getImageAlt());
+		image.setDescription(instrumentInfo.getImageDescription());
+		image = imageRepo.saveAndFlush(image);
+		
+		// Build Instrument
+		Instrument instrument = new Instrument();
+		instrument.setName(instrumentInfo.getInstrumentName());
+		instrument.setDescription(instrumentInfo.getInstrumentDescription());
+		instrument.setApproved(instrumentInfo.isInstrumentApproved());
+		instrument.setActive(true);
+		instrument.setImage(image);
+		
+		return instrumentRepo.saveAndFlush(instrument);
 	}
 
 	@Override
