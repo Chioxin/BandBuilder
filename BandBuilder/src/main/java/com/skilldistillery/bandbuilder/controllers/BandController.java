@@ -24,10 +24,8 @@ import com.skilldistillery.bandbuilder.services.BandService;
 //@CrossOrigin({ "*", "http://localhost:4200" })
 public class BandController {
 	
-	// band svc
 	@Autowired
 	private BandService bandSvc;
-	// band repo
 	@Autowired
 	private BandRepository bandRepo;
 	
