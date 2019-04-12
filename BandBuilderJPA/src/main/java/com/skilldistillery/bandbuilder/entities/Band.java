@@ -12,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,6 +21,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "band")
 public class Band {
 
 	@Id
@@ -64,10 +66,10 @@ public class Band {
 	@OneToMany(mappedBy = "band")
 	private List<BandSocialMedia> bandSocialMedias;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToOne
-	@JoinColumn(name="band_id")
-	private List<Image> images;
+	@JoinColumn(name = "image_id")
+	private Image image;
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "band")
@@ -173,12 +175,12 @@ public class Band {
 		this.bandSocialMedias = bandSocialMedias;
 	}
 
-	public List<Image> getImages() {
-		return images;
+	public Image getImage() {
+		return image;
 	}
 
-	public void setImages(List<Image> images) {
-		this.images = images;
+	public void setImage(Image image) {
+		this.image = image;
 	}
 
 	public List<Event> getEvents() {

@@ -1,6 +1,5 @@
 package com.skilldistillery.bandbuilder.entitytests;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
@@ -11,17 +10,15 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import com.skilldistillery.bandbuilder.entities.Band;
+import com.skilldistillery.bandbuilder.entities.BandMember;
 
-@DisplayName("Band Entity Test")
-class BandTest {
+class BandMemberTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private Band band;
-	
+	private BandMember bandMember;
+
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
 		emf = Persistence.createEntityManagerFactory("bandJPA");
@@ -35,25 +32,22 @@ class BandTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		band = em.find(Band.class, 1);
+		bandMember = em.find(BandMember.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		band = null;
+		bandMember = null;
 		em.close();
 	}
 
 	@Test
-	void test_band_mapping() {
-		assertEquals(1, band.getId());
-		assertEquals("Piss-ant Graphite", band.getName());
-		assertEquals("What starts out as yearning soon becomes manipulated into a carnival of distress, leaving only a sense of unreality and the chance of a new synthesis.", band.getAboutUs());
-		assertEquals("Rock", band.getGenre());
-		assertEquals(6, band.getAddress().getId());
-		assertEquals("thegarageband@gmail.com", band.getEmail());
-		assertEquals("Test", band.getTimeCommitment());
-//		assertEquals(11, band.getImage().getId());
+	void test_band_member_mapping() {
+		assertEquals(1, bandMember.getBand().getId());
+		assertEquals(1, bandMember.getInstrument().getId());
+		assertEquals(1, bandMember.getProfile().getId());
+		assertEquals("This is the lead Guitar Player", bandMember.getDescription());
+		assertEquals("Expert", bandMember.getExperience());
 		
 		String pattern = "yyyy-MM-dd";
 		String pattern2 = "HH:mm:ss";
@@ -61,10 +55,9 @@ class BandTest {
 		java.text.SimpleDateFormat sdf2 = new java.text.SimpleDateFormat(pattern2);
 
 		assertEquals("2019-04-01 22:38:48",
-				sdf.format(band.getCreatedAt()) + " " + sdf2.format(band.getCreatedAt()));
+				sdf.format(bandMember.getCreatedAt()) + " " + sdf2.format(bandMember.getCreatedAt()));
 		assertEquals("2019-04-01 22:38:48",
-				sdf.format(band.getUpdatedAt()) + " " + sdf2.format(band.getUpdatedAt()));
-		
+				sdf.format(bandMember.getJoinedAt()) + " " + sdf2.format(bandMember.getJoinedAt()));
 	}
 
 }
