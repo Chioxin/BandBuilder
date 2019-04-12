@@ -6,14 +6,14 @@ import com.skilldistillery.bandbuilder.entities.UserInstrument;
 
 public interface UserInstrumentService {
 
-	List<UserInstrument> getUserInstrumentByProfileId(int id);
+	public List<UserInstrument> getUserInstrumentsByProfileId(int id);
 	
-	UserInstrument getUserInstrumentById(int id);
+	public UserInstrument getUserInstrumentById(int id);
 	
-	UserInstrument createUserInstrument(UserInstrument userInstrument);
+	public UserInstrument createUserInstrument(UserInstrument userInstrument);
 	
-	UserInstrument updateUserInstrumentById(int id, UserInstrument userInstrument);
+	public UserInstrument updateUserInstrumentById(int id, UserInstrument userInstrument);
 	
-	Boolean deleteUserInstrumentById(int id);
+	public Boolean deleteUserInstrumentById(int id);
 	
 }

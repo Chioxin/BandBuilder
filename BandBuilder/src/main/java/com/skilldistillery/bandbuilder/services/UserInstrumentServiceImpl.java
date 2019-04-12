@@ -16,7 +16,7 @@ public class UserInstrumentServiceImpl implements UserInstrumentService {
 	private UserInstrumentRepository userInstrumentRepo;
 
 	@Override
-	public List<UserInstrument> getUserInstrumentByProfileId(int id) {
+	public List<UserInstrument> getUserInstrumentsByProfileId(int id) {
 		return userInstrumentRepo.getUserInstrumentByProfileId(id);
 	}
 
@@ -50,16 +50,7 @@ public class UserInstrumentServiceImpl implements UserInstrumentService {
 
 	@Override
 	public Boolean deleteUserInstrumentById(int id) {
-		Boolean result = false;
-		Optional<UserInstrument> optional = userInstrumentRepo.findById(id);
-		if (optional.isPresent()) {
-			UserInstrument userInstrument = optional.get();
-			userInstrumentRepo.delete(userInstrument);
-			result = true;
-			return result;
-		} else {
-			return result;
-		}
+		return null;
 	}
 
 }
