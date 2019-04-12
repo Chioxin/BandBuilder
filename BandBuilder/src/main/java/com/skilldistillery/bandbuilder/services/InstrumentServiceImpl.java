@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.skilldistillery.bandbuilder.datatransferobjects.NewInstrumentDTO;
+import com.skilldistillery.bandbuilder.datatransferobjects.InstrumentDTO;
 import com.skilldistillery.bandbuilder.entities.Instrument;
 import com.skilldistillery.bandbuilder.repositories.InstrumentRepository;
 
@@ -32,7 +32,7 @@ public class InstrumentServiceImpl implements InstrumentService {
 	}
 
 	@Override
-	public Instrument createInstrument(NewInstrumentDTO instrumentInfo) {
+	public Instrument createInstrument(InstrumentDTO instrumentInfo) {
 		// Can't do this until image is built.
 		return null;
 	}

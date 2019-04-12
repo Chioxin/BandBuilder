@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.bandbuilder.datatransferobjects.NewInstrumentDTO;
+import com.skilldistillery.bandbuilder.datatransferobjects.InstrumentDTO;
 import com.skilldistillery.bandbuilder.entities.Instrument;
 import com.skilldistillery.bandbuilder.services.InstrumentService;
 
@@ -45,7 +45,7 @@ public class InstrumentController {
 	}
 	
 	@PostMapping("instruments")
-	public Instrument createNewInstrument(@RequestBody NewInstrumentDTO instrumentInfo,
+	public Instrument createNewInstrument(@RequestBody InstrumentDTO instrumentInfo,
 			HttpServletResponse resp,
 			HttpServletRequest req) {
 		Instrument instrument = instrumentSvc.createInstrument(instrumentInfo);

@@ -1,6 +1,6 @@
 package com.skilldistillery.bandbuilder.datatransferobjects;
 
-public class RegistrationDTO {
+public class ProfileDTO {
 	
 	// User Entity
 	private int userId;

@@ -1,6 +1,6 @@
 package com.skilldistillery.bandbuilder.datatransferobjects;
 
-public class NewInstrumentDTO {
+public class InstrumentDTO {
 	
 	// Instrument Entity
 	private int instrumentId;
