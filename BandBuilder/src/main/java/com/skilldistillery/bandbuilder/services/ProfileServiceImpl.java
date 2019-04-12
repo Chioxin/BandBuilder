@@ -6,13 +6,28 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.skilldistillery.bandbuilder.datatransferobjects.ProfileDTO;
+import com.skilldistillery.bandbuilder.entities.Address;
+import com.skilldistillery.bandbuilder.entities.Image;
 import com.skilldistillery.bandbuilder.entities.Profile;
+import com.skilldistillery.bandbuilder.entities.User;
+import com.skilldistillery.bandbuilder.repositories.AddressRepository;
+import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
+import com.skilldistillery.bandbuilder.repositories.UserRepository;
 
 public class ProfileServiceImpl implements ProfileService {
 	
 	@Autowired
 	private ProfileRepository profileRepo;
+	
+	@Autowired
+	private AddressRepository addressRepo;
+	
+	@Autowired
+	private ImageRepository imageRepo;
+
+	@Autowired
+	private UserRepository userRepo;
 
 	@Override
 	public List<Profile> getAllProfiles() {
@@ -33,9 +48,44 @@ public class ProfileServiceImpl implements ProfileService {
 
 	@Override
 	public Profile createProfile(ProfileDTO regInfo) {
-		Profile profile = new Profile();
-		// Needs ADDRESS and USER Services to work
+
+		//Build Address
+		Address address = new Address();
+		address.setStreet(regInfo.getAddressStreet());
+		address.setStreet2(regInfo.getAddressStreet2());
+		address.setCity(regInfo.getAddressCity());
+		address.setState(regInfo.getAddressState());
+		address.setZip(regInfo.getAddressZip());
+		address.setPhone(regInfo.getAddressPhone());
+		address.setActive(true);
+		address = addressRepo.saveAndFlush(address);
 		
+		//Build User  --- Do we need this? Or does AUTH build this?
+		User user = new User();
+		user.setUsername(regInfo.getUserUsername());
+		user.setPassword(regInfo.getUserPassword());
+		user.setRole(regInfo.getUserRole());
+		user.setActive(true);
+		user = userRepo.saveAndFlush(user);
+		
+		//Build Image
+		Image image = new Image();
+		image.setUrl(regInfo.getImageURL());
+		image.setDescription(regInfo.getImageDescription());
+		image.setAlt(regInfo.getImageAlt());
+		image = imageRepo.saveAndFlush(image);
+		
+		//Build Profile
+		Profile profile = new Profile();
+		profile.setFirstName(regInfo.getProfileFirstName());
+		profile.setLastName(regInfo.getProfileLastName());
+		profile.setEmail(regInfo.getProfileEmail());
+		profile.setAboutMe(regInfo.getProfileAboutMe());
+		profile.setAddress(address);
+		profile.setUser(user);
+		profile.setImage(image);
+		
+		//Finally save and flush the profile so it updates.
 		return profileRepo.saveAndFlush(profile);
 	}
 

@@ -4,9 +4,10 @@ public class ProfileDTO {
 	
 	// User Entity
 	private int userId;
-	private int userPassword;
+	private String userUsername;
+	private String userPassword;
 	private boolean userActive;
-	private String role;
+	private String userRole;
 	
 	// Profile Entity
 	private int profileId;
@@ -20,7 +21,14 @@ public class ProfileDTO {
 	private String addressStreet2;
 	private String addressCity;
 	private String addressState;
+	private String addressZip;
 	private String addressPhone;
+	
+	// Image Entity
+	private int imageId;
+	private String imageURL;
+	private String imageAlt;
+	private String imageDescription;
 	
 	// Getters and Setters
 	public int getUserId() {
@@ -29,10 +37,16 @@ public class ProfileDTO {
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	public int getUserPassword() {
+	public String getUserUsername() {
+		return userUsername;
+	}
+	public void setUserUsername(String userUsername) {
+		this.userUsername = userUsername;
+	}
+	public String getUserPassword() {
 		return userPassword;
 	}
-	public void setUserPassword(int userPassword) {
+	public void setUserPassword(String userPassword) {
 		this.userPassword = userPassword;
 	}
 	public boolean isUserActive() {
@@ -41,11 +55,11 @@ public class ProfileDTO {
 	public void setUserActive(boolean userActive) {
 		this.userActive = userActive;
 	}
-	public String getRole() {
-		return role;
+	public String getUserRole() {
+		return userRole;
 	}
-	public void setRole(String role) {
-		this.role = role;
+	public void setUserRole(String userRole) {
+		this.userRole = userRole;
 	}
 	public int getProfileId() {
 		return profileId;
@@ -101,11 +115,42 @@ public class ProfileDTO {
 	public void setAddressState(String addressState) {
 		this.addressState = addressState;
 	}
+	public String getAddressZip() {
+		return addressZip;
+	}
+	public void setAddressZip(String addressZip) {
+		this.addressZip = addressZip;
+	}
 	public String getAddressPhone() {
 		return addressPhone;
 	}
 	public void setAddressPhone(String addressPhone) {
 		this.addressPhone = addressPhone;
 	}
+	public int getImageId() {
+		return imageId;
+	}
+	public void setImageId(int imageId) {
+		this.imageId = imageId;
+	}
+	public String getImageURL() {
+		return imageURL;
+	}
+	public void setImageURL(String imageURL) {
+		this.imageURL = imageURL;
+	}
+	public String getImageAlt() {
+		return imageAlt;
+	}
+	public void setImageAlt(String imageAlt) {
+		this.imageAlt = imageAlt;
+	}
+	public String getImageDescription() {
+		return imageDescription;
+	}
+	public void setImageDescription(String imageDescription) {
+		this.imageDescription = imageDescription;
+	}
+	
 
 }
