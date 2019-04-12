@@ -50,7 +50,7 @@ public class ImageServiceImpl implements ImageService {
 		Optional<Image> opt = imageRepo.findById(id);
 		if (opt.isPresent()) {
 			Image image = opt.get();
-			//NEED TO SET ACTIVE TO FALSE
+			image.setActive(false);
 			deleted = true;
 		}
 		
