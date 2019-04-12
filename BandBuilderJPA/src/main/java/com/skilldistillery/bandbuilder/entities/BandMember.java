@@ -155,7 +155,7 @@ public class BandMember {
 	public String toString() {
 		return "BandMember [id=" + id + ", band=" + band + ", instrument=" + instrument + ", profile=" + profile
 				+ ", description=" + description + ", experience=" + experience + ", createdAt=" + createdAt
-				+ ", joinedAt=" + joinedAt + "]";
+				+ ", joinedAt=" + joinedAt + ", active=" + active + "]";
 	}
 
 }

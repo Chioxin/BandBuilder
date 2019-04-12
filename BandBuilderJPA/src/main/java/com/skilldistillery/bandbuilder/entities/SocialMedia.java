@@ -82,7 +82,7 @@ public class SocialMedia {
 
 	@Override
 	public String toString() {
-		return "SocialMedia [id=" + id + ", name=" + name + ", imageURL=" + imageURL + "]";
+		return "SocialMedia [id=" + id + ", name=" + name + ", imageURL=" + imageURL + ", active=" + active + "]";
 	}
 
 }

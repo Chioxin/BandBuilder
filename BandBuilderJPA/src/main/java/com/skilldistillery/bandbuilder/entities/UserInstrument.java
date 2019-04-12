@@ -23,9 +23,9 @@ public class UserInstrument {
 	@JoinColumn(name = "profile_id")
 	private Profile profile;
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "instrument_id")
-	private List<Instrument> instrument;
+	private Instrument instrument;
 
 	private String experience;
 
@@ -53,11 +53,11 @@ public class UserInstrument {
 		this.profile = profile;
 	}
 
-	public List<Instrument> getInstrument() {
+	public Instrument getInstrument() {
 		return instrument;
 	}
 
-	public void setInstrument(List<Instrument> instrument) {
+	public void setInstrument(Instrument instrument) {
 		this.instrument = instrument;
 	}
 
@@ -110,7 +110,7 @@ public class UserInstrument {
 	@Override
 	public String toString() {
 		return "UserInstrument [id=" + id + ", profile=" + profile + ", instrument=" + instrument + ", experience="
-				+ experience + ", description=" + description + "]";
+				+ experience + ", description=" + description + ", active=" + active + "]";
 	}
 
 }

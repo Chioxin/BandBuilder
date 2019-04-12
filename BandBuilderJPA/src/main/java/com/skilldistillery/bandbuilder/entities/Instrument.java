@@ -103,7 +103,7 @@ public class Instrument {
 	@Override
 	public String toString() {
 		return "Instrument [id=" + id + ", name=" + name + ", approved=" + approved + ", image=" + image
-				+ ", description=" + description + "]";
+				+ ", description=" + description + ", active=" + active + "]";
 	}
 
 }

@@ -227,7 +227,8 @@ public class Band {
 	public String toString() {
 		return "Band [id=" + id + ", name=" + name + ", aboutUs=" + aboutUs + ", genre=" + genre + ", address="
 				+ address + ", leader=" + leader + ", email=" + email + ", timeCommitment=" + timeCommitment
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", image=" + image + ", active=" + active
+				+ "]";
 	}
 
 }

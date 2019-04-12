@@ -215,7 +215,7 @@ public class Profile {
 	public String toString() {
 		return "Profile [id=" + id + ", user=" + user + ", firstName=" + firstName + ", lastName=" + lastName
 				+ ", email=" + email + ", aboutMe=" + aboutMe + ", address=" + address + ", image=" + image
-				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + "]";
+				+ ", createdAt=" + createdAt + ", updatedAt=" + updatedAt + ", active=" + active + "]";
 	}
 
 }

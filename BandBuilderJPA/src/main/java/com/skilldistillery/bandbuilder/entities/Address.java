@@ -155,7 +155,7 @@ public class Address {
 	public String toString() {
 		return "Address [id=" + id + ", street=" + street + ", street2=" + street2 + ", city=" + city + ", state="
 				+ state + ", zip=" + zip + ", phone=" + phone + ", createdAt=" + createdAt + ", updatedAt=" + updatedAt
-				+ "]";
+				+ ", active=" + active + "]";
 	}
 
 }

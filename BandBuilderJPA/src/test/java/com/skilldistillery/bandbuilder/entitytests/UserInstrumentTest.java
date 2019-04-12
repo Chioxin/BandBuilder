@@ -51,9 +51,7 @@ class UserInstrumentTest {
 		assertEquals(1, userInstrument.getProfile().getId());
 		assertEquals("Expert", userInstrument.getExperience());
 		assertEquals("This is the description for the guitarest", userInstrument.getDescription());
-		
-		List<Instrument> list = userInstrument.getInstrument();
-		assertThat(list.isEmpty(), is(false));
+		assertEquals("guitar", userInstrument.getInstrument().getName());
 	}
 
 }
