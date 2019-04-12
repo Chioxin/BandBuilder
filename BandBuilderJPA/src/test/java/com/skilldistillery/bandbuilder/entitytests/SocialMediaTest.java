@@ -45,7 +45,7 @@ class SocialMediaTest {
 	}
 
 	@Test
-	void test() {
+	void test_social_media_test() {
 		assertEquals("http://cofarming.info/wp-content/uploads/2017/01/facebook-icon-preview-1-400x400.png", socialMedia.getImageURL() );
 		assertEquals("facebook ", socialMedia.getName());
 	}

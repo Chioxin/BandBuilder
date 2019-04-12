@@ -71,6 +71,8 @@ public class Profile {
 	@OneToMany(mappedBy = "profile")
 	private List<UserInstrument> instruments;
 
+	private boolean active;
+
 	public Profile() {
 		super();
 	}
@@ -177,6 +179,14 @@ public class Profile {
 
 	public void setInstruments(List<UserInstrument> instruments) {
 		this.instruments = instruments;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
