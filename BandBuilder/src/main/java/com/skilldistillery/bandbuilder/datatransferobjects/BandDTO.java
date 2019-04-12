@@ -180,11 +180,8 @@ public class BandDTO {
 	public void setBandSocialMedia_id(int bandSocialMedia_id) {
 		this.bandSocialMedia_id = bandSocialMedia_id;
 	}
-	public List<SocialMedia> getBandSocialMedia_socialMedia() {
+	public SocialMedia getBandSocialMedia_socialMedia() {
 		return bandSocialMedia_socialMedia;
-	}
-	public void setBandSocialMedia_socialMedia(List<SocialMedia> bandSocialMedia_socialMedia) {
-		this.bandSocialMedia_socialMedia = bandSocialMedia_socialMedia;
 	}
 	public Band getBandSocialMedia_band() {
 		return bandSocialMedia_band;

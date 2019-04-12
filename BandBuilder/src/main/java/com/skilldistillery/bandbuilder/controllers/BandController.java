@@ -55,17 +55,17 @@ public class BandController {
 			return bandList;
 	}
 	
-	@PostMapping("bands")
-	public Band create(@RequestBody Band band, 
-			HttpServletResponse response) {
-		Band newBand = bandSvc.createBand(band);
-		if(band != null) {
-			response.setStatus(201);
-		} else {
-			response.setStatus(400);
-		}
-		return newBand;
-	}
+//	@PostMapping("bands")
+//	public Band create(@RequestBody Band band, 
+//			HttpServletResponse response) {
+//		Band newBand = bandSvc.createBand(band);
+//		if(band != null) {
+//			response.setStatus(201);
+//		} else {
+//			response.setStatus(400);
+//		}
+//		return newBand;
+//	}
 	
 	@PutMapping(path = "bandmembers/{id}")
 	public Band update(@RequestBody Band updatedBand, 
