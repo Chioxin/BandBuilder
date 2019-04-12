@@ -65,7 +65,7 @@ public class Band {
 	private List<BandSocialMedia> bandSocialMedias;
 
 	@JsonIgnore
-	@OneToMany
+	@OneToOne
 	@JoinColumn(name="band_id")
 	private List<Image> images;
 
