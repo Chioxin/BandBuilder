@@ -46,7 +46,6 @@
 | Return Type         | Route                           | Functionality                         |
 |---------------------|---------------------------------|---------------------------------------|
 | `Image`             |`GET api/images/{id}`            | Get image by id                       |
-| `List<Image>`       |`GET api/bands/{id}/images`      | Get all images by band id             |
 | `Image`             |`POST api/images/`               | Create a new image                    |
 | `Image`             |`PUT api/images/`                | Update an existing image by id        |
 | `Void`              |`DELETE api/images/{id}`         | Delete an existing image by id        |
