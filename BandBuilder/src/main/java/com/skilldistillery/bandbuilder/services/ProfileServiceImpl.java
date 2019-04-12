@@ -67,9 +67,10 @@ public class ProfileServiceImpl implements ProfileService {
 	public Boolean deleteProfileById(int id) {
 		Boolean deleted = false;
 		
-		Optional opt = profileRepo.findById(id);
+		Optional<Profile> opt = profileRepo.findById(id);
 		if (opt.isPresent()) {
-			profileRepo.deleteById(id);
+			Profile managed = opt.get();
+			managed.getUser().setActive(false);
 			deleted = true;
 		}
 
