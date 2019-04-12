@@ -1,5 +1,7 @@
 package com.skilldistillery.bandbuilder.entitytests;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
@@ -10,15 +12,14 @@ import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-@DisplayName("Social Media Entity Test")
-class SocialMedia {
+import com.skilldistillery.bandbuilder.entities.UserInstrument;
 
+class UserInstrumentTest {
 	private static EntityManagerFactory emf;
 	private EntityManager em;
-	private SocialMedia socialMedia;
+	private UserInstrument userInstrument;
 	
 	@BeforeAll
 	static void setUpBeforeClass() throws Exception {
@@ -33,18 +34,21 @@ class SocialMedia {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		socialMedia = em.find(SocialMedia.class, 1);
+		userInstrument = em.find(UserInstrument.class, 1);
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		socialMedia = null;
+		userInstrument = null;
 		em.close();
 	}
 
 	@Test
-	void test() {
-		fail("Not yet implemented");
+	void test_user_instrument_mapping() {
+		assertEquals(1, userInstrument.getProfile().getId());
+		assertEquals("Expert", userInstrument.getExperience());
+		assertEquals("This is the description for the guitarest", userInstrument.getDescription());
+		assertThat(userInstrument.getInstrument().isEmpty(), is(false));
 	}
 
 }
