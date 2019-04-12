@@ -68,7 +68,7 @@ public class BandSocialMediaServiceImpl implements BandSocialMediaService {
 			deleted = true;
 		}
 		
-		return null;
+		return deleted;
 	}
 
 }
