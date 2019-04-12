@@ -3,10 +3,12 @@ package com.skilldistillery.bandbuilder.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.entities.Image;
 import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 	
 	@Autowired

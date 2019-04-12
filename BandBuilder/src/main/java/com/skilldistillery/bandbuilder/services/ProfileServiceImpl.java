@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.datatransferobjects.ProfileDTO;
 import com.skilldistillery.bandbuilder.entities.Address;
@@ -15,6 +16,7 @@ import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
 import com.skilldistillery.bandbuilder.repositories.UserRepository;
 
+@Service
 public class ProfileServiceImpl implements ProfileService {
 	
 	@Autowired
