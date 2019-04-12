@@ -7,15 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.skilldistillery.bandbuilder.entities.BandSocialMedia;
 import com.skilldistillery.bandbuilder.repositories.BandSocialMediaRepository;
-import com.skilldistillery.bandbuilder.repositories.SocialMediaRepository;
 
 public class BandSocialMediaServiceImpl implements BandSocialMediaService {
 	
 	@Autowired
 	private BandSocialMediaRepository bandSocialMediaRepo;
 	
-	@Autowired
-	private SocialMediaRepository socialMediaRepo;
+//	Not sure if this is even needed, assuming the Social Media is provided from the front end.
+//	@Autowired
+//	private SocialMediaRepository socialMediaRepo;
 
 	@Override
 	public List<BandSocialMedia> getBandSocialMediaByBandId(int id) {
@@ -41,13 +41,33 @@ public class BandSocialMediaServiceImpl implements BandSocialMediaService {
 
 	@Override
 	public BandSocialMedia updateBandSocialMediaById(int id, BandSocialMedia updatedBandSocialMedia) {
-		// TODO Auto-generated method stub
-		return null;
+		BandSocialMedia managed = null;
+		
+		Optional<BandSocialMedia> opt = bandSocialMediaRepo.findById(id);
+		if (opt.isPresent()) {
+			managed = opt.get();
+			managed.setBand(updatedBandSocialMedia.getBand());
+			managed.setSocialMedia(updatedBandSocialMedia.getSocialMedia());
+			managed.setUrl(updatedBandSocialMedia.getUrl());
+			managed.setActive(updatedBandSocialMedia.isActive());
+			managed = bandSocialMediaRepo.saveAndFlush(managed);
+		}
+			
+		return managed;
 	}
 
 	@Override
 	public Boolean deleteBandSocialMediaById(int id) {
-		// TODO Auto-generated method stub
+		Boolean deleted = false;
+		
+		Optional<BandSocialMedia> opt = bandSocialMediaRepo.findById(id);
+		if (opt.isPresent()) {
+			BandSocialMedia managed = opt.get();
+			managed.setActive(false);
+			bandSocialMediaRepo.saveAndFlush(managed);
+			deleted = true;
+		}
+		
 		return null;
 	}
 

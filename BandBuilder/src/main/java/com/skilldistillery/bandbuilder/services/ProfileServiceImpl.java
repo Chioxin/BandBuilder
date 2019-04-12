@@ -108,6 +108,8 @@ public class ProfileServiceImpl implements ProfileService {
 			managed.setBands(profile.getBands());
 			managed.setBandMembers(profile.getBandMembers());
 			managed.setInstruments(profile.getInstruments());
+			
+			managed = profileRepo.saveAndFlush(managed);
 		}
 		
 		return managed;
@@ -121,6 +123,7 @@ public class ProfileServiceImpl implements ProfileService {
 		if (opt.isPresent()) {
 			Profile managed = opt.get();
 			managed.getUser().setActive(false);
+			profileRepo.saveAndFlush(managed);
 			deleted = true;
 		}
 

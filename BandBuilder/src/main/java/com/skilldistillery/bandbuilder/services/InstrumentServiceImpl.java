@@ -68,6 +68,8 @@ public class InstrumentServiceImpl implements InstrumentService {
 			managed.setDescription(instrument.getDescription());
 			managed.setImage(instrument.getImage());
 			managed.setName(instrument.getName());
+			
+			managed = instrumentRepo.saveAndFlush(managed);
 		}
 		
 		return managed;
@@ -81,6 +83,7 @@ public class InstrumentServiceImpl implements InstrumentService {
 		if (opt.isPresent()) {
 			Instrument managed = opt.get();
 			managed.setApproved(false);
+			instrumentRepo.saveAndFlush(managed);
 			deleted = true;
 		}
 		
