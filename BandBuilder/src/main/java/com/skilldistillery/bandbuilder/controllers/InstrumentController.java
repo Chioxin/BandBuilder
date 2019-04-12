@@ -15,79 +15,76 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.bandbuilder.datatransferobjects.RegistrationDTO;
-import com.skilldistillery.bandbuilder.entities.Profile;
-import com.skilldistillery.bandbuilder.services.ProfileService;
+import com.skilldistillery.bandbuilder.datatransferobjects.NewInstrumentDTO;
+import com.skilldistillery.bandbuilder.entities.Instrument;
+import com.skilldistillery.bandbuilder.services.InstrumentService;
 
 @RestController
 @RequestMapping("api")
 //@CrossOrigin({ "*", "http://localhost:4200" })
-public class ProfileController {
+public class InstrumentController {
 
 	@Autowired
-	private ProfileService profileSvc;
+	private InstrumentService instrumentSvc;
 	
-	@GetMapping("profiles")
-	public List<Profile> getAllProfiles() {
-		return profileSvc.getAllProfiles();
+	@GetMapping("instruments")
+	public List<Instrument> getInstruments() {
+		return instrumentSvc.getAllInstruments();
 	}
 	
-	@GetMapping("profiles/{pid}")
-	public Profile getProfileById(@PathVariable("pid") Integer id,
+	@GetMapping("instruments/{iid}")
+	public Instrument getInstrumentById(@PathVariable("iid") Integer id,
 			HttpServletResponse resp) {
 		
-		Profile profile = profileSvc.getProfileById(id);
+		Instrument instrument = instrumentSvc.getInstrumentById(id);
 		
-		if (profile == null) {
+		if (instrument == null) {
 			resp.setStatus(404);
 		}
-		
-		return profile;
+		return instrument;
 	}
 	
-	@PostMapping("profiles")
-	public Profile createProfile(@RequestBody RegistrationDTO regInfo,
+	@PostMapping("instruments")
+	public Instrument createNewInstrument(@RequestBody NewInstrumentDTO instrumentInfo,
 			HttpServletResponse resp,
 			HttpServletRequest req) {
+		Instrument instrument = instrumentSvc.createInstrument(instrumentInfo);
 		
-		Profile profile = profileSvc.createProfile(regInfo);
-		
-		if (profile != null) {
+		if (instrument != null) {
 			resp.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			url.append("/");
-			url.append(profile.getId());
+			url.append(instrument.getId());
 			resp.setHeader("Location", url.toString());
 		} else {
 			resp.setStatus(400);
 		}
-		
-		return profile;
+		return instrument; 
 	}
 	
-	@PutMapping("profiles/{pid}")
-	public Profile updateProfileById(@RequestBody Profile updatedProfile, @PathVariable("pid") Integer id,
+	@PutMapping("instruments/{iid}")
+	public Instrument updateInstrumentById(@PathVariable("iid") Integer id, @RequestBody Instrument updatedInstrument,
 			HttpServletResponse resp) {
 		
-		updatedProfile = profileSvc.updateProfileById(id, updatedProfile);
+		updatedInstrument = instrumentSvc.updateInstrument(id, updatedInstrument);
 		
-		if (updatedProfile != null) {
+		if (updatedInstrument != null) {
 			resp.setStatus(201);
 		} else {
 			resp.setStatus(400);
 		}
-		
-		return updatedProfile;
+	
+		return updatedInstrument;
 	}
 	
-	@DeleteMapping("profiles/{pid}")
-	public void deleteProfileById(@PathVariable("pid") Integer id,
+	@DeleteMapping("instruments/{iid}")
+	public void deleteInstrumentById(@PathVariable("iid") Integer id,
 			HttpServletResponse resp) {
 		
-		if (profileSvc.deleteProfileById(id)) {
+		if (instrumentSvc.deleteInstrument(id)) {
 			resp.setStatus(204);
 		} else {
 			resp.setStatus(400);
-		}		
+		}
 	}
 }
