@@ -20,10 +20,10 @@ public class BandSocialMedia {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	@OneToMany
+	@ManyToOne
 	@JoinColumn(name = "social_media_id")
 //	@Column(name = "social_media")
-	private List<SocialMedia> socialMedia;
+	private SocialMedia socialMedia;
 
 	@ManyToOne
 	@JoinColumn(name = "band_id")
@@ -45,11 +45,11 @@ public class BandSocialMedia {
 		this.id = id;
 	}
 
-	public List<SocialMedia> getSocialMedia() {
+	public SocialMedia getSocialMedia() {
 		return socialMedia;
 	}
 
-	public void setSocialMedia(List<SocialMedia> socialMedia) {
+	public void setSocialMedia(SocialMedia socialMedia) {
 		this.socialMedia = socialMedia;
 	}
 
