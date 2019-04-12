@@ -26,10 +26,10 @@
 |------------------|------------------------------|--------------------------------|
 | `List<Band>`     |`GET api/bands/`              | Get all bands                  |
 | `Band`           |`GET api/bands/{id}`          | Get band by id                 |
-| `List<Band>`     |`GET api/profiles/{id}/bands` | Get band by profile id         |
+| `List<Band>`     |`GET api/profiles/{id}/bands` | Get all bands by profile id    |
 | `Band`           |`POST api/bands/`             | Create a new band              |
 | `Band`           |`PUT api/bands/{id}`          | Update an existing band by id  |
-| `Void`            |`DELETE api/bands/{id}`       | Delete an existing band by id  |
+| `Void`           |`DELETE api/bands/{id}`       | Delete an existing band by id  |
 
 ## REST Routes for Band Members:
 
