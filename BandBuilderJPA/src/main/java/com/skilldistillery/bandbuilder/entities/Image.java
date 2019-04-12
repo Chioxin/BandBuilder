@@ -16,6 +16,8 @@ public class Image {
 
 	private String description;
 
+	private String alt;
+
 	public Image() {
 		super();
 	}
@@ -42,6 +44,14 @@ public class Image {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getAlt() {
+		return alt;
+	}
+
+	public void setAlt(String alt) {
+		this.alt = alt;
 	}
 
 	@Override
