@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.datatransferobjects.ProfileDTO;
 import com.skilldistillery.bandbuilder.entities.Address;
@@ -15,6 +16,7 @@ import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
 import com.skilldistillery.bandbuilder.repositories.UserRepository;
 
+@Service
 public class ProfileServiceImpl implements ProfileService {
 	
 	@Autowired
@@ -108,6 +110,8 @@ public class ProfileServiceImpl implements ProfileService {
 			managed.setBands(profile.getBands());
 			managed.setBandMembers(profile.getBandMembers());
 			managed.setInstruments(profile.getInstruments());
+			
+			managed = profileRepo.saveAndFlush(managed);
 		}
 		
 		return managed;
@@ -121,6 +125,7 @@ public class ProfileServiceImpl implements ProfileService {
 		if (opt.isPresent()) {
 			Profile managed = opt.get();
 			managed.getUser().setActive(false);
+			profileRepo.saveAndFlush(managed);
 			deleted = true;
 		}
 

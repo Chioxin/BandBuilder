@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.datatransferobjects.InstrumentDTO;
 import com.skilldistillery.bandbuilder.entities.Image;
@@ -11,6 +12,7 @@ import com.skilldistillery.bandbuilder.entities.Instrument;
 import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 import com.skilldistillery.bandbuilder.repositories.InstrumentRepository;
 
+@Service
 public class InstrumentServiceImpl implements InstrumentService {
 
 	@Autowired
@@ -68,6 +70,8 @@ public class InstrumentServiceImpl implements InstrumentService {
 			managed.setDescription(instrument.getDescription());
 			managed.setImage(instrument.getImage());
 			managed.setName(instrument.getName());
+			
+			managed = instrumentRepo.saveAndFlush(managed);
 		}
 		
 		return managed;
@@ -81,6 +85,7 @@ public class InstrumentServiceImpl implements InstrumentService {
 		if (opt.isPresent()) {
 			Instrument managed = opt.get();
 			managed.setApproved(false);
+			instrumentRepo.saveAndFlush(managed);
 			deleted = true;
 		}
 		

@@ -3,10 +3,12 @@ package com.skilldistillery.bandbuilder.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.entities.Image;
 import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 
+@Service
 public class ImageServiceImpl implements ImageService {
 	
 	@Autowired
@@ -39,6 +41,8 @@ public class ImageServiceImpl implements ImageService {
 			managed.setDescription(image.getDescription());
 			managed.setUrl(image.getUrl());
 			managed.setAlt(image.getAlt());
+			
+			managed = imageRepo.saveAndFlush(managed);
 		}
 		return managed;
 	}
@@ -51,6 +55,7 @@ public class ImageServiceImpl implements ImageService {
 		if (opt.isPresent()) {
 			Image image = opt.get();
 			image.setActive(false);
+			imageRepo.saveAndFlush(image);
 			deleted = true;
 		}
 		
