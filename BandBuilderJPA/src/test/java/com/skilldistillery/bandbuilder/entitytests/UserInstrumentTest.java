@@ -2,7 +2,9 @@ package com.skilldistillery.bandbuilder.entitytests;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -14,6 +16,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import com.skilldistillery.bandbuilder.entities.Instrument;
 import com.skilldistillery.bandbuilder.entities.UserInstrument;
 
 class UserInstrumentTest {
@@ -48,7 +51,9 @@ class UserInstrumentTest {
 		assertEquals(1, userInstrument.getProfile().getId());
 		assertEquals("Expert", userInstrument.getExperience());
 		assertEquals("This is the description for the guitarest", userInstrument.getDescription());
-		assertThat(userInstrument.getInstrument().isEmpty(), is(false));
+		
+		List<Instrument> list = userInstrument.getInstrument();
+		assertThat(list.isEmpty(), is(false));
 	}
 
 }
