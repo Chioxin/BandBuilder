@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -62,10 +63,28 @@ public class InstrumentController {
 	}
 	
 	@PutMapping("instruments/{iid}")
-	public Instrument updateInstrument(@PathVariable("iid") Integer id, @RequestBody Instrument instrument) {
+	public Instrument updateInstrumentById(@PathVariable("iid") Integer id, @RequestBody Instrument updatedInstrument,
+			HttpServletResponse resp) {
 		
+		updatedInstrument = instrumentSvc.updateInstrument(id, updatedInstrument);
 		
-		return instrument;
+		if (updatedInstrument != null) {
+			resp.setStatus(201);
+		} else {
+			resp.setStatus(400);
+		}
+	
+		return updatedInstrument;
 	}
 	
+	@DeleteMapping("instruments/{iid}")
+	public void deleteInstrumentById(@PathVariable("iid") Integer id,
+			HttpServletResponse resp) {
+		
+		if (instrumentSvc.deleteInstrument(id)) {
+			resp.setStatus(204);
+		} else {
+			resp.setStatus(400);
+		}
+	}
 }

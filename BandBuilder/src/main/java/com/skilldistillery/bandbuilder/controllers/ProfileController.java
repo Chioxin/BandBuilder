@@ -66,10 +66,10 @@ public class ProfileController {
 	}
 	
 	@PutMapping("profiles/{pid}")
-	public Profile updateProfile(@RequestBody Profile updatedProfile, @PathVariable("pid") Integer id,
+	public Profile updateProfileById(@RequestBody Profile updatedProfile, @PathVariable("pid") Integer id,
 			HttpServletResponse resp) {
 		
-		profileSvc.updateProfileById(id, updatedProfile);
+		updatedProfile = profileSvc.updateProfileById(id, updatedProfile);
 		
 		if (updatedProfile != null) {
 			resp.setStatus(201);
@@ -81,7 +81,7 @@ public class ProfileController {
 	}
 	
 	@DeleteMapping("profiles/{pid}")
-	public void deleteProfile(@PathVariable("pid") Integer id,
+	public void deleteProfileById(@PathVariable("pid") Integer id,
 			HttpServletResponse resp) {
 		
 		if (profileSvc.deleteProfileById(id)) {
