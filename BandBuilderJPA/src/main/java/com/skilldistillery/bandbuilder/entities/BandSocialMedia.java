@@ -101,7 +101,8 @@ public class BandSocialMedia {
 
 	@Override
 	public String toString() {
-		return "BandSocialMedia [id=" + id + ", socialMedia=" + socialMedia + ", band=" + band + "]";
+		return "BandSocialMedia [id=" + id + ", socialMedia=" + socialMedia + ", band=" + band + ", url=" + url
+				+ ", active=" + active + "]";
 	}
 
 }

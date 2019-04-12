@@ -1,5 +1,7 @@
 package com.skilldistillery.bandbuilder.entitytests;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
@@ -52,7 +54,9 @@ class BandTest {
 		assertEquals(6, band.getAddress().getId());
 		assertEquals("thegarageband@gmail.com", band.getEmail());
 		assertEquals("Test", band.getTimeCommitment());
-//		assertEquals(11, band.getImage().getId());
+		assertEquals(11, band.getImage().getId());
+		assertThat( band.getBandSocialMedias().isEmpty(), is(false));
+		assertThat( band.getEvents().isEmpty(), is(false));
 		
 		String pattern = "yyyy-MM-dd";
 		String pattern2 = "HH:mm:ss";

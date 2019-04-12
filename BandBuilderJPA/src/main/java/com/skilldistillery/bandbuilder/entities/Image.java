@@ -88,7 +88,8 @@ public class Image {
 
 	@Override
 	public String toString() {
-		return "Image [id=" + id + ", url=" + url + ", description=" + description + "]";
+		return "Image [id=" + id + ", url=" + url + ", description=" + description + ", alt=" + alt + ", active="
+				+ active + "]";
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.skilldistillery.bandbuilder.entitytests;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.persistence.EntityManager;
@@ -51,7 +53,10 @@ class ProfileTest {
 		assertEquals("I have played the guitar since I was a small boy. My first guitar was gifted to me by my grandfather who was also a guitarest. ", profile.getAboutMe());
 		assertEquals(1, profile.getAddress().getId());
 		assertEquals(1, profile.getImage().getId());
-//		assertEquals(1, profile.getImage().getId());
+		
+		assertThat( profile.getBands().isEmpty(), is(false));
+		assertThat( profile.getBandMembers().isEmpty(), is(false));
+		assertThat( profile.getInstruments().isEmpty(), is(false));
 		
 		String pattern = "yyyy-MM-dd";
 		String pattern2 = "HH:mm:ss";
@@ -61,6 +66,7 @@ class ProfileTest {
 		assertEquals("2019-04-01 22:08:48",
 				sdf.format(profile.getCreatedAt()) + " " + sdf2.format(profile.getCreatedAt()));
 		assertEquals(1, profile.getUser().getId());
+		assertEquals(true, profile.isActive());
 	}
 
 }
