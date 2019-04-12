@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name= "social_media")
+@Table(name = "social_media")
 public class SocialMedia {
 
 	@Id
@@ -19,6 +19,8 @@ public class SocialMedia {
 
 	@Column(name = "image_url")
 	private String imageURL;
+
+	private boolean active;
 
 	public SocialMedia() {
 		super();
@@ -46,6 +48,14 @@ public class SocialMedia {
 
 	public void setImageURL(String imageURL) {
 		this.imageURL = imageURL;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

@@ -45,9 +45,11 @@ public class Event {
 	private Date updatedAt;
 
 	@ManyToOne
-	@JoinColumn(name= "band_id")
+	@JoinColumn(name = "band_id")
 	private Band band;
-	
+
+	private boolean active;
+
 	public Event() {
 		super();
 	}
@@ -107,13 +109,21 @@ public class Event {
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
 	}
- 
+
 	public Band getBand() {
 		return band;
 	}
 
 	public void setBand(Band band) {
 		this.band = band;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
