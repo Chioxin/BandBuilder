@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "user_instrument")
 public class UserInstrument {
 
 	@Id
@@ -49,13 +51,13 @@ public class UserInstrument {
 		this.profile = profile;
 	}
 
-//	public Instrument getInstrument() {
-//		return instrument;
-//	}
-//
-//	public void setInstrument(Instrument instrument) {
-//		this.instrument = instrument;
-//	}
+	public List<Instrument> getInstrument() {
+		return instrument;
+	}
+
+	public void setInstrument(List<Instrument> instrument) {
+		this.instrument = instrument;
+	}
 
 	public String getExperience() {
 		return experience;
