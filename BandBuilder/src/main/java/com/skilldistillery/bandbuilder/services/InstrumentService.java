@@ -9,7 +9,7 @@ public interface InstrumentService {
 	
 	List<Instrument> getAllInstruments();
 	Instrument getInstrumentById(int id);
-	Instrument createInstrument(NewInstrumentDTO instrumentDTO);
+	Instrument createInstrument(NewInstrumentDTO instrumentInfo);
 	Instrument updateInstrument(int id, Instrument instrument);
 	Boolean deleteInstrument(int id);
 

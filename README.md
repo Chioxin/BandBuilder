@@ -8,7 +8,7 @@
 | `Profile`        |`GET api/profiles/{id}`    | Get profile by id                  |
 | `Profile`        |`POST api/profiles/`       | Create a new profile               |
 | `Profile`        |`PUT api/profiles/{id}`    | Update an existing profile by id   |
-| `Boolean`        |`DELETE api/profiles/{id}` | Delete an existing profile by id   |
+| `Void`           |`DELETE api/profiles/{id}` | Delete an existing profile by id   |
 
 ## REST Routes for Instruments:
 
@@ -18,7 +18,7 @@
 | `Instrument`        |`GET api/instruments/{id}`    | Get instrument by id                 |
 | `Instrument`        |`POST api/instruments/`       | Create a new instrument              |
 | `Instrument`        |`PUT api/instruments/{id}`    | Update an existing instrument by id  |
-| `Boolean`           |`DELETE api/instruments/{id}` | Delete an existing instrument by id  |
+| `Void`              |`DELETE api/instruments/{id}` | Delete an existing instrument by id  |
 
 ## REST Routes for Bands:
 
@@ -26,10 +26,10 @@
 |------------------|------------------------------|--------------------------------|
 | `List<Band>`     |`GET api/bands/`              | Get all bands                  |
 | `Band`           |`GET api/bands/{id}`          | Get band by id                 |
-| `List<Band>`     |`GET api/profiles/{id}/bands` | Get band by profile id         |
+| `List<Band>`     |`GET api/profiles/{id}/bands` | Get all bands by profile id    |
 | `Band`           |`POST api/bands/`             | Create a new band              |
 | `Band`           |`PUT api/bands/{id}`          | Update an existing band by id  |
-| `Boolean`        |`DELETE api/bands/{id}`       | Delete an existing band by id  |
+| `Void`           |`DELETE api/bands/{id}`       | Delete an existing band by id  |
 
 ## REST Routes for Band Members:
 
@@ -39,7 +39,7 @@
 | `BandMember`        |`GET api/bandmembers/{id}`       | Get band member by id                 |
 | `BandMember`        |`POST api/bandmembers/`          | Create a new band member              |
 | `BandMember`        |`PUT api/bandmembers/{id}`       | Update an existing band member by id  |  
-| `Boolean`           |`DELETE api/bandmembers/{id}`    | Delete an existing band by id         |
+| `Void`              |`DELETE api/bandmembers/{id}`    | Delete an existing band by id         |
 
 ## REST Routes for Images:
 
@@ -49,7 +49,7 @@
 | `List<Image>`       |`GET api/bands/{id}/images`      | Get all images by band id             |
 | `Image`             |`POST api/images/`               | Create a new image                    |
 | `Image`             |`PUT api/images/`                | Update an existing image by id        |
-| `Boolean`           |`DELETE api/images/{id}`         | Delete an existing image by id        |
+| `Void`              |`DELETE api/images/{id}`         | Delete an existing image by id        |
 
 ## REST Routes for Social Media:
 
@@ -66,7 +66,7 @@
 | `BandSocialMedia`         |`GET api/bandsocialmedia/{id}`            | Get band social media by id                 |
 | `BandSocialMedia`         |`POST api/bandsocialmedia/`               | Create a new band social media              |
 | `BandSocialMedia`         |`PUT api/bandsocialmedia/{id}`            | Update an existing band social media by id  |
-| `Boolean`                 |`DELETE api/bandsocialmedia/{id}`         | Delete an existing band social media by id  |
+| `Void`                    |`DELETE api/bandsocialmedia/{id}`         | Delete an existing band social media by id  |
 
 ## REST Routes for User Instruments:
 
@@ -76,7 +76,7 @@
 | `UserInstrument`          |`GET api/userinstruments/{id}`            | Get user instrument by id                   |
 | `UserInstrument`          |`POST api/userinstruments/`               | Create a new user instrument                |
 | `UserInstrument`          |`PUT api/userinstruments/{id}`            | Update a user instrument by id              |
-| `Boolean`                 |`DELETE api/userinstruments/{id}`         | Delete a user instrument by id              |
+| `Void`                    |`DELETE api/userinstruments/{id}`         | Delete a user instrument by id              |
 
 ## REST Routes for Events:
 
@@ -86,7 +86,7 @@
 | `Event`                   |`GET api/events/{id}`                     | Get all events by id                        |
 | `Event`                   |`POST api/events/`                        | Create a new event                          |
 | `Event`                   |`PUT api/events/{id}`                     | Update an event by id                       |
-| `Boolean`                 |`DELETE api/events/{id}`                  | Delete an event by id                       |
+| `Void`                    |`DELETE api/events/{id}`                  | Delete an event by id                       |
 
 ## REST Routes for Users:
 
@@ -95,4 +95,4 @@
 | `User`                    |`GET api/users/{id}`                      | Get a user by id                            |
 | `User`                    |`POST api/users/`                         | Create a new user                           |
 | `User`                    |`PUT api/users/{id}`                      | Update a user by id                         |
-| `Boolean`                 |`DELETE api/users/{id}`                   | Delete a user by id                         |
+| `Void`                    |`DELETE api/users/{id}`                   | Delete a user by id                         |

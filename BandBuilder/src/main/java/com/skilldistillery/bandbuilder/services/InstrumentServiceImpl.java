@@ -32,7 +32,7 @@ public class InstrumentServiceImpl implements InstrumentService {
 	}
 
 	@Override
-	public Instrument createInstrument(NewInstrumentDTO instrumentDTO) {
+	public Instrument createInstrument(NewInstrumentDTO instrumentInfo) {
 		// Can't do this until image is built.
 		return null;
 	}
