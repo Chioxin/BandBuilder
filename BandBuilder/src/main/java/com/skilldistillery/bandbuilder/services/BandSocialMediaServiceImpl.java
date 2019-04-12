@@ -1,6 +1,7 @@
 package com.skilldistillery.bandbuilder.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -18,20 +19,24 @@ public class BandSocialMediaServiceImpl implements BandSocialMediaService {
 
 	@Override
 	public List<BandSocialMedia> getBandSocialMediaByBandId(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bandSocialMediaRepo.findByBandId(id);
 	}
 
 	@Override
 	public BandSocialMedia getBandSocialMediaById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		BandSocialMedia bsm = null;
+		
+		Optional<BandSocialMedia> opt = bandSocialMediaRepo.findById(id);
+		if (opt.isPresent()) {
+			bsm = opt.get();
+		}
+		
+		return bsm;
 	}
 
 	@Override
 	public BandSocialMedia createBandSocialMedia(BandSocialMedia bandSocialMedia) {
-		// TODO Auto-generated method stub
-		return null;
+		return bandSocialMediaRepo.saveAndFlush(bandSocialMedia);
 	}
 
 	@Override
