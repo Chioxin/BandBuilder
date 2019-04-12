@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.bandbuilder.datatransferobjects.RegistrationDTO;
+import com.skilldistillery.bandbuilder.datatransferobjects.ProfileDTO;
 import com.skilldistillery.bandbuilder.entities.Profile;
 import com.skilldistillery.bandbuilder.services.ProfileService;
 
@@ -46,7 +46,7 @@ public class ProfileController {
 	}
 	
 	@PostMapping("profiles")
-	public Profile createProfile(@RequestBody RegistrationDTO regInfo,
+	public Profile createProfile(@RequestBody ProfileDTO regInfo,
 			HttpServletResponse resp,
 			HttpServletRequest req) {
 		
