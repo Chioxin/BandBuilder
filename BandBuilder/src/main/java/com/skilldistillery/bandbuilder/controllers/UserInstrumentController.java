@@ -25,10 +25,9 @@ public class UserInstrumentController {
 
 	@Autowired
 	private UserInstrumentService userInstrumentSvc;
-	
+
 	@GetMapping(path = "profiles/{id}/userinstruments")
-	public List<UserInstrument> index(@PathVariable("id") int id,
-			HttpServletResponse response,
+	public List<UserInstrument> index(@PathVariable("id") int id, HttpServletResponse response,
 			HttpServletRequest request) {
 		List<UserInstrument> userInstrumentList = userInstrumentSvc.getUserInstrumentByProfileId(id);
 		if (userInstrumentList != null) {
@@ -38,11 +37,9 @@ public class UserInstrumentController {
 		}
 		return userInstrumentList;
 	}
-	
+
 	@GetMapping(path = "userinstruments/{id}")
-	public UserInstrument select(@PathVariable("id") int id,
-			HttpServletResponse response,
-			HttpServletRequest request) {
+	public UserInstrument select(@PathVariable("id") int id, HttpServletResponse response, HttpServletRequest request) {
 		UserInstrument userInstrument = userInstrumentSvc.getUserInstrumentById(id);
 		if (userInstrument != null) {
 			response.setStatus(200);
@@ -51,10 +48,9 @@ public class UserInstrumentController {
 		}
 		return userInstrument;
 	}
-	
+
 	@PostMapping(path = "userinstruments")
-	public UserInstrument create(@RequestBody UserInstrument userInstrument, 
-			HttpServletResponse response,
+	public UserInstrument create(@RequestBody UserInstrument userInstrument, HttpServletResponse response,
 			HttpServletRequest request) {
 		UserInstrument newUserInstrument = userInstrumentSvc.createUserInstrument(userInstrument);
 		if (userInstrument != null) {
@@ -64,32 +60,28 @@ public class UserInstrumentController {
 		}
 		return newUserInstrument;
 	}
-	
+
 	@PutMapping(path = "userinstruments/{id}")
-	public UserInstrument update(@RequestBody UserInstrument userInstrument,
-			@PathVariable int id, 
-			HttpServletRequest request, 
-			HttpServletResponse response) {
+	public UserInstrument update(@RequestBody UserInstrument userInstrument, @PathVariable int id,
+			HttpServletRequest request, HttpServletResponse response) {
 		UserInstrument updatedUserInstrument = userInstrumentSvc.updateUserInstrumentById(id, userInstrument);
 		if (updatedUserInstrument != null) {
-			response.setStatus(200);
+			response.setStatus(201);
 		} else {
 			response.setStatus(400);
 		}
 		return updatedUserInstrument;
 	}
-	
+
 	@DeleteMapping(path = "userinstruments/{id}")
-	public Boolean delete(@PathVariable int id, 
-			HttpServletRequest request, 
-			HttpServletResponse response) {
+	public Boolean delete(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		Boolean bool = userInstrumentSvc.deleteUserInstrumentById(id);
 		if (bool == true) {
-			response.setStatus(200);
+			response.setStatus(204);
 		} else {
 			response.setStatus(400);
 		}
 		return bool;
 	}
-	
+
 }
