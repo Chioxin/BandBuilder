@@ -38,14 +38,23 @@ public class ImageServiceImpl implements ImageService {
 			managed = opt.get();
 			managed.setDescription(image.getDescription());
 			managed.setUrl(image.getUrl());
+			managed.setAlt(image.getAlt());
 		}
-		return null;
+		return managed;
 	}
 
 	@Override
 	public Boolean deleteImage(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		Boolean deleted = false;
+		
+		Optional<Image> opt = imageRepo.findById(id);
+		if (opt.isPresent()) {
+			Image image = opt.get();
+			//NEED TO SET ACTIVE TO FALSE
+			deleted = true;
+		}
+		
+		return deleted;
 	}
 
 }
