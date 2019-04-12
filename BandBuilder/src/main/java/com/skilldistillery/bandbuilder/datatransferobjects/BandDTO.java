@@ -36,11 +36,14 @@ public class BandDTO {
 	private Profile bandMember_profile;
 	private String bandMember_description;
 	private String bandMember_experience;
+	public void setBandSocialMedia_socialMedia(SocialMedia bandSocialMedia_socialMedia) {
+		this.bandSocialMedia_socialMedia = bandSocialMedia_socialMedia;
+	}
 	private Date bandMember_joinedAt;
 	
 	// Band Social Media
 	private int bandSocialMedia_id;
-	private List<SocialMedia> bandSocialMedia_socialMedia;
+	private SocialMedia bandSocialMedia_socialMedia;
 	private Band bandSocialMedia_band;
 	private String bandSocialMedia_url;
 
