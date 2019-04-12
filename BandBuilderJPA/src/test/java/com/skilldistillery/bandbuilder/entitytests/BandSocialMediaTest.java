@@ -46,7 +46,7 @@ class BandSocialMediaTest {
 
 	@Test
 	void test_band_social_media_mapping() {
-//		assertEquals(1, bandSocialMedia);
+		assertEquals("facebook ", bandSocialMedia.getSocialMedia().getName());
 		assertEquals(1, bandSocialMedia.getBand().getId());
 		assertEquals("https://www.facebook.com/bandpage/", bandSocialMedia.getUrl());
 	}
