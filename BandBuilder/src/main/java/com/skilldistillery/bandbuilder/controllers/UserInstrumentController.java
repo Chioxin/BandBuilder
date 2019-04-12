@@ -74,14 +74,13 @@ public class UserInstrumentController {
 	}
 
 	@DeleteMapping(path = "userinstruments/{id}")
-	public Boolean delete(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+	public void delete(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		Boolean bool = userInstrumentSvc.deleteUserInstrumentById(id);
 		if (bool == true) {
 			response.setStatus(204);
 		} else {
 			response.setStatus(400);
 		}
-		return bool;
 	}
 
 }
