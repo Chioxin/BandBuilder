@@ -75,6 +75,8 @@ public class Band {
 	@OneToMany(mappedBy = "band")
 	private List<Event> events;
 
+	private boolean active;
+
 	public Band() {
 		super();
 	}
@@ -189,6 +191,14 @@ public class Band {
 
 	public void setEvents(List<Event> events) {
 		this.events = events;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

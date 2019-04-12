@@ -24,6 +24,8 @@ public class Instrument {
 
 	private String description;
 
+	private boolean active;
+
 	public Instrument() {
 		super();
 	}
@@ -66,6 +68,14 @@ public class Instrument {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

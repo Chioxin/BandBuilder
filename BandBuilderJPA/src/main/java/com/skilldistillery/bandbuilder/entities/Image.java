@@ -18,6 +18,8 @@ public class Image {
 
 	private String alt;
 
+	private boolean active;
+
 	public Image() {
 		super();
 	}
@@ -52,6 +54,14 @@ public class Image {
 
 	public void setAlt(String alt) {
 		this.alt = alt;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
