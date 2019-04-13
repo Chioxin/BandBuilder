@@ -4,10 +4,12 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.entities.SocialMedia;
 import com.skilldistillery.bandbuilder.repositories.SocialMediaRepository;
 
+@Service
 public class SocialMediaServiceImpl implements SocialMediaService {
 	
 	@Autowired
