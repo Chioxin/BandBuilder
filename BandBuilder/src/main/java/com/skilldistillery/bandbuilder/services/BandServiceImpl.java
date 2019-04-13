@@ -1,5 +1,6 @@
 package com.skilldistillery.bandbuilder.services;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,9 +12,11 @@ import com.skilldistillery.bandbuilder.entities.Address;
 import com.skilldistillery.bandbuilder.entities.Band;
 import com.skilldistillery.bandbuilder.entities.BandMember;
 import com.skilldistillery.bandbuilder.entities.BandSocialMedia;
+import com.skilldistillery.bandbuilder.entities.Event;
 import com.skilldistillery.bandbuilder.entities.Profile;
 import com.skilldistillery.bandbuilder.repositories.BandMemberRepository;
 import com.skilldistillery.bandbuilder.repositories.BandRepository;
+import com.skilldistillery.bandbuilder.repositories.BandSocialMediaRepository;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
 
 @Service
@@ -27,6 +30,9 @@ public class BandServiceImpl implements BandService {
 
 	@Autowired
 	private ProfileRepository profileRepo;
+	
+	@Autowired
+	private BandSocialMediaRepository bandSocialMediaRepo;
 
 	@Override
 	public List<Band> getAllBands() {
@@ -83,15 +89,43 @@ public class BandServiceImpl implements BandService {
 		
 		bandMember = bandMemberRepo.saveAndFlush(bandMember);
 		
+		List<BandMember> bandMembers = new ArrayList<BandMember>();
+		bandMembers.add(bandMember);
+		
 		// Build Band Social Media
 		BandSocialMedia bandSocialMedia = new BandSocialMedia();
 		
 		bandSocialMedia.setActive(true);
 		bandSocialMedia.setBand(dto.getBandSocialMedia_band());
 		bandSocialMedia.setSocialMedia(dto.getBandSocialMedia_socialMedia());
+		bandSocialMedia.setUrl(dto.getBandSocialMedia_url());
 		
+		bandSocialMedia = bandSocialMediaRepo.saveAndFlush(bandSocialMedia);
 		
-		return null;
+		List<BandSocialMedia> bandSocialMedias = new ArrayList<BandSocialMedia>();
+		bandSocialMedias.add(bandSocialMedia);
+		
+		// Build Band
+		Band band = new Band();
+		
+		band.setAboutUs(dto.getBand_aboutUs());
+		band.setActive(true);
+		band.setAddress(address);
+		band.setBandMembers(bandMembers);
+		band.setBandSocialMedias(bandSocialMedias);
+		band.setEmail(dto.getBand_bandEmail());
+		
+		List<Event> events = new ArrayList<Event>();
+		band.setEvents(events);
+		
+		band.setGenre(dto.getBand_genre());
+		band.setImage(dto.getBand_image());
+		band.setLeader(bandMember.getProfile());
+		band.setName(dto.getBand_name());
+		band.setTimeCommitment(dto.getBand_timeCommitment());
+		
+		//Finally save and flush the profile so it updates.
+		return bandRepo.saveAndFlush(band);
 	}
 
 	@Override
