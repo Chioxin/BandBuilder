@@ -3,6 +3,7 @@ package com.skilldistillery.bandbuilder.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.skilldistillery.bandbuilder.datatransferobjects.BandMemberDTO;
 import com.skilldistillery.bandbuilder.entities.Band;
@@ -13,6 +14,7 @@ import com.skilldistillery.bandbuilder.repositories.BandMemberRepository;
 import com.skilldistillery.bandbuilder.repositories.BandRepository;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
 
+@Service
 public class BandMemberServiceImpl implements BandMemberService {
 	
 	@Autowired

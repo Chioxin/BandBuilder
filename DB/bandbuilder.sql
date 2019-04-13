@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `password` VARCHAR(1000) NOT NULL,
   `active` TINYINT NOT NULL,
   `role` VARCHAR(500) NOT NULL,
+  `enabled` TINYINT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
@@ -318,11 +319,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bandbuilderdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`) VALUES (1, 'rocker', 'rocker1', 1, 'user');
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`) VALUES (2, 'pianoPro', 'pianoPro1', 1, 'user');
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`) VALUES (3, 'guitarest', 'guitarest1', 1, 'user');
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`) VALUES (4, 'drummer', 'drumer1', 1, 'user');
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`) VALUES (5, 'bassest', 'bassest1', 1, 'user');
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (1, 'rocker', 'rocker1', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (2, 'pianoPro', 'pianoPro1', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (3, 'guitarest', 'guitarest1', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (4, 'drummer', 'drumer1', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (5, 'bassest', 'bassest1', 1, 'user', 1);
 
 COMMIT;
 

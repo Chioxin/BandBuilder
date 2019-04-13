@@ -20,6 +20,8 @@ public class User {
 
 	private String role;
 
+	private boolean enabled;
+
 	public User() {
 		super();
 	}
@@ -62,6 +64,14 @@ public class User {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	@Override
