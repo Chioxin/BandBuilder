@@ -26,7 +26,7 @@ public class UserController {
 	@Autowired
 	private UserRepository userRepository;
 	
-	@RequestMapping(path="todos", method=RequestMethod.GET)
+	@RequestMapping(path="users", method=RequestMethod.GET)
 	public User index(HttpServletRequest req, HttpServletResponse res, Principal principal) {
 	  return userService.getUserByUsername(principal.getName());
 	}
