@@ -1,7 +1,6 @@
 package com.skilldistillery.bandbuilder.datatransferobjects;
 
 import java.util.Date;
-import java.util.List;
 
 import com.skilldistillery.bandbuilder.entities.Band;
 import com.skilldistillery.bandbuilder.entities.Image;
