@@ -17,7 +17,7 @@ import com.skilldistillery.bandbuilder.services.UserService;
 
 @RestController
 @RequestMapping("api")
-//@CrossOrigin({ "*", "http://localhost:4220" })
+@CrossOrigin({ "*", "http://localhost:4220" })
 public class UserController {
 	
 	@Autowired
