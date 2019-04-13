@@ -319,11 +319,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bandbuilderdb`;
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (1, 'rocker', 'rocker1', 1, 'user', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (2, 'pianoPro', 'pianoPro1', 1, 'user', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (3, 'guitarest', 'guitarest1', 1, 'user', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (4, 'drummer', 'drumer1', 1, 'user', 1);
-INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (5, 'bassest', 'bassest1', 1, 'user', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (1, 'rocker', '$2a$10$PJkxc5kRSRB2W8zlhSyNcO86w0XoF1OT58TcSlrgLhh9wpnPJgUU.', 1, 'admin', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (2, 'pianoPro', '$2a$10$9qpOuJo1VUXcq8NYzFdFb.3RmKFoR4nqc4Ny86K.4fc1glUs3DQI.', 1, 'standard', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (3, 'guitarest', '$2a$10$ipXmHlbSdKTDlf7InxZJ3Ocb0KDPlUMELIbJyIFd9qUhvs3jtai7a', 1, 'standard', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (4, 'drummer', '$2a$10$KhdhhY2aRukWLCrfZ1Mvqu4kep9CrCG5PKOLbJKjTaOx/Fp5K/fxW', 1, 'standard', 1);
+INSERT INTO `user` (`id`, `username`, `password`, `active`, `role`, `enabled`) VALUES (5, 'bassest', '$2a$10$onpwcO4wa1Le5bitil8I8./fHQiIfNmnoAwLDwXcptgNWKDeIexG2', 1, 'standard', 1);
 
 COMMIT;
 

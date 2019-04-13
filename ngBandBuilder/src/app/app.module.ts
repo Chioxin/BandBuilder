@@ -9,13 +9,15 @@ import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BandBuilderComponent,
     HomeComponent,
-    NavBarComponent
+    NavBarComponent,
+    JesseTestPageComponent
   ],
   imports: [
     BrowserModule,

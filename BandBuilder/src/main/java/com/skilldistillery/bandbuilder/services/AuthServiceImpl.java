@@ -1,7 +1,5 @@
 package com.skilldistillery.bandbuilder.services;
 
-import javax.persistence.NoResultException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -29,6 +27,7 @@ public class AuthServiceImpl implements AuthService {
 		String password = encoder.encode(user.getPassword());
 		user.setPassword(password);
 		user.setEnabled(true);
+		user.setActive(true);
 		user.setRole("standard");
 		
 		userRepository.saveAndFlush(user);
