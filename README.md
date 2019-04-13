@@ -10,6 +10,15 @@
 | `Profile`        |`PUT api/profiles/{id}`    | Update an existing profile by id   |
 | `Void`           |`DELETE api/profiles/{id}` | Delete an existing profile by id   |
 
+## REST Routes for Addresses:
+
+| Return Type      | Route                 | Functionality                      |
+|------------------|-----------------------|------------------------------------|
+| `Address`  |`GET api/addresses/{id}`     | Get address by id                  |
+| `Address`  |`POST api/addresses/`        | Create a new address               |
+| `Address`  |`PUT api/addresses/{id}`     | Update an existing address by id   |
+| `Address`  |`DELETE api/addresses/{id}`  | Delete an existing address by id   |
+
 ## REST Routes for Instruments:
 
 | Return Type         | Route                        | Functionality                        |
