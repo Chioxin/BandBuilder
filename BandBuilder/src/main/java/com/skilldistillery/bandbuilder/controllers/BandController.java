@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.bandbuilder.datatransferobjects.BandDTO;
 import com.skilldistillery.bandbuilder.entities.Band;
 import com.skilldistillery.bandbuilder.services.BandService;
 
@@ -55,27 +56,28 @@ public class BandController {
 			return bandList;
 	}
 	
-//	@PostMapping("bands")
-//	public Band create(@RequestBody Band band, 
-//			HttpServletResponse response) {
-//		Band newBand = bandSvc.createBand(band);
-//		if(band != null) {
-//			response.setStatus(201);
-//		} else {
-//			response.setStatus(400);
-//		}
-//		return newBand;
-//	}
-	
-	@PutMapping(path = "bandmembers/{id}")
-	public Band update(@RequestBody Band updatedBand, 
+	@PostMapping("bands")
+	public Band createBand(@RequestBody BandDTO dto, 
 			@PathVariable("id") Integer id,
-			HttpServletResponse resp) {
-		updatedBand = bandSvc.updateBandById(id, updatedBand);
-		if (updatedBand != null) {
-			resp.setStatus(201);
+			HttpServletResponse response) {
+		Band newBand = bandSvc.createBand(dto);
+		if(newBand != null) {
+			response.setStatus(201);
 		} else {
-			resp.setStatus(400);
+			response.setStatus(400);
+		}
+		return newBand;
+	}
+	
+	@PutMapping(path = "bands/{id}")
+	public Band updateBand(@RequestBody Band band, 
+			@PathVariable("id") Integer id,
+			HttpServletResponse response) {
+		Band updatedBand = bandSvc.updateBandById(id, band);
+		if (updatedBand != null) {
+			response.setStatus(201);
+		} else {
+			response.setStatus(400);
 		}
 		return updatedBand;
 	}
