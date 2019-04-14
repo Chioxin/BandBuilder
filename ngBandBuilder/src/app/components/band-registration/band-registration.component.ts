@@ -27,7 +27,7 @@ export class BandRegistrationComponent implements OnInit {
 
   createBand() {
     console.log(this.bandRegistrationForm);
-    this.bandSvc.createBand(this.bandRegistrationForm).subscribe(
+    this.bandSvc.create(this.bandRegistrationForm).subscribe(
       dataBand => {
         console.log('WE GOT HERE YAY');
         // ROUTE USER TO PROFILE PAGE HERE
