@@ -1,4 +1,33 @@
 <form>
-  <label for="username">username: </label>
-  <input type="text" name="username">
+  <label for="userUsername">username: </label>
+  <input type="text" name="userUsername" [(ngModel)]="regInfo.userUsername">
+  <label for="userPassword">password: </label>
+  <input type="text" name="userPassword" [(ngModel)]="regInfo.userPassword">
+
+  <label for="profileFirstName">firstname: </label>
+  <input type="text" name="profileFirstName" [(ngModel)]="regInfo.profileFirstName">
+  <label for="profileLastName">lastname: </label>
+  <input type="text" name="profileLastName" [(ngModel)]="regInfo.profileLastName">
+  <label for="profileEmail">email: </label>
+  <input type="text" name="profileEmail" [(ngModel)]="regInfo.profileEmail">
+  <label for="profileAboutMe">aboutme: </label>
+  <input type="text" name="profileAboutMe" [(ngModel)]="regInfo.profileAboutMe">
+
+  <label for="addressStreet">street: </label>
+  <input type="text" name="addressStreet" [(ngModel)]="regInfo.addressStreet">
+  <label for="addressStreet2">street2: </label>
+  <input type="text" name="addressStreet2" [(ngModel)]="regInfo.addressStreet2">
+  <label for="addressCity">city: </label>
+  <input type="text" name="addressCity" [(ngModel)]="regInfo.addressCity">
+  <label for="addressState">state: </label>
+  <input type="text" name="addressState" [(ngModel)]="regInfo.addressState">
+  <label for="addressZip">zip: </label>
+  <input type="text" name="addressZip" [(ngModel)]="regInfo.addressZip">
+  <label for="addressPhone">phone: </label>
+  <input type="text" name="addressPhone" [(ngModel)]="regInfo.addressPhone">
+
+  <label for="imageURL">imageUrl: </label>
+  <input type="text" name="imageURL" [(ngModel)]="regInfo.imageURL">
+
+  <button class="btn btn-success" (click)="registerUser()">Register</button>
 </form>
