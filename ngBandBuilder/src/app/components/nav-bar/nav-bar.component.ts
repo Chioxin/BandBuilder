@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-nav-bar',
@@ -9,7 +10,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-
+loginForm: FormGroup;
+loading =false;
 
   // Fields
   newUser: User = new User();
@@ -42,10 +44,15 @@ export class NavBarComponent implements OnInit {
   }
 
   login() {
+
+
+  }
+  checkAuth() {
     if (this.auth.checkLogin()) {
-
+      return true;
+    } else {
+      return false;
     }
-
   }
 
 }

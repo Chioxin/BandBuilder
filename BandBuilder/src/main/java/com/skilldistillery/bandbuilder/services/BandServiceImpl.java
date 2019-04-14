@@ -84,12 +84,12 @@ public class BandServiceImpl implements BandService {
 	
 	// Set Address fields
 	address.setActive(true);
-	address.setCity(dto.getAddress_city());
-	address.setPhone(dto.getAddress_phone());
-	address.setState(dto.getAddress_state());
-	address.setStreet(dto.getAddress_street());
-	address.setStreet2(dto.getAddress_street2());
-	address.setZip(dto.getAddress_zip());
+	address.setCity(dto.getAddressCity());
+	address.setPhone(dto.getAddressPhone());
+	address.setState(dto.getAddressState());
+	address.setStreet(dto.getAddressStreet());
+	address.setStreet2(dto.getAddressStreet2());
+	address.setZip(dto.getAddressZip());
 	
 	// Save and flush address
 	address = addressRepo.saveAndFlush(address);
@@ -123,12 +123,12 @@ public class BandServiceImpl implements BandService {
 	Band band = new Band();
 	
 	// Set Fields
-	band.setAboutUs(dto.getBand_aboutUs());
+	band.setAboutUs(dto.getBandAboutUs());
 	band.setActive(true);
-	band.setEmail(dto.getBand_bandEmail());
-	band.setGenre(dto.getBand_genre());
-	band.setName(dto.getBand_name());
-	band.setTimeCommitment(dto.getBand_timeCommitment());
+	band.setEmail(dto.getBandBandEmail());
+	band.setGenre(dto.getBandGenre());
+	band.setName(dto.getBandName());
+	band.setTimeCommitment(dto.getBandTimeCommitment());
 
 	// Set Objects
 	band.setAddress(address);

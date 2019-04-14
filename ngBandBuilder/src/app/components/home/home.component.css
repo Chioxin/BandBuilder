@@ -1,9 +1,9 @@
 .img-fluid {
-
+  max-width: 100%;
+  height: auto;
 }
 
 #home-div {
   color: blue;
-  max-width: 100%;
-  height: auto;
+
 }
