@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { FooterComponent } from './components/footer/footer.component';
     JesseTestPageComponent,
     RegistrationComponent,
     BandRegistrationComponent,
-    FooterComponent
+    FooterComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

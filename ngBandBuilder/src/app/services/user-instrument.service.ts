@@ -58,6 +58,6 @@ export class UserInstrumentService {
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
-    return this.http.put<UserInstrument>(this.url + id, httpOptions);
+    return this.http.delete<UserInstrument>(this.url + id, httpOptions);
   }
 }
