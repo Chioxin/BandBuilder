@@ -12,11 +12,11 @@ import com.skilldistillery.bandbuilder.entities.Address;
 import com.skilldistillery.bandbuilder.entities.Band;
 import com.skilldistillery.bandbuilder.entities.BandMember;
 import com.skilldistillery.bandbuilder.entities.BandSocialMedia;
-import com.skilldistillery.bandbuilder.entities.Event;
+import com.skilldistillery.bandbuilder.entities.Image;
 import com.skilldistillery.bandbuilder.entities.Profile;
-import com.skilldistillery.bandbuilder.repositories.BandMemberRepository;
+import com.skilldistillery.bandbuilder.repositories.AddressRepository;
 import com.skilldistillery.bandbuilder.repositories.BandRepository;
-import com.skilldistillery.bandbuilder.repositories.BandSocialMediaRepository;
+import com.skilldistillery.bandbuilder.repositories.ImageRepository;
 import com.skilldistillery.bandbuilder.repositories.ProfileRepository;
 
 @Service
@@ -25,14 +25,23 @@ public class BandServiceImpl implements BandService {
 	@Autowired
 	private BandRepository bandRepo;
 	
-	@Autowired
-	private BandMemberRepository bandMemberRepo;
+//	@Autowired
+//	private BandMemberRepository bandMemberRepo;
 
 	@Autowired
 	private ProfileRepository profileRepo;
 	
+//	@Autowired
+//	private BandSocialMediaRepository bandSocialMediaRepo;
+	
 	@Autowired
-	private BandSocialMediaRepository bandSocialMediaRepo;
+	private ImageRepository imageRepo;
+	
+	@Autowired
+	private AddressRepository addressRepo;
+	
+//	@Autowired
+//	private InstrumentRepository instrumentRepo;
 
 	@Override
 	public List<Band> getAllBands() {
@@ -61,72 +70,77 @@ public class BandServiceImpl implements BandService {
 	}
 
 	@Override
-	public Band createBand(BandDTO dto) {
+	public Band createBand(BandDTO dto, int id) {
 		
-		// Build Address
-		Address address = new Address();
-		
-		address.setActive(true);
-		address.setCity(dto.getAddress_city());
-		address.setPhone(dto.getAddress_phone());
-		address.setState(dto.getAddress_state());
-		address.setStreet(dto.getAddress_street());
-		address.setStreet2(dto.getAddress_street2());
-		address.setZip(dto.getAddress_zip());
-		
-//		address = addressRepo.saveAndFlush(address); ******** uncomment when address service is made
-		
-		// Build Band Members
-		BandMember bandMember = new BandMember();
-		
-		bandMember.setActive(true);
-		bandMember.setBand(dto.getBandMember_band());
-		bandMember.setDescription(dto.getBandMember_description());
-		bandMember.setExperience(dto.getBandMember_experience());
-		bandMember.setInstrument(dto.getBandMember_instrument());
-		bandMember.setJoinedAt(dto.getBandMember_joinedAt());
-		bandMember.setProfile(dto.getBandMember_profile());
-		
-		bandMember = bandMemberRepo.saveAndFlush(bandMember);
-		
-		List<BandMember> bandMembers = new ArrayList<BandMember>();
-		bandMembers.add(bandMember);
-		
-		// Build Band Social Media
-		BandSocialMedia bandSocialMedia = new BandSocialMedia();
-		
-		bandSocialMedia.setActive(true);
-		bandSocialMedia.setBand(dto.getBandSocialMedia_band());
-		bandSocialMedia.setSocialMedia(dto.getBandSocialMedia_socialMedia());
-		bandSocialMedia.setUrl(dto.getBandSocialMedia_url());
-		
-		bandSocialMedia = bandSocialMediaRepo.saveAndFlush(bandSocialMedia);
-		
-		List<BandSocialMedia> bandSocialMedias = new ArrayList<BandSocialMedia>();
-		bandSocialMedias.add(bandSocialMedia);
-		
-		// Build Band
-		Band band = new Band();
-		
-		band.setAboutUs(dto.getBand_aboutUs());
-		band.setActive(true);
-		band.setAddress(address);
-		band.setBandMembers(bandMembers);
-		band.setBandSocialMedias(bandSocialMedias);
-		band.setEmail(dto.getBand_bandEmail());
-		
-		List<Event> events = new ArrayList<Event>();
-		band.setEvents(events);
-		
-		band.setGenre(dto.getBand_genre());
-		band.setImage(dto.getBand_image());
-		band.setLeader(bandMember.getProfile());
-		band.setName(dto.getBand_name());
-		band.setTimeCommitment(dto.getBand_timeCommitment());
-		
-		//Finally save and flush the profile so it updates.
-		return bandRepo.saveAndFlush(band);
+	// Build Leader
+	Optional<Profile> profile = profileRepo.findById(id);
+	Profile leader = new Profile();
+	if (profile.isPresent()) {
+		leader = profile.get();
 	}
+	
+	// Build Address
+	Address address = new Address();
+	
+	// Set Address fields
+	address.setActive(true);
+	address.setCity(dto.getAddressCity());
+	address.setPhone(dto.getAddressPhone());
+	address.setState(dto.getAddressState());
+	address.setStreet(dto.getAddressStreet());
+	address.setStreet2(dto.getAddressStreet2());
+	address.setZip(dto.getAddressZip());
+	
+	// Save and flush address
+	address = addressRepo.saveAndFlush(address);
+	
+	// Build Band Member
+	BandMember bandMember = new BandMember();
+	
+	// Build list of Band Members
+	List<BandMember> bandMembers = new ArrayList<BandMember>();
+	bandMembers.add(bandMember);
+	
+	// Build Band Social Media
+	BandSocialMedia bandSocialMedia = new BandSocialMedia();
+	
+	// Build List of Social Media
+	List<BandSocialMedia> bandSocialMedias = new ArrayList<BandSocialMedia>();
+	bandSocialMedias.add(bandSocialMedia);
+	
+	// Set Default Image
+	Optional<Image> image = imageRepo.findById(1);
+	Image defaultImage = new Image();
+	
+	if (image.isPresent()) {
+		defaultImage = image.get();
+	}
+	
+	// Save and flush image
+	imageRepo.saveAndFlush(defaultImage);
+	
+	// Build Band
+	Band band = new Band();
+	
+	// Set Fields
+	band.setAboutUs(dto.getBandAboutUs());
+	band.setActive(true);
+	band.setEmail(dto.getBandBandEmail());
+	band.setGenre(dto.getBandGenre());
+	band.setName(dto.getBandName());
+	band.setTimeCommitment(dto.getBandTimeCommitment());
+
+	// Set Objects
+	band.setAddress(address);
+	band.setBandMembers(bandMembers);
+	band.setBandSocialMedias(bandSocialMedias);
+	band.setImage(defaultImage);
+	band.setLeader(leader);
+	
+	
+	//Finally save and flush the profile so it updates.
+	return bandRepo.saveAndFlush(band);
+}
 
 	@Override
 	public Band updateBandById(int id, Band band) {
@@ -140,9 +154,6 @@ public class BandServiceImpl implements BandService {
 			managed.setLeader(band.getLeader());
 			managed.setName(band.getName());
 			managed.setTimeCommitment(band.getTimeCommitment());
-			managed.setUpdatedAt(band.getUpdatedAt());
-			managed.setCreatedAt(band.getCreatedAt());
-			managed.setId(band.getId());
 			managed.setImage(band.getImage());
 			bandRepo.saveAndFlush(managed);
 		}

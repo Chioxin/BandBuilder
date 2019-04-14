@@ -1,0 +1,21 @@
+<div id='registerBandForm'>
+  <form>
+    <!-- band leader -->
+    <input type="text" name="bandLeader" [(ngModel)]="bandRegistrationForm.bandLeader"/>
+    <!-- band address -->
+    <input type="text" name="addressStreet" [(ngModel)]="bandRegistrationForm.addressStreet"/>
+    <input type="text" name="addressStreet2" [(ngModel)]="bandRegistrationForm.addressStreet2"/>
+    <input type="text" name="addressCity" [(ngModel)]="bandRegistrationForm.addressCity"/>
+    <input type="text" name="addressState" [(ngModel)]="bandRegistrationForm.addressState"/>
+    <input type="text" name="addressZip" [(ngModel)]="bandRegistrationForm.addressZip"/>
+    <input type="text" name="addressPhone" [(ngModel)]="bandRegistrationForm.addressPhone"/>
+    <!-- band fields -->
+    <input type="text" name="bandAboutUs" [(ngModel)]="bandRegistrationForm.bandAboutUs"/>
+    <input type="text" name="bandEmail" [(ngModel)]="bandRegistrationForm.bandEmail"/>
+    <input type="text" name="bandGenre" [(ngModel)]="bandRegistrationForm.bandGenre"/>
+    <input type="text" name="bandName" [(ngModel)]="bandRegistrationForm.bandName"/>
+    <input type="text" name="bandTimeCommitment" [(ngModel)]="bandRegistrationForm.bandTimeCommitment"/>
+    <!-- <input type="submit" (click) = "onSubmit();"> -->
+    <h5>{{bandRegistrationForm | json}}</h5>
+  </form>
+</div>
