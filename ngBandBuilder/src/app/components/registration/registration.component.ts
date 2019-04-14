@@ -1,3 +1,4 @@
+import { RegistrationForm } from './../../models/registration-form';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
+  // FIELDS
+
+  regInfo: RegistrationForm = new RegistrationForm();
+
+  // CONSTRUCTOR
+
   constructor() { }
+
+  // INIT
 
   ngOnInit() {
   }
+
+  // METHODS
 
 }
