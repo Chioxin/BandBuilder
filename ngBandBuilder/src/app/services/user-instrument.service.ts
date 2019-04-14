@@ -1,3 +1,5 @@
+import { AuthService } from './auth.service';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +7,8 @@ import { Injectable } from '@angular/core';
 })
 export class UserInstrumentService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient,
+    private auth: AuthService
+  ) { }
 }
