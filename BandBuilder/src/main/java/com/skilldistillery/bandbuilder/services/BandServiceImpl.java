@@ -70,10 +70,10 @@ public class BandServiceImpl implements BandService {
 	}
 
 	@Override
-	public Band createBand(BandDTO dto, int id) {
+	public Band createBand(BandDTO dto) {
 		
 	// Build Leader
-	Optional<Profile> profile = profileRepo.findById(id);
+	Optional<Profile> profile = profileRepo.findById(dto.getBandLeader());
 	Profile leader = new Profile();
 	if (profile.isPresent()) {
 		leader = profile.get();
@@ -125,7 +125,7 @@ public class BandServiceImpl implements BandService {
 	// Set Fields
 	band.setAboutUs(dto.getBandAboutUs());
 	band.setActive(true);
-	band.setEmail(dto.getBandBandEmail());
+	band.setEmail(dto.getBandEmail());
 	band.setGenre(dto.getBandGenre());
 	band.setName(dto.getBandName());
 //	band.setTimeCommitment(dto.getBandTimeCommitment());

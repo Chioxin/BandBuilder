@@ -10,7 +10,7 @@ public interface BandService {
 	public List<Band> getAllBands();
 	public Band getBandById(int id);
 	public List<Band> getAllBandsByProfileId(int id);
-	public Band createBand(BandDTO dto, int id);
+	public Band createBand(BandDTO dto);
 	public Band updateBandById(int id, Band band);
 	public Boolean deleteBandById(int id);
 

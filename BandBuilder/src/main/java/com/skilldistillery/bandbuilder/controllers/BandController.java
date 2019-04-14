@@ -57,11 +57,10 @@ public class BandController {
 			return bandList;
 	}
 	
-	@PostMapping("profiles/{id}/bands")
-	public Band createBand(@PathVariable("id") int id,
-			@RequestBody BandDTO dto, 
+	@PostMapping("bands")
+	public Band createBand(@RequestBody BandDTO dto, 
 			HttpServletResponse response) {
-		Band newBand = bandSvc.createBand(dto, id);
+		Band newBand = bandSvc.createBand(dto);
 		if(newBand != null) {
 			response.setStatus(201);
 		} else {
