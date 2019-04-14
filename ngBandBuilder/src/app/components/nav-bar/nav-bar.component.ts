@@ -10,8 +10,8 @@ import { FormGroup } from '@angular/forms';
   styleUrls: ['./nav-bar.component.css']
 })
 export class NavBarComponent implements OnInit {
-loginForm: FormGroup;
-loading =false;
+  loginForm: FormGroup;
+  loading = false;
 
   // Fields
   newUser: User = new User();
@@ -44,7 +44,7 @@ loading =false;
   }
 
   login() {
-
+    localStorage.getItem('credentials');
   }
   checkAuth() {
     if (this.auth.checkLogin()) {
