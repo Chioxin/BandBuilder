@@ -15,7 +15,7 @@ public class BandDTO {
 	private String bandName;
 	private String bandAboutUs;
 	private String bandGenre;
-	private String bandBandEmail;
+	private String bandEmail;
 //	private String bandTimeCommitment;
 	private Image bandImage;
 	
@@ -82,14 +82,6 @@ public class BandDTO {
 
 	public void setBandGenre(String bandGenre) {
 		this.bandGenre = bandGenre;
-	}
-
-	public String getBandBandEmail() {
-		return bandBandEmail;
-	}
-
-	public void setBandBandEmail(String bandBandEmail) {
-		this.bandBandEmail = bandBandEmail;
 	}
 
 //	public String getBandTimeCommitment() {
@@ -282,6 +274,14 @@ public class BandDTO {
 
 	public void setBandTwoLabel(String bandTwoLabel) {
 		this.bandTwoLabel = bandTwoLabel;
+	}
+
+	public String getBandEmail() {
+		return bandEmail;
+	}
+
+	public void setBandEmail(String bandEmail) {
+		this.bandEmail = bandEmail;
 	}
 	
 }
