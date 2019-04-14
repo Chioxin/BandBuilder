@@ -10,6 +10,7 @@ import { NavBarComponent } from './components/nav-bar/nav-bar.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-page.component';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-
     BandBuilderComponent,
     HomeComponent,
     NavBarComponent,
-    JesseTestPageComponent
+    JesseTestPageComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
