@@ -3,6 +3,7 @@ import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
+import { logging } from 'protractor';
 
 @Component({
   selector: 'app-nav-bar',
@@ -15,6 +16,7 @@ export class NavBarComponent implements OnInit {
 
   // Fields
   newUser: User = new User();
+  isLoggedIn = false;
 
   selected = '';
 
@@ -22,6 +24,7 @@ export class NavBarComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.isLoggedIn = this.auth.checkLogin();
   }
 
   register() {
@@ -44,14 +47,20 @@ export class NavBarComponent implements OnInit {
   }
 
   login() {
-    localStorage.getItem('credentials');
+    this.auth.login(this.newUser.username, this.newUser.password).subscribe(
+      dataLogin => {
+        this.selected = 'Logged in!!!';
+        this.isLoggedIn = true;
+        this.newUser = new User();
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
-  checkAuth() {
-    if (this.auth.checkLogin()) {
-      return true;
-    } else {
-      return false;
-    }
+  logout() {
+     this.auth.logout();
+     this.isLoggedIn = false;
   }
 
 }

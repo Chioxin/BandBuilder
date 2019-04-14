@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     NavBarComponent,
     JesseTestPageComponent,
     RegistrationComponent,
-    BandRegistrationComponent
+    BandRegistrationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
