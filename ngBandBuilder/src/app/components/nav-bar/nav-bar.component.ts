@@ -13,10 +13,11 @@ export class NavBarComponent implements OnInit {
 
   // Fields
   newUser: User = new User();
+
   selected = '';
 
   constructor(private auth: AuthService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -26,7 +27,7 @@ export class NavBarComponent implements OnInit {
       data => {
         this.auth.login(this.newUser.username, this.newUser.password).subscribe(
           dataLogin => {
-              this.selected = 'Yay! it has registered a login with usernaem and password';
+            this.selected = 'Yay! it has registered a login with usernaem and password';
           },
           err => {
             console.error(err);
@@ -39,4 +40,12 @@ export class NavBarComponent implements OnInit {
     );
     // this.newUser = new User();
   }
+
+  login() {
+    if (this.auth.checkLogin()) {
+
+    }
+
+  }
+
 }
