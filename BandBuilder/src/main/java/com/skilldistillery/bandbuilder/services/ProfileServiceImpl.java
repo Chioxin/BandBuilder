@@ -51,44 +51,51 @@ public class ProfileServiceImpl implements ProfileService {
 	@Override
 	public Profile createProfile(ProfileDTO regInfo) {
 
-		//Build Address
-		Address address = new Address();
-		address.setStreet(regInfo.getAddressStreet());
-		address.setStreet2(regInfo.getAddressStreet2());
-		address.setCity(regInfo.getAddressCity());
-		address.setState(regInfo.getAddressState());
-		address.setZip(regInfo.getAddressZip());
-		address.setPhone(regInfo.getAddressPhone());
-		address.setActive(true);
-		address = addressRepo.saveAndFlush(address);
+		Profile profile = null;
 		
-		//Build User  --- Do we need this? Or does AUTH build this?
-		User user = new User();
-		user.setUsername(regInfo.getUserUsername());
-		user.setPassword(regInfo.getUserPassword());
-		user.setRole(regInfo.getUserRole());
-		user.setActive(true);
-		user = userRepo.saveAndFlush(user);
+		Optional<User> opt = userRepo.findById(regInfo.getUserId());
+		if (opt.isPresent()) {
+			User user = opt.get();
+			profile = new Profile();
+			
+			//Build Address
+			Address address = new Address();
+			address.setStreet(regInfo.getAddressStreet());
+			address.setStreet2(regInfo.getAddressStreet2());
+			address.setCity(regInfo.getAddressCity());
+			address.setState(regInfo.getAddressState());
+			address.setZip(regInfo.getAddressZip());
+			address.setPhone(regInfo.getAddressPhone());
+			address.setActive(true);
+			address = addressRepo.saveAndFlush(address);
+			
+//	        Build User  --- Do we need this? Or does AUTH build this?
+//			User user = new User();
+//			user.setUsername(regInfo.getUserUsername());
+//			user.setPassword(regInfo.getUserPassword());
+//			user.setRole(regInfo.getUserRole());
+//			user.setActive(true);
+//			user = userRepo.saveAndFlush(user);
+			
+//			Build Image
+			Image image = new Image();
+			image.setUrl(regInfo.getImageURL());
+			image.setDescription(regInfo.getImageDescription());
+			image.setAlt(regInfo.getImageAlt());
+			image = imageRepo.saveAndFlush(image);
+			
+			//Build Profile
+			profile.setFirstName(regInfo.getProfileFirstName());
+			profile.setLastName(regInfo.getProfileLastName());
+			profile.setEmail(regInfo.getProfileEmail());
+			profile.setAboutMe(regInfo.getProfileAboutMe());
+			profile.setAddress(address);
+			profile.setUser(user);
+			profile.setImage(image);
+			profileRepo.saveAndFlush(profile);
+		}
 		
-		//Build Image
-		Image image = new Image();
-		image.setUrl(regInfo.getImageURL());
-		image.setDescription(regInfo.getImageDescription());
-		image.setAlt(regInfo.getImageAlt());
-		image = imageRepo.saveAndFlush(image);
-		
-		//Build Profile
-		Profile profile = new Profile();
-		profile.setFirstName(regInfo.getProfileFirstName());
-		profile.setLastName(regInfo.getProfileLastName());
-		profile.setEmail(regInfo.getProfileEmail());
-		profile.setAboutMe(regInfo.getProfileAboutMe());
-		profile.setAddress(address);
-		profile.setUser(user);
-		profile.setImage(image);
-		
-		//Finally save and flush the profile so it updates.
-		return profileRepo.saveAndFlush(profile);
+		return profile;
 	}
 
 	@Override

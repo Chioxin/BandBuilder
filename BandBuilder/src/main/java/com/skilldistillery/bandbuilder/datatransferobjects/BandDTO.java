@@ -11,188 +11,277 @@ import com.skilldistillery.bandbuilder.entities.SocialMedia;
 public class BandDTO {
 
 	// Band
-	private int band_id;
-	private String band_name;
-	private String band_aboutUs;
-	private String band_genre;
-	private String band_bandEmail;
-	private String band_timeCommitment;
-	private Image band_image;
+	private int bandId;
+	private String bandName;
+	private String bandAboutUs;
+	private String bandGenre;
+	private String bandBandEmail;
+//	private String bandTimeCommitment;
+	private Image bandImage;
+	
+	// Time
+	private String bandOneLabel;
+	private int bandOneField;
+	private String bandTwoLabel;
 	
 	// Address
-	private int address_id;
-	private String address_street;
-	private String address_street2;
-	private String address_city;
-	private String address_state;
-	private String address_zip;
-	private String address_phone;
+	private int addressId;
+	private String addressStreet;
+	private String addressStreet2;
+	private String addressCity;
+	private String addressState;
+	private String addressZip;
+	private String addressPhone;
 	
 	// Band Members
-	private int bandMember_id;
-	private Band bandMember_band;
-	private Instrument bandMember_instrument;
-	private Profile bandMember_profile;
-	private String bandMember_description;
-	private String bandMember_experience;
-	public void setBandSocialMedia_socialMedia(SocialMedia bandSocialMedia_socialMedia) {
-		this.bandSocialMedia_socialMedia = bandSocialMedia_socialMedia;
-	}
-	private Date bandMember_joinedAt;
+	private int bandMemberId;
+	private Band bandMemberBand;
+	private Instrument bandMemberInstrument;
+	private Profile bandMemberProfile;
+	private String bandMemberDescription;
+	private String bandMemberExperience;
+	private Date bandMemberJoinedAt;
 	
 	// Band Social Media
-	private int bandSocialMedia_id;
-	private SocialMedia bandSocialMedia_socialMedia;
-	private Band bandSocialMedia_band;
-	private String bandSocialMedia_url;
+	private int bandSocialMediaId;
+	private SocialMedia bandSocialMediaSocialMedia;
+	private Band bandSocialMediaBand;
+	private String bandSocialMediaUrl;
+	
+	// Profile
+	private int bandLeader;
+	
+	// Getter and Setters
+	public int getBandId() {
+		return bandId;
+	}
 
-	// Getters and Setters
-	public int getBand_id() {
-		return band_id;
+	public void setBandId(int bandId) {
+		this.bandId = bandId;
 	}
-	public void setBand_id(int band_id) {
-		this.band_id = band_id;
+
+	public String getBandName() {
+		return bandName;
 	}
-	public String getBand_name() {
-		return band_name;
+
+	public void setBandName(String bandName) {
+		this.bandName = bandName;
 	}
-	public void setBand_name(String band_name) {
-		this.band_name = band_name;
+
+	public String getBandAboutUs() {
+		return bandAboutUs;
 	}
-	public String getBand_aboutUs() {
-		return band_aboutUs;
+
+	public void setBandAboutUs(String bandAboutUs) {
+		this.bandAboutUs = bandAboutUs;
 	}
-	public void setBand_aboutUs(String band_aboutUs) {
-		this.band_aboutUs = band_aboutUs;
+
+	public String getBandGenre() {
+		return bandGenre;
 	}
-	public String getBand_genre() {
-		return band_genre;
+
+	public void setBandGenre(String bandGenre) {
+		this.bandGenre = bandGenre;
 	}
-	public void setBand_genre(String band_genre) {
-		this.band_genre = band_genre;
+
+	public String getBandBandEmail() {
+		return bandBandEmail;
 	}
-	public String getBand_bandEmail() {
-		return band_bandEmail;
+
+	public void setBandBandEmail(String bandBandEmail) {
+		this.bandBandEmail = bandBandEmail;
 	}
-	public void setBand_bandEmail(String band_bandEmail) {
-		this.band_bandEmail = band_bandEmail;
+
+//	public String getBandTimeCommitment() {
+//		return bandTimeCommitment;
+//	}
+//
+//	public void setBandTimeCommitment(String bandTimeCommitment) {
+//		this.bandTimeCommitment = bandTimeCommitment;
+//	}
+
+	public Image getBandImage() {
+		return bandImage;
 	}
-	public String getBand_timeCommitment() {
-		return band_timeCommitment;
+
+	public void setBandImage(Image bandImage) {
+		this.bandImage = bandImage;
 	}
-	public void setBand_timeCommitment(String band_timeCommitment) {
-		this.band_timeCommitment = band_timeCommitment;
+
+	public int getAddressId() {
+		return addressId;
 	}
-	public Image getBand_image() {
-		return band_image;
+
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
 	}
-	public void setBand_image(Image band_image) {
-		this.band_image = band_image;
+
+	public String getAddressStreet() {
+		return addressStreet;
 	}
-	public int getAddress_id() {
-		return address_id;
+
+	public void setAddressStreet(String addressStreet) {
+		this.addressStreet = addressStreet;
 	}
-	public void setAddress_id(int address_id) {
-		this.address_id = address_id;
+
+	public String getAddressStreet2() {
+		return addressStreet2;
 	}
-	public String getAddress_street() {
-		return address_street;
+
+	public void setAddressStreet2(String addressStreet2) {
+		this.addressStreet2 = addressStreet2;
 	}
-	public void setAddress_street(String address_street) {
-		this.address_street = address_street;
+
+	public String getAddressCity() {
+		return addressCity;
 	}
-	public String getAddress_street2() {
-		return address_street2;
+
+	public void setAddressCity(String addressCity) {
+		this.addressCity = addressCity;
 	}
-	public void setAddress_street2(String address_street2) {
-		this.address_street2 = address_street2;
+
+	public String getAddressState() {
+		return addressState;
 	}
-	public String getAddress_city() {
-		return address_city;
+
+	public void setAddressState(String addressState) {
+		this.addressState = addressState;
 	}
-	public void setAddress_city(String address_city) {
-		this.address_city = address_city;
+
+	public String getAddressZip() {
+		return addressZip;
 	}
-	public String getAddress_state() {
-		return address_state;
+
+	public void setAddressZip(String addressZip) {
+		this.addressZip = addressZip;
 	}
-	public void setAddress_state(String address_state) {
-		this.address_state = address_state;
+
+	public String getAddressPhone() {
+		return addressPhone;
 	}
-	public String getAddress_zip() {
-		return address_zip;
+
+	public void setAddressPhone(String addressPhone) {
+		this.addressPhone = addressPhone;
 	}
-	public void setAddress_zip(String address_zip) {
-		this.address_zip = address_zip;
+
+	public int getBandMemberId() {
+		return bandMemberId;
 	}
-	public String getAddress_phone() {
-		return address_phone;
+
+	public void setBandMemberId(int bandMemberId) {
+		this.bandMemberId = bandMemberId;
 	}
-	public void setAddress_phone(String address_phone) {
-		this.address_phone = address_phone;
+
+	public Band getBandMemberBand() {
+		return bandMemberBand;
 	}
-	public int getBandMember_id() {
-		return bandMember_id;
+
+	public void setBandMemberBand(Band bandMemberBand) {
+		this.bandMemberBand = bandMemberBand;
 	}
-	public void setBandMember_id(int bandMember_id) {
-		this.bandMember_id = bandMember_id;
+
+	public Instrument getBandMemberInstrument() {
+		return bandMemberInstrument;
 	}
-	public Band getBandMember_band() {
-		return bandMember_band;
+
+	public void setBandMemberInstrument(Instrument bandMemberInstrument) {
+		this.bandMemberInstrument = bandMemberInstrument;
 	}
-	public void setBandMember_band(Band bandMember_band) {
-		this.bandMember_band = bandMember_band;
+
+	public Profile getBandMemberProfile() {
+		return bandMemberProfile;
 	}
-	public Instrument getBandMember_instrument() {
-		return bandMember_instrument;
+
+	public void setBandMemberProfile(Profile bandMemberProfile) {
+		this.bandMemberProfile = bandMemberProfile;
 	}
-	public void setBandMember_instrument(Instrument bandMember_instrument) {
-		this.bandMember_instrument = bandMember_instrument;
+
+	public String getBandMemberDescription() {
+		return bandMemberDescription;
 	}
-	public Profile getBandMember_profile() {
-		return bandMember_profile;
+
+	public void setBandMemberDescription(String bandMemberDescription) {
+		this.bandMemberDescription = bandMemberDescription;
 	}
-	public void setBandMember_profile(Profile bandMember_profile) {
-		this.bandMember_profile = bandMember_profile;
+
+	public String getBandMemberExperience() {
+		return bandMemberExperience;
 	}
-	public String getBandMember_description() {
-		return bandMember_description;
+
+	public void setBandMemberExperience(String bandMemberExperience) {
+		this.bandMemberExperience = bandMemberExperience;
 	}
-	public void setBandMember_description(String bandMember_description) {
-		this.bandMember_description = bandMember_description;
+
+	public Date getBandMemberJoinedAt() {
+		return bandMemberJoinedAt;
 	}
-	public String getBandMember_experience() {
-		return bandMember_experience;
+
+	public void setBandMemberJoinedAt(Date bandMemberJoinedAt) {
+		this.bandMemberJoinedAt = bandMemberJoinedAt;
 	}
-	public void setBandMember_experience(String bandMember_experience) {
-		this.bandMember_experience = bandMember_experience;
+
+	public int getBandSocialMediaId() {
+		return bandSocialMediaId;
 	}
-	public Date getBandMember_joinedAt() {
-		return bandMember_joinedAt;
+
+	public void setBandSocialMediaId(int bandSocialMediaId) {
+		this.bandSocialMediaId = bandSocialMediaId;
 	}
-	public void setBandMember_joinedAt(Date bandMember_joinedAt) {
-		this.bandMember_joinedAt = bandMember_joinedAt;
+
+	public SocialMedia getBandSocialMediaSocialMedia() {
+		return bandSocialMediaSocialMedia;
 	}
-	public int getBandSocialMedia_id() {
-		return bandSocialMedia_id;
+
+	public void setBandSocialMediaSocialMedia(SocialMedia bandSocialMediaSocialMedia) {
+		this.bandSocialMediaSocialMedia = bandSocialMediaSocialMedia;
 	}
-	public void setBandSocialMedia_id(int bandSocialMedia_id) {
-		this.bandSocialMedia_id = bandSocialMedia_id;
+
+	public Band getBandSocialMediaBand() {
+		return bandSocialMediaBand;
 	}
-	public SocialMedia getBandSocialMedia_socialMedia() {
-		return bandSocialMedia_socialMedia;
+
+	public void setBandSocialMediaBand(Band bandSocialMediaBand) {
+		this.bandSocialMediaBand = bandSocialMediaBand;
 	}
-	public Band getBandSocialMedia_band() {
-		return bandSocialMedia_band;
+
+	public String getBandSocialMediaUrl() {
+		return bandSocialMediaUrl;
 	}
-	public void setBandSocialMedia_band(Band bandSocialMedia_band) {
-		this.bandSocialMedia_band = bandSocialMedia_band;
+
+	public void setBandSocialMediaUrl(String bandSocialMediaUrl) {
+		this.bandSocialMediaUrl = bandSocialMediaUrl;
 	}
-	public String getBandSocialMedia_url() {
-		return bandSocialMedia_url;
+
+	public int getBandLeader() {
+		return bandLeader;
 	}
-	public void setBandSocialMedia_url(String bandSocialMedia_url) {
-		this.bandSocialMedia_url = bandSocialMedia_url;
+
+	public void setBandLeader(int bandLeader) {
+		this.bandLeader = bandLeader;
+	}
+
+	public String getBandOneLabel() {
+		return bandOneLabel;
+	}
+
+	public void setBandOneLabel(String bandOneLabel) {
+		this.bandOneLabel = bandOneLabel;
+	}
+
+	public int getBandOneField() {
+		return bandOneField;
+	}
+
+	public void setBandOneField(int bandOneField) {
+		this.bandOneField = bandOneField;
+	}
+
+	public String getBandTwoLabel() {
+		return bandTwoLabel;
+	}
+
+	public void setBandTwoLabel(String bandTwoLabel) {
+		this.bandTwoLabel = bandTwoLabel;
 	}
 	
 }

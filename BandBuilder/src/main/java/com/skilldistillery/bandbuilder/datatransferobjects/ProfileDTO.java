@@ -17,6 +17,7 @@ public class ProfileDTO {
 	private String profileAboutMe;
 	
 	// Address Entity
+	private int addressId;
 	private String addressStreet;
 	private String addressStreet2;
 	private String addressCity;
@@ -33,6 +34,12 @@ public class ProfileDTO {
 	// Getters and Setters
 	public int getUserId() {
 		return userId;
+	}
+	public int getAddressId() {
+		return addressId;
+	}
+	public void setAddressId(int addressId) {
+		this.addressId = addressId;
 	}
 	public void setUserId(int userId) {
 		this.userId = userId;
@@ -152,5 +159,36 @@ public class ProfileDTO {
 		this.imageDescription = imageDescription;
 	}
 	
+	
+	/* JSON Data
+	[
+		{
+			"userId":
+			"userUsername":
+			"userPassword":
+			"userActive":
+			"userRole":
+			
+			"profileId":
+			"profileFirstName":
+			"profileLastName":
+			"profileEmail":
+			"profileAboutMe":
+		
+			"addressId":
+			"addressStreet":
+			"addressStreet2":
+			"addressCity":
+			"addressState":
+			"addressZip":
+			"addressPhone":
+			
+			"imageId":
+			"imageURL":
+			"imageAlt":
+			"imageDescription":
+		}
+	]
+	 */
 
 }
