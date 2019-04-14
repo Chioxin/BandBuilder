@@ -36,6 +36,6 @@ export class ImageService {
         Authorization: 'Basic ' + this.auth.getCredentials()
       })
     };
-    return this.http.put<Image>(this.url + '/' + id, image, httpOptions);
+    return this.http.put<Image>(this.url + id, image, httpOptions);
   }
 }

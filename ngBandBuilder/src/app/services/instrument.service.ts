@@ -22,30 +22,54 @@ export class InstrumentService {
   // METHODS
 
   index() {
-    const httpOptions = {headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Basic ' + this.auth.getCredentials()
-    })};
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + this.auth.getCredentials()
+      })
+    };
 
     return this.http.get<Instrument[]>(this.url, httpOptions);
   }
 
   show(id: number) {
-    const httpOptions = {headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Basic ' + this.auth.getCredentials()
-    })};
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + this.auth.getCredentials()
+      })
+    };
 
     return this.http.get<Instrument>(this.url + id, httpOptions);
 
   }
 
   create(instrument: Instrument) {
-    const httpOptions = {headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: 'Basic ' + this.auth.getCredentials() // When creating a profile you should not need to authenticate. Right?
-    })};
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + this.auth.getCredentials() // When creating a profile you should not need to authenticate. Right?
+      })
+    };
     return this.http.post<Instrument>(this.url, instrument, httpOptions);
   }
 
+  update(id: number, instrument: Instrument) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application / json',
+        Authorization: 'Basic ' + this.auth.getCredentials()
+      })
+    };
+    return this.http.put<Instrument>(this.url + id, instrument, httpOptions);
+  }
+  delete(id: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + this.auth.getCredentials()
+      })
+    };
+    return this.http.delete<Instrument>(this.url + id, httpOptions);
+  }
 }
