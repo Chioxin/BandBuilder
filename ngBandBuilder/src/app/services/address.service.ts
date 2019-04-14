@@ -27,7 +27,7 @@ export class AddressService {
   show(id: number) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + this.auth.getCredentials()
+      Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
     return this.http.get<Address>(this.url + id, httpOptions);
@@ -36,7 +36,7 @@ export class AddressService {
   udpate(id: number, address: Address) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + this.auth.getCredentials()
+      Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
     return this.http.put<Address>(this.url + id, address, httpOptions);
