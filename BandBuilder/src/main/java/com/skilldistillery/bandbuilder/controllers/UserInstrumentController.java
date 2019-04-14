@@ -27,7 +27,7 @@ public class UserInstrumentController {
 	@Autowired
 	private UserInstrumentService userInstrumentSvc;
 
-	@GetMapping(path = "profiles/{id}/userinstruments")
+	@GetMapping(path = "userinstruments/profiles/{id}")
 	public List<UserInstrument> index(@PathVariable("id") int id, 
 			HttpServletResponse response,
 			HttpServletRequest request) {

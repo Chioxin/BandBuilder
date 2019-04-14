@@ -1,14 +1,27 @@
+import { Instrument } from './instrument';
+import { Profile } from './profile';
 export class UserInstrument {
 
-	// int id;
+  id: number;
+  profile: Profile;
+  instrument: Instrument;
+  experience: string;
+  description: string;
+  active: boolean;
 
-	// Profile profile;
-
-	// Instrument instrument;
-
-	// String experience;
-
-	// String description;
-
-	// boolean active;
+  constructor(
+    id?: number,
+    profile?: Profile,
+    instrument?: Instrument,
+    experience?: string,
+    description?: string,
+    active?: boolean
+  ) {
+    this.id = id;
+    this.profile = profile;
+    this.instrument = instrument;
+    this.experience = experience;
+    this.description = description;
+    this.active = active;
+  }
 }
