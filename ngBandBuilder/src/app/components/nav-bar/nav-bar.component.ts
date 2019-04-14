@@ -45,7 +45,6 @@ loading =false;
 
   login() {
 
-
   }
   checkAuth() {
     if (this.auth.checkLogin()) {
