@@ -11,7 +11,7 @@ export class BandSocialMediaService {
 
   // FIELDS
 
-  private apiRoute = 'api/bands';
+  private apiRoute = 'api/bandsocialmedia';
   private baseUrl = environment.baseUrl;
   private url = this.baseUrl + this.apiRoute;
 
@@ -28,5 +28,32 @@ export class BandSocialMediaService {
 
     return this.http.get<BandSocialMedia[]>(this.url, httpOptions);
   }
+
+  create(bandSocialMedia: BandSocialMedia) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+    return this.http.post<BandSocialMedia>(this.url, bandSocialMedia, httpOptions);
+  }
+
+  update() {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.put<BandSocialMedia[]>(this.url, httpOptions);
+  }
+
+  delete() {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.delete<BandSocialMedia[]>(this.url, httpOptions);
+  }
+
 
 }
