@@ -5,5 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class ProfileService {
 
+  // FIELDS
+
+  // CONSTRUCTOR
+
   constructor() { }
+
+  // METHODS
+
 }
