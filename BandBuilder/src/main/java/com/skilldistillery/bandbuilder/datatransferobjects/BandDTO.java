@@ -16,8 +16,13 @@ public class BandDTO {
 	private String bandAboutUs;
 	private String bandGenre;
 	private String bandBandEmail;
-	private String bandTimeCommitment;
+//	private String bandTimeCommitment;
 	private Image bandImage;
+	
+	// Time
+	private String bandOneLabel;
+	private int bandOneField;
+	private String bandTwoLabel;
 	
 	// Address
 	private int addressId;
@@ -45,7 +50,7 @@ public class BandDTO {
 	
 	// Profile
 	private int bandLeader;
-
+	
 	// Getter and Setters
 	public int getBandId() {
 		return bandId;
@@ -87,13 +92,13 @@ public class BandDTO {
 		this.bandBandEmail = bandBandEmail;
 	}
 
-	public String getBandTimeCommitment() {
-		return bandTimeCommitment;
-	}
-
-	public void setBandTimeCommitment(String bandTimeCommitment) {
-		this.bandTimeCommitment = bandTimeCommitment;
-	}
+//	public String getBandTimeCommitment() {
+//		return bandTimeCommitment;
+//	}
+//
+//	public void setBandTimeCommitment(String bandTimeCommitment) {
+//		this.bandTimeCommitment = bandTimeCommitment;
+//	}
 
 	public Image getBandImage() {
 		return bandImage;
@@ -254,8 +259,29 @@ public class BandDTO {
 	public void setBandLeader(int bandLeader) {
 		this.bandLeader = bandLeader;
 	}
-	
-	
-	
+
+	public String getBandOneLabel() {
+		return bandOneLabel;
+	}
+
+	public void setBandOneLabel(String bandOneLabel) {
+		this.bandOneLabel = bandOneLabel;
+	}
+
+	public int getBandOneField() {
+		return bandOneField;
+	}
+
+	public void setBandOneField(int bandOneField) {
+		this.bandOneField = bandOneField;
+	}
+
+	public String getBandTwoLabel() {
+		return bandTwoLabel;
+	}
+
+	public void setBandTwoLabel(String bandTwoLabel) {
+		this.bandTwoLabel = bandTwoLabel;
+	}
 	
 }

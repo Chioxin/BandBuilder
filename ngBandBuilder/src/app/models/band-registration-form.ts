@@ -1,7 +1,7 @@
 export class BandRegistrationForm {
 
 // Leader Fields
-bandLeader: string;
+bandLeader: number;
 
 // Address Fields
 addressId: string;
@@ -17,10 +17,14 @@ bandAboutUs: string;
 bandEmail: string;
 bandGenre: string;
 bandName: string;
-bandTimeCommitment: string;
+
+// Time Fields
+bandOneLabel: string;
+bandOneField: number;
+bandTwoLabel: string;
 
   constructor(
-  bandLeader: string,
+  bandLeader?: number,
   addressId?: string,
   addressStreet?: string,
   addressStreet2?: string,
@@ -32,7 +36,9 @@ bandTimeCommitment: string;
   bandEmail?: string,
   bandGenre?: string,
   bandName?: string,
-  bandTimeCommitment?: string,
+  bandOneLabel?: string,
+  bandOneField?: number,
+  bandTwoLabel?: string,
   ) {
     this.bandLeader = bandLeader;
     this.addressId = addressId;
@@ -46,6 +52,8 @@ bandTimeCommitment: string;
     this.bandEmail = bandEmail;
     this.bandGenre = bandGenre;
     this.bandName = bandName;
-    this.bandTimeCommitment = bandTimeCommitment;
+    this.bandOneLabel = bandOneLabel;
+    this.bandOneField = bandOneField;
+    this.bandTwoLabel = bandTwoLabel;
   }
 }

@@ -1,21 +1,103 @@
-<div id='registerBandForm'>
-  <form>
+<form>
     <!-- band leader -->
-    <input type="text" name="bandLeader" [(ngModel)]="bandRegistrationForm.bandLeader"/>
+    <label>Band Leader</label>
+    <input type="number" name="bandLeader" [(ngModel)]="bandRegistrationForm.bandLeader"/><br> -->
     <!-- band address -->
-    <input type="text" name="addressStreet" [(ngModel)]="bandRegistrationForm.addressStreet"/>
-    <input type="text" name="addressStreet2" [(ngModel)]="bandRegistrationForm.addressStreet2"/>
-    <input type="text" name="addressCity" [(ngModel)]="bandRegistrationForm.addressCity"/>
-    <input type="text" name="addressState" [(ngModel)]="bandRegistrationForm.addressState"/>
-    <input type="text" name="addressZip" [(ngModel)]="bandRegistrationForm.addressZip"/>
-    <input type="text" name="addressPhone" [(ngModel)]="bandRegistrationForm.addressPhone"/>
+    <label>Street</label>
+    <input type="text" name="addressStreet" [(ngModel)]="bandRegistrationForm.addressStreet"/><br>
+    <label>Street 2</label>
+    <input type="text" name="addressStreet2" [(ngModel)]="bandRegistrationForm.addressStreet2"/><br>
+    <label>City</label>
+    <input type="text" name="addressCity" [(ngModel)]="bandRegistrationForm.addressCity"/><br>
+    <label>State</label>
+    <select name="addressState" [(ngModel)]="bandRegistrationForm.addressState">
+      <option value="Alabama">Alabama</option>
+      <option value="Alaska">Alaska</option>
+      <option value="Arizona">Arizona</option>
+      <option value="Arkansas">Arkansas</option>
+      <option value="California">California</option>
+      <option value="Colorado">Colorado</option>
+      <option value="Connecticut">Connecticut</option>
+      <option value="Delaware">Delaware</option>
+      <option value="District Of Columbia">District Of Columbia</option>
+      <option value="Florida">Florida</option>
+      <option value="Georgia">Georgia</option>
+      <option value="Hawaii">Hawaii</option>
+      <option value="Idaho">Idaho</option>
+      <option value="Illinois">Illinois</option>
+      <option value="Indiana">Indiana</option>
+      <option value="Iowa">Iowa</option>
+      <option value="Kansas">Kansas</option>
+      <option value="Kentucky">Kentucky</option>
+      <option value="Louisiana">Louisiana</option>
+      <option value="Maine">Maine</option>
+      <option value="Maryland">Maryland</option>
+      <option value="Massachusetts">Massachusetts</option>
+      <option value="Michigan">Michigan</option>
+      <option value="Minnesota">Minnesota</option>
+      <option value="Mississippi">Mississippi</option>
+      <option value="Missouri">Missouri</option>
+      <option value="Montana">Montana</option>
+      <option value="Nebraska">Nebraska</option>
+      <option value="Nevada">Nevada</option>
+      <option value="New Hampshire">New Hampshire</option>
+      <option value="New Jersey">New Jersey</option>
+      <option value="New Mexico">New Mexico</option>
+      <option value="New York">New York</option>
+      <option value="North Carolina">North Carolina</option>
+      <option value="North Dakota">North Dakota</option>
+      <option value="Ohio">Ohio</option>
+      <option value="Oklahoma">Oklahoma</option>
+      <option value="Oregon">Oregon</option>
+      <option value="Pennsylvania">Pennsylvania</option>
+      <option value="Rhode Island">Rhode Island</option>
+      <option value="South Carolina">South Carolina</option>
+      <option value="South Dakota">South Dakota</option>
+      <option value="Tennessee">Tennessee</option>
+      <option value="Texas">Texas</option>
+      <option value="Utah">Utah</option>
+      <option value="Vermont">Vermont</option>
+      <option value="Virginia">Virginia</option>
+      <option value="Washington">Washington</option>
+      <option value="West Virginia">West Virginia</option>
+      <option value="Wisconsin">Wisconsin</option>
+      <option value="Wyoming">Wyoming</option>
+    </select><br>
+    <label>Zip</label>
+    <input type="text" name="addressZip" [(ngModel)]="bandRegistrationForm.addressZip"/><br>
+    <label>Phone</label>
+    <input type="text" name="addressPhone" [(ngModel)]="bandRegistrationForm.addressPhone"/><br>
     <!-- band fields -->
-    <input type="text" name="bandAboutUs" [(ngModel)]="bandRegistrationForm.bandAboutUs"/>
-    <input type="text" name="bandEmail" [(ngModel)]="bandRegistrationForm.bandEmail"/>
-    <input type="text" name="bandGenre" [(ngModel)]="bandRegistrationForm.bandGenre"/>
-    <input type="text" name="bandName" [(ngModel)]="bandRegistrationForm.bandName"/>
-    <input type="text" name="bandTimeCommitment" [(ngModel)]="bandRegistrationForm.bandTimeCommitment"/>
+    <label>About Us</label>
+    <input type="text" name="bandAboutUs" [(ngModel)]="bandRegistrationForm.bandAboutUs"/><br>
+    <!-- <textarea name="bandAboutUs" style="width:400px; height:80px;" [(ngModel)]="bandRegistrationForm.bandAboutUs"></textarea><br> -->
+    <label>Email</label>
+    <input type="text" name="bandEmail" [(ngModel)]="bandRegistrationForm.bandEmail"/><br>
+    <label>Genre</label>
+    <input type="text" name="bandGenre" [(ngModel)]="bandRegistrationForm.bandGenre"/><br>
+    <label>Band Name</label>
+    <input type="text" name="bandName" [(ngModel)]="bandRegistrationForm.bandName"/><br>
+    <div>
+      <label>How often you will meet: </label>
+      <input type="number" name="bandOneField" [(ngModel)]="bandRegistrationForm.bandOneField"/>
+      <select type="select" name="bandOneLabel" [(ngModel)]="bandRegistrationForm.bandOneLabel">
+        <option value="minutes" selected>minutes</option>
+        <option value="hours">hour(s)</option>
+        <option value="day(s)">day(s)</option>
+      </select>
+      per
+      <select type="select" name="bandTwoLabel" [(ngModel)]="bandRegistrationForm.bandTwoLabel">
+          <option value="day">day</option>
+          <option value="week">week</option>
+          <option value="month" selected>month</option>
+        </select>
+    </div>
+    <button class="btn btn-success" (click)="createBand()">Create Band</button>
+
     <!-- <input type="submit" (click) = "onSubmit();"> -->
+    <br>
+    <br>
+    <br>
+    <br>
     <h5>{{bandRegistrationForm | json}}</h5>
-  </form>
-</div>
+</form>

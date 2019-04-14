@@ -128,7 +128,14 @@ public class BandServiceImpl implements BandService {
 	band.setEmail(dto.getBandBandEmail());
 	band.setGenre(dto.getBandGenre());
 	band.setName(dto.getBandName());
-	band.setTimeCommitment(dto.getBandTimeCommitment());
+//	band.setTimeCommitment(dto.getBandTimeCommitment());
+	
+	// Build TimeCommitment String
+	String bandOneLabel = dto.getBandOneLabel();
+	int bandOneField = dto.getBandOneField();
+	String bandTwoLabel = dto.getBandTwoLabel();
+	
+	band.setTimeCommitment(bandOneField + " " + bandOneLabel + "per " +  bandTwoLabel);
 
 	// Set Objects
 	band.setAddress(address);
