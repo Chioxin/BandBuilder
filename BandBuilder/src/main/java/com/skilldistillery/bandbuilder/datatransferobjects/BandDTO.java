@@ -35,9 +35,6 @@ public class BandDTO {
 	private Profile bandMember_profile;
 	private String bandMember_description;
 	private String bandMember_experience;
-	public void setBandSocialMedia_socialMedia(SocialMedia bandSocialMedia_socialMedia) {
-		this.bandSocialMedia_socialMedia = bandSocialMedia_socialMedia;
-	}
 	private Date bandMember_joinedAt;
 	
 	// Band Social Media
@@ -45,7 +42,16 @@ public class BandDTO {
 	private SocialMedia bandSocialMedia_socialMedia;
 	private Band bandSocialMedia_band;
 	private String bandSocialMedia_url;
-
+	
+	// Profile
+	private int band_leader;
+	
+	public int getBand_leader() {
+		return band_leader;
+	}
+	public void setBand_leader(int band_leader) {
+		this.band_leader = band_leader;
+	}
 	// Getters and Setters
 	public int getBand_id() {
 		return band_id;
@@ -181,6 +187,9 @@ public class BandDTO {
 	}
 	public SocialMedia getBandSocialMedia_socialMedia() {
 		return bandSocialMedia_socialMedia;
+	}
+	public void setBandSocialMedia_socialMedia(SocialMedia bandSocialMedia_socialMedia) {
+		this.bandSocialMedia_socialMedia = bandSocialMedia_socialMedia;
 	}
 	public Band getBandSocialMedia_band() {
 		return bandSocialMedia_band;
