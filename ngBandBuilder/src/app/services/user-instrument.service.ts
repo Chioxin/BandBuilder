@@ -31,7 +31,7 @@ export class UserInstrumentService {
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
-    return this.http.get<UserInstrument[]>(this.url + 'profiles/' + identifierModuleUrl, httpOptions);
+    return this.http.get<UserInstrument[]>(this.url + 'profiles/' + pid, httpOptions);
   }
 
   update(id: number, userInstrument: UserInstrument) {

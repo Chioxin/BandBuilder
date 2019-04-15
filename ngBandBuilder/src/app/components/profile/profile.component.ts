@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
     this.profileSvc.show(id).subscribe(
       data => {
         this.myProfile = data;
+        this.loadInstruments(this.myProfile.id);
       },
       err => {
         console.error('ERROR GETTING PROFILE BY ID (' + id + ')');
@@ -60,6 +61,8 @@ export class ProfileComponent implements OnInit {
     this.profileSvc.showProfileByUsername(username).subscribe(
       data => {
         this.myProfile = data;
+        console.log('MY PROFILE ID IS = ' + this.myProfile.id);
+        this.loadInstruments(this.myProfile.id);
       },
       err => {
         console.error('ERROR GETTING PROFILE BY USERNAME (' + username + ')');
