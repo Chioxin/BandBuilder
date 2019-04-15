@@ -39,14 +39,14 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {
     this.myUsername = this.auth.getUsername();
-    this.loadProfile(this.checkRoute());
+    this.loadProfile(this.getRoute());
   }
 
   // METHODS
 
-  checkRoute() {
-    const aNumber = this.route.snapshot.paramMap.get('id');
-    if (isNumber(aNumber)) {
+  getRoute() {
+    const aNumber = parseInt(this.route.snapshot.paramMap.get('id'), 10);
+    if (aNumber) {
       return aNumber;
     } else {
       return this.myUsername;
