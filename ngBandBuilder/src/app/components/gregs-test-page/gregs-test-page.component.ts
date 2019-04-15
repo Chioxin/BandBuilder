@@ -33,7 +33,7 @@ export class GregsTestPageComponent implements OnInit {
   //   }
   // );
 
-  this.iAm = this.auth.getUserProfile();
+  this.iAm = this.auth.getUsername();
   this.profileSvc.showProfileByUsername(this.iAm).subscribe(
     data => {
       this.profile = data;
