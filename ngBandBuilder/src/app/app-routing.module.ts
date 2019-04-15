@@ -15,14 +15,10 @@ const routes: Routes = [
   { path: 'jessetestpage', component: JesseTestPageComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'bandregistration', component: BandRegistrationComponent },
-<<<<<<< HEAD
-  { path: 'profile', component: ProfileComponent },
-  { path: 'gtestpage', component: GregsTestPageComponent}
-=======
+  { path: 'gtestpage', component: GregsTestPageComponent},
   { path: 'profiles', component: ProfileComponent },
   { path: 'bands', component: BandComponent },
   { path: 'admin', component: AdminComponent }
->>>>>>> 3dc3b069cee5a9ef26397218eec51856f4931a1d
 ];
 
 @NgModule({
