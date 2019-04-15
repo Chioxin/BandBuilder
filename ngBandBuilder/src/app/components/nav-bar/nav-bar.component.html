@@ -1,6 +1,6 @@
 <!-- As a heading -->
 <nav class="navbar navbar-light bg-light">
-  <span class="navbar-brand mb-0 h1">Band Builder</span>
+  <span  [routerLink]="['/home']" class="navbar-brand mb-0 h1">Band Builder</span>
   <span class="navbar-brand mb-0 h1">{{selected}}</span>
   <form>
     <div #loggedIn *ngIf="!isLoggedIn">
@@ -11,6 +11,7 @@
     </div>
     <div *ngIf="isLoggedIn">
       <button class="btn btn-danger" (click)="logout() ">Logout</button>
+      <button  class="btn btn-dark" (click)="admin() " [routerLink]="['/admin']">Admin</button>
       <button type="button" class="btn btn-info" [routerLink]="['/profiles']">Profile</button>
     </div>
   </form>
