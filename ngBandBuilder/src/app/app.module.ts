@@ -1,3 +1,4 @@
+import { AdminComponent } from './components/admin/admin.component';
 import { BandRegistrationComponent } from './components/band-registration/band-registration.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -27,7 +28,8 @@ import { BandComponent } from './components/band/band.component';
     BandRegistrationComponent,
     FooterComponent,
     ProfileComponent,
-    BandComponent
+    BandComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,

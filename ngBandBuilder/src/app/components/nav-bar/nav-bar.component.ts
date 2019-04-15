@@ -21,7 +21,7 @@ export class NavBarComponent implements OnInit {
   selected = '';
 
   constructor(private auth: AuthService,
-    private router: Router) { }
+              private router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn = this.auth.checkLogin();
