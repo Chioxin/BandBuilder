@@ -1,3 +1,4 @@
+import { FormsModule } from '@angular/forms';
 
 import { AdminComponent } from './components/admin/admin.component';
 import { BandRegistrationComponent } from './components/band-registration/band-registration.component';
@@ -10,7 +11,6 @@ import { BandBuilderComponent } from './components/band-builder/band-builder.com
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HomeComponent } from './components/home/home.component';
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
@@ -19,6 +19,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-page.component';
 import { BandComponent } from './components/band/band.component';
 import { SearchByKeywordPipe } from './pipes/search-by-keyword.pipe';
+
 
 // search module
 
@@ -45,7 +46,7 @@ import { SearchByKeywordPipe } from './pipes/search-by-keyword.pipe';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ SearchByKeywordPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

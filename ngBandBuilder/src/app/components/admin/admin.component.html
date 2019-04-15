@@ -2,14 +2,11 @@
   <h3>Admin Page</h3>
 </span>
 <!-- Search form -->
-<div class="md-form mt-0">
-  <input class="form-control" type="text" placeholder="Search" aria-label="Search"[(ngModel)]="searchText" autocomplete="off" placeholder="&#61442;  Start searching for a profile">
-</div>
 
 <div *ngIf="adminProfile">
-<!-- <img src="https://alghazitour.co.id/wp-content/uploads/admin-user-icon.gif" alt="admin image" class="img-thumbnail"> -->
-<img src="{{adminProfile.image.url}}" alt="admin image" class="img-thumbnail">
-<h3> Username: {{adminProfile.user.username}}</h3>
+  <!-- <img src="https://alghazitour.co.id/wp-content/uploads/admin-user-icon.gif" alt="admin image" class="img-thumbnail"> -->
+  <img src="{{adminProfile.image.url}}" alt="admin image" class="img-thumbnail">
+  <h3> Username: {{adminProfile.user.username}}</h3>
 </div>
 <hr>
 <div id="listOfInstruments">
@@ -23,20 +20,23 @@
 
     </tr>
     <!-- <tr *ngFor= "let instrument of instruments " [ngClass]="formatCompletedProfile(instrument)" (click)="setInstrumentSelected(instrument)"> -->
-    <tr *ngFor="let instrument of instruments " [ngClass]="formatCompletedInstrument(instrument)">
-      <td>{{instrument.name}}</td>
-      <td>{{instrument.description}}</td>
-      <td (click)="setInstrumentSelected(instrument)">{{instrument.active}}</td>
-      <!-- <td ><input type="checkbox" name="active" [(ngModel)] = "instrument.active"/>{{instrument.active}}</td> -->
-      <td><input  type="checkbox" name="approved" [(ngModel)]="instrument.approved" />{{instrument.approved}}</td>
-      <button type="button" class="btn btn-danger" (click)="deleteInstrument(instrument.id)">Delete</button>
-      <button type="button" class="btn btn-success" (click)="acceptInstrument(instrument.id)">Accept</button>
-    </tr>
-  </table>
-</div>
+      <tr *ngFor="let instrument of instruments " [ngClass]="formatCompletedInstrument(instrument)">
+        <td>{{instrument.name}}</td>
+        <td>{{instrument.description}}</td>
+        <td (click)="setInstrumentSelected(instrument)">{{instrument.active}}</td>
+        <!-- <td ><input type="checkbox" name="active" [(ngModel)] = "instrument.active"/>{{instrument.active}}</td> -->
+        <td><input  type="checkbox" name="approved" [(ngModel)]="instrument.approved" />{{instrument.approved}}</td>
+        <button type="button" class="btn btn-danger" (click)="deleteInstrument(instrument.id)">Delete</button>
+        <button type="button" class="btn btn-success" (click)="acceptInstrument(instrument.id)">Accept</button>
+      </tr>
+    </table>
+  </div>
+  <hr>
+
+  <div class="md-form mt-0">
+    <input  [(ngModel)]="searchText" class="form-control"  placeholder="Search" type="text"  aria-label="Search" autocomplete="off" placeholder="&#61442;  Start searching for a profile">
+  </div>
 <hr>
-
-
 <div id="listOfProfiles">
   <h3>Profiles</h3>
   <table class="table table-striped">
@@ -46,7 +46,7 @@
       <th>Role</th>
       <th>Enabled</th>
     </tr>
-    <tr *ngFor="let profile of profiles " [ngClass]="formatCompletedProfile(profile)"
+    <tr *ngFor="let profile of profiles | searchByKeyword:searchText " [ngClass]="formatCompletedProfile(profile)"
       (click)="setProfileSelected(profile)">
       <td>{{profile.user.username}}</td>
       <td>{{profile.user.active}}</td>

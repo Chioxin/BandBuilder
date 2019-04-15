@@ -1,3 +1,4 @@
+import { SearchByKeywordPipe } from 'src/app/pipes/search-by-keyword.pipe';
 import { ProfileService } from './../../services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
@@ -18,9 +19,11 @@ export class AdminComponent implements OnInit {
 
   // Constructor
   constructor(private auth: AuthService,
-    private router: Router,
-    private profileSrv: ProfileService,
-    private instrumentSrv: InstrumentService) { }
+              private router: Router,
+              private profileSrv: ProfileService,
+              private instrumentSrv: InstrumentService,
+              private searchByKeywordPipe: SearchByKeywordPipe
+              ) { }
   // Fields
   adminProfile: Profile = null;
   isLoggedIn = false;
@@ -29,6 +32,7 @@ export class AdminComponent implements OnInit {
   instrument: Instrument = null;
   selected: Profile = null;
   profile: Profile = null;
+  searchText: '';
 
   // Methods
   ngOnInit() {
@@ -139,5 +143,8 @@ export class AdminComponent implements OnInit {
         console.error(err);
       }
     );
+  }
+  searchByKeyWord(value: string){
+
   }
 }
