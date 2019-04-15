@@ -1,3 +1,4 @@
+import { Router, ActivatedRoute } from '@angular/router';
 import { BandMemberService } from './../../services/band-member.service';
 import { BandServiceService } from './../../services/band-service.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -19,6 +20,7 @@ export class ProfileComponent implements OnInit {
 
   myUsername = '';
   myProfile: Profile = null;
+  viewerIsOwner = false;
   myInstruments: UserInstrument[] = [];
 
   // CONSTRUCTOR
@@ -28,17 +30,36 @@ export class ProfileComponent implements OnInit {
     private userInstrumentSvc: UserInstrumentService,
     private profileSvc: ProfileService,
     private bandSvc: BandServiceService,
-    private bMemberSvc: BandMemberService
+    private bMemberSvc: BandMemberService,
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   // INIT
 
   ngOnInit() {
     this.myUsername = this.auth.getUsername();
-    this.loadProfile(this.myUsername);
+    this.loadProfile(this.checkRoute());
   }
 
   // METHODS
+
+  checkRoute() {
+    const aNumber = this.route.snapshot.paramMap.get('id');
+    if (isNumber(aNumber)) {
+      return aNumber;
+    } else {
+      return this.myUsername;
+    }
+  }
+
+  checkViewerIsOwner() {
+    if (this.myUsername === this.myProfile.user.username) {
+      this.viewerIsOwner = true;
+    } else {
+      this.viewerIsOwner = false;
+    }
+  }
 
   loadProfile(target: any) {
     if (isNumber(target)) {
@@ -53,6 +74,7 @@ export class ProfileComponent implements OnInit {
       data => {
         this.myProfile = data;
         this.loadInstruments(this.myProfile.id);
+        this.checkViewerIsOwner();
       },
       err => {
         console.error('ERROR GETTING PROFILE BY ID (' + id + ')');
@@ -67,6 +89,7 @@ export class ProfileComponent implements OnInit {
         this.myProfile = data;
         console.log('MY PROFILE ID IS = ' + this.myProfile.id);
         this.loadInstruments(this.myProfile.id);
+        this.checkViewerIsOwner();
       },
       err => {
         console.error('ERROR GETTING PROFILE BY USERNAME (' + username + ')');

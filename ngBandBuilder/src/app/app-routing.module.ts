@@ -17,6 +17,7 @@ const routes: Routes = [
   { path: 'bandregistration', component: BandRegistrationComponent },
   { path: 'gtestpage', component: GregsTestPageComponent},
   { path: 'profiles', component: ProfileComponent },
+  { path: 'profiles/:id', component: ProfileComponent},
   { path: 'bands', component: BandComponent },
   { path: 'admin', component: AdminComponent }
 ];
