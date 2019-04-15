@@ -66,6 +66,8 @@
   <h1>Bands "{{myProfile.user.username}}" is a member of.</h1>
   <hr>
   <div id="myBandsAsMember">
-
+    <ul>
+      <li *ngFor="let member of myBandMembers">{{member.instrument.name}}</li>
+    </ul>
   </div>
 </div>

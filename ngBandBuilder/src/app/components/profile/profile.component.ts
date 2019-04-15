@@ -1,3 +1,4 @@
+import { BandMember } from './../../models/band-member';
 import { User } from 'src/app/models/user';
 import { Address } from './../../models/address';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -29,9 +30,11 @@ export class ProfileComponent implements OnInit {
 
   myUsername = '';
   myProfile: Profile = null;
+  myBandMembers: BandMember[] = [];
+  myInstruments: UserInstrument[] = [];
+
   viewerIsOwner = false;
   isEditingProfile = false;
-  myInstruments: UserInstrument[] = [];
 
   // CONSTRUCTOR
 
@@ -83,7 +86,9 @@ export class ProfileComponent implements OnInit {
     this.profileSvc.show(id).subscribe(
       data => {
         this.myProfile = data;
-        this.loadInstruments(this.myProfile.id);
+        const profileId = this.myProfile.id;
+        this.loadInstruments(profileId);
+        this.loadBandMembersByProfileId(profileId);
         this.checkViewerIsOwner();
       },
       err => {
@@ -97,7 +102,9 @@ export class ProfileComponent implements OnInit {
     this.profileSvc.showProfileByUsername(username).subscribe(
       data => {
         this.myProfile = data;
-        this.loadInstruments(this.myProfile.id);
+        const profileId = this.myProfile.id;
+        this.loadInstruments(profileId);
+        this.loadBandMembersByProfileId(profileId);
         this.checkViewerIsOwner();
       },
       err => {
@@ -114,6 +121,7 @@ export class ProfileComponent implements OnInit {
       },
       err => {
         console.error('ERROR GETTING USER INTRUMENTS BY PROFILE ID (' + pid + ')');
+        console.error(err);
       }
     );
   }
@@ -122,8 +130,16 @@ export class ProfileComponent implements OnInit {
     // Will need to be able to get bands by profile ID
   }
 
-  loadBandsProfileIsMemberTo(pid: number) {
-    // Will need to be able to get bands profile is a band member of, by profile ID
+  loadBandMembersByProfileId(pid: number) {
+    this.bMemberSvc.showByProfileId(pid).subscribe(
+      data => {
+        this.myBandMembers = data;
+      },
+      err => {
+        console.error('ERROR GETTING MEMBERS BY PROFILE ID (' + pid + ')');
+        console.error(err);
+      }
+    );
   }
 
 }
