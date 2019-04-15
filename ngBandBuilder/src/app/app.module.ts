@@ -1,3 +1,4 @@
+import { AdminComponent } from './components/admin/admin.component';
 import { BandRegistrationComponent } from './components/band-registration/band-registration.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,7 +15,11 @@ import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
+<<<<<<< HEAD
 import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-page.component';
+=======
+import { BandComponent } from './components/band/band.component';
+>>>>>>> 3dc3b069cee5a9ef26397218eec51856f4931a1d
 
 @NgModule({
   declarations: [
@@ -27,7 +32,12 @@ import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-
     BandRegistrationComponent,
     FooterComponent,
     ProfileComponent,
+<<<<<<< HEAD
     GregsTestPageComponent
+=======
+    BandComponent,
+    AdminComponent
+>>>>>>> 3dc3b069cee5a9ef26397218eec51856f4931a1d
   ],
   imports: [
     BrowserModule,
