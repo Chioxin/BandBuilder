@@ -1,9 +1,11 @@
+import { Profile } from './../../models/profile';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { FormGroup } from '@angular/forms';
 import { logging } from 'protractor';
+import { userInfo } from 'os';
 
 @Component({
   selector: 'app-nav-bar',
@@ -17,11 +19,11 @@ export class NavBarComponent implements OnInit {
   // Fields
   newUser: User = new User();
   isLoggedIn = false;
-
+  profile: Profile = new Profile();
   selected = '';
 
   constructor(private auth: AuthService,
-              private router: Router) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.isLoggedIn = this.auth.checkLogin();
@@ -59,8 +61,10 @@ export class NavBarComponent implements OnInit {
     );
   }
   logout() {
-     this.auth.logout();
-     this.isLoggedIn = false;
+    this.auth.logout();
+    this.isLoggedIn = false;
   }
+  admin() {
 
+  }
 }
