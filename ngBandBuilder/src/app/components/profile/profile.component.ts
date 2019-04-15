@@ -133,6 +133,8 @@ export class ProfileComponent implements OnInit {
   loadBandMembersByProfileId(pid: number) {
     this.bMemberSvc.showByProfileId(pid).subscribe(
       data => {
+        console.log('WE GOT SOME BAND MEMBERS');
+        console.log(data);
         this.myBandMembers = data;
       },
       err => {

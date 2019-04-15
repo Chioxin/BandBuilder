@@ -37,7 +37,7 @@ export class BandMemberService {
       })
     };
 
-    return this.http.get<BandMember[]>(`/api/bandmembers/profiles/${pid}`, httpOptions);
+    return this.http.get<BandMember[]>(`${this.url}profiles/${pid}`, httpOptions);
   }
 
   create(bandMember: BandMember) {
