@@ -30,6 +30,10 @@ public class BandMemberServiceImpl implements BandMemberService {
 	public List<BandMember> getBandMembersByBandId(int id) {
 		return bandMemberRepo.getBandMembersByBandId(id);
 	}
+	
+	public List<BandMember> getBandMembersByProfileId(int id) {
+		return bandMemberRepo.findByProfileId(id);
+	}
 
 	@Override
 	public BandMember getBandMemberById(int id) {

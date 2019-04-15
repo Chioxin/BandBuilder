@@ -28,6 +28,18 @@ export class BandMemberService {
 
     return this.http.get<BandMember[]>(`/api/bands/${id}/bandmembers/`, httpOptions);
   }
+
+  showByProfileId(pid: number) {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        Authorization: 'Basic ' + this.auth.getCredentials()
+      })
+    };
+
+    return this.http.get<BandMember[]>(`/api/bandmembers/profiles/${pid}`, httpOptions);
+  }
+
   create(bandMember: BandMember) {
     const httpOptions = {
       headers: new HttpHeaders({

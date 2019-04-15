@@ -33,6 +33,11 @@ public class BandMemberController {
 		return bandMemberSvc.getBandMembersByBandId(id);
 	}
 	
+	@GetMapping("bandmembers/profiles/{pid}")
+	public List<BandMember> getBandMembersByProfileId(@PathVariable("pid") Integer id) {
+		return bandMemberSvc.getBandMembersByProfileId(id);
+	}
+	
 	@GetMapping("bandmembers/{id}")
 	public BandMember selectBandMember(@PathVariable("id") Integer id,
 			HttpServletResponse resp,
