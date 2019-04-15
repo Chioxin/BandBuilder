@@ -88,8 +88,16 @@ export class AuthService {
   }
 
   getUserProfile() {
-    const creds = localStorage.getItem('credentials');
+    const creds = atob(localStorage.credentials);
     const username = creds.substring(0, creds.indexOf(':'));
-    console.log(username);
+
+    // const httpOptions = {headers: new HttpHeaders({
+    //   'Content-Type': 'application/json',
+    //   Authorization: 'Basic ' + this.getCredentials()
+    // })};
+
+    // return this.http.post<Profile>(this.baseUrl + 'api/profiles/' + username, httpOptions);
+
+    return username;
   }
 }

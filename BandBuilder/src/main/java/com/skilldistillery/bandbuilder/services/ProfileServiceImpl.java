@@ -139,4 +139,9 @@ public class ProfileServiceImpl implements ProfileService {
 		return deleted;
 	}
 
+	@Override
+	public Profile getProfileByUserName(String username) {
+		return profileRepo.findByUserUsername(username);
+	}
+
 }

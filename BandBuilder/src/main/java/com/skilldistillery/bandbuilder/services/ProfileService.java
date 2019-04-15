@@ -12,5 +12,6 @@ public interface ProfileService {
 	public Profile createProfile(ProfileDTO regInfo);
 	public Profile updateProfileById(int id, Profile profile);
 	public Boolean deleteProfileById(int id);
+	public Profile getProfileByUserName(String username);
 
 }

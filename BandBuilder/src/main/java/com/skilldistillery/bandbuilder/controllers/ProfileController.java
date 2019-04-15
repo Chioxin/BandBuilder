@@ -91,4 +91,17 @@ public class ProfileController {
 			resp.setStatus(400);
 		}		
 	}
+	
+	@GetMapping("profiles/users/{username}")
+	public Profile getProfileByUserName(@PathVariable("username") String username,
+			HttpServletResponse resp) {
+		
+		Profile profile = profileSvc.getProfileByUserName(username);
+		
+		if (profile == null) {
+			resp.setStatus(404);
+		}
+		
+		return profile;
+	}
 }

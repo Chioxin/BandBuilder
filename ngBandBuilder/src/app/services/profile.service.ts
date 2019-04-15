@@ -68,4 +68,13 @@ export class ProfileService {
     return this.http.delete<Profile>(this.url + id, httpOptions);
   }
 
+  showProfileByUsername(username: string) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.get<Profile>(this.url + 'users/' + username, httpOptions);
+  }
+
 }
