@@ -1,3 +1,5 @@
+import { BandMemberService } from './../../services/band-member.service';
+import { BandServiceService } from './../../services/band-service.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Profile } from './../../models/profile';
 import { UserInstrument } from './../../models/user-instrument';
@@ -24,7 +26,9 @@ export class ProfileComponent implements OnInit {
   constructor(
     private auth: AuthService,
     private userInstrumentSvc: UserInstrumentService,
-    private profileSvc: ProfileService
+    private profileSvc: ProfileService,
+    private bandSvc: BandServiceService,
+    private bMemberSvc: BandMemberService
   ) { }
 
   // INIT
@@ -80,6 +84,14 @@ export class ProfileComponent implements OnInit {
         console.error('ERROR GETTING USER INTRUMENTS BY PROFILE ID (' + pid + ')');
       }
     );
+  }
+
+  loadBandsByProfileId(pid: number) {
+    // Will need to be able to get bands by profile ID
+  }
+
+  loadBandsProfileIsMemberTo(pid: number) {
+    // Will need to be able to get bands profile is a band member of, by profile ID
   }
 
 }

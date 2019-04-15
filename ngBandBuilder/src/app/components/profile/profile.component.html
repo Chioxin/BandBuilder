@@ -1,23 +1,22 @@
-<div *ngIf="myProfile">
+<div *ngIf="myProfile" class="container">
   <div id="titleArea">
     <img src="{{myProfile.image.url}}">
     <span>{{myProfile.user.username}}</span>
   </div>
   <div id="aboutMe">
-    <div class="container">
-      <p>{{myProfile.aboutMe}}</p>
-
-      <div class="card" *ngFor="let item of myInstruments">
-        <div class="card-header">
-          <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
-          {{item.instrument.name}}
-        </div>
+    <p>{{myProfile.aboutMe}}</p>
+    <div class="card" *ngFor="let item of myInstruments">
+      <div class="card-header">
+        <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
+        {{item.instrument.name}}
       </div>
     </div>
+  </div>
+  <div id="myBands">
+
 
   </div>
-  <div id="details">
-
+  <div id="myBandsAsMember">
 
   </div>
 </div>
