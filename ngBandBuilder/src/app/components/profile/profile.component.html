@@ -1,28 +1,52 @@
-<div *ngIf="myProfile">
+<div *ngIf="myProfile" class="container">
   <div id="titleArea">
-    <img src="{{myProfile.image.url}}">
-    <span>{{myProfile.user.username}}</span>
-  </div>
-  <div id="aboutMe">
-    <div class="container">
-      <p>{{myProfile.aboutMe}}</p>
+    <h1>Profile: "{{myProfile.user.username}}"</h1>
 
-      <div class="card" *ngFor="let item of myInstruments">
-        <div class="card-header">
-          <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
-          {{item.instrument.name}}
+    <div class="row" id="titleOwnerView" *ngIf="viewerIsOwner">
+      <div class="col">
+        <img id="profileImage" src="{{myProfile.image.url}}">
+      </div>
+      <div class="col">
+          <span>{{myProfile.user.username}}</span><br>
+          <span>{{myProfile.address.street}}, {{myProfile.address.street2}}</span><br>
+          <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
+          <span>Phone: {{myProfile.address.phone}}, Email: {{myProfile.email}}</span><br>
+      </div>
+    </div>
+
+    <div class="row" id="titleView" *ngIf="!viewerIsOwner">
+        <div class="col">
+          <img id="profileImage" src="{{myProfile.image.url}}">
+        </div>
+        <div class="col">
+            <span>{{myProfile.user.username}}</span><br>
+            <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
         </div>
       </div>
 
-      <ul>
-        <li *ngFor="let instrument of myInstruments">
 
-        </li>
-      </ul>
-    </div>
 
   </div>
-  <div id="details">
+  <h1>About: "{{myProfile.user.username}}"</h1>
+  <hr>
+  <div id="aboutMe">
+    <p>{{myProfile.aboutMe}}</p>
+    <div class="card" *ngFor="let item of myInstruments">
+      <div class="card-header">
+        <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
+        {{item.instrument.name}}
+      </div>
+    </div>
+  </div>
+  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1>
+  <hr>
+  <div id="myBands">
+
+
+  </div>
+  <h1>Bands "{{myProfile.user.username}}" is a member of.</h1>
+  <hr>
+  <div id="myBandsAsMember">
 
   </div>
 </div>
