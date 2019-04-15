@@ -1,3 +1,5 @@
+import { User } from 'src/app/models/user';
+import { Address } from './../../models/address';
 import { Router, ActivatedRoute } from '@angular/router';
 import { BandMemberService } from './../../services/band-member.service';
 import { BandServiceService } from './../../services/band-service.service';
@@ -18,9 +20,17 @@ export class ProfileComponent implements OnInit {
 
   // FIELDS
 
+  editUser = new User();
+  editAddress = new Address();
+  editProfile = new Profile();
+  editImage = new Image();
+  editUserInstrument = new UserInstrument();
+  newUserInstrument = new UserInstrument();
+
   myUsername = '';
   myProfile: Profile = null;
   viewerIsOwner = false;
+  isEditingProfile = false;
   myInstruments: UserInstrument[] = [];
 
   // CONSTRUCTOR
@@ -87,7 +97,6 @@ export class ProfileComponent implements OnInit {
     this.profileSvc.showProfileByUsername(username).subscribe(
       data => {
         this.myProfile = data;
-        console.log('MY PROFILE ID IS = ' + this.myProfile.id);
         this.loadInstruments(this.myProfile.id);
         this.checkViewerIsOwner();
       },
