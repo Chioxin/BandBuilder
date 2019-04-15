@@ -1,3 +1,51 @@
-<p>
-  admin works!
-</p>
+<span>
+  <h3>Admin Page</h3>
+</span>
+<!-- Search form -->
+<div class="md-form mt-0">
+  <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+</div >
+
+<img src="https://alghazitour.co.id/wp-content/uploads/admin-user-icon.gif" alt="admin image" class="img-thumbnail">
+<h3 >  {{adminProfile.user}}</h3>
+<hr>
+<div id="listOfInstruments">
+<h3>Instrument Approvals</h3>
+<table class="table table-striped"  >
+    <tr class="thead-light">
+      <th >Name</th>
+      <th>Description</th>
+      <th>Active</th>
+    </tr>
+    <!-- <tr *ngFor= "let instrument of instruments " [ngClass]="formatCompletedProfile(instrument)" (click)="setInstrumentSelected(instrument)"> -->
+    <tr *ngFor= "let instrument of instruments " >
+      <td >{{instrument.name}}</td>
+      <td ><input type="checkbox" name="approved" [(ngModel)] = "instrument.approved"/>{{instrument.approved}}</td>
+      <td (click)="setInstrumentSelected(instrument)">{{instrument.active}}</td>
+      <button type="button" class="btn btn-danger" (click)="deleteInstrument()">Delete</button>
+      <button type="button" class="btn btn-success" (click)="acceptInstrument()">Accept</button>
+    </tr>
+  </table>
+</div>
+<hr>
+<div id="listOfProfiles">
+    <h3>Profiles</h3>
+    <table class="table table-striped"  >
+      <tr class="thead-dark">
+        <th >Username</th>
+        <th>Active</th>
+        <th>Role</th>
+        <th>Enabled</th>
+      </tr>
+      <tr *ngFor= "let profile of profiles " [ngClass]="formatCompletedProfile(profile)" (click)="setProfileSelected(profile)">
+        <td >{{profile.user.username}}</td>
+        <td >{{profile.user.active}}</td>
+        <td >{{profile.user.role}}</td>
+        <td >{{profile.user.enabled}}</td>
+        <td ><input type="checkbox" name="completed" [(ngModel)] = "profile.user.enabled"/></td>
+        <td (click)="setProfileSelected(profile)">{{profile.user.active}}</td>
+        <button></button>
+      </tr>
+    </table>
+    <hr>
+</div>
