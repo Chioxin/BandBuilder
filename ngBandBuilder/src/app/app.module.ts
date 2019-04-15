@@ -1,3 +1,4 @@
+
 import { AdminComponent } from './components/admin/admin.component';
 import { BandRegistrationComponent } from './components/band-registration/band-registration.component';
 import { BrowserModule } from '@angular/platform-browser';
@@ -17,6 +18,9 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-page.component';
 import { BandComponent } from './components/band/band.component';
+import { SearchByKeywordPipe } from './pipes/search-by-keyword.pipe';
+
+// search module
 
 @NgModule({
   declarations: [
@@ -31,7 +35,8 @@ import { BandComponent } from './components/band/band.component';
     ProfileComponent,
     GregsTestPageComponent,
     BandComponent,
-    AdminComponent
+    AdminComponent,
+    SearchByKeywordPipe
   ],
   imports: [
     BrowserModule,

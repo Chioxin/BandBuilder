@@ -22,17 +22,20 @@ export class AdminComponent implements OnInit {
     private profileSrv: ProfileService,
     private instrumentSrv: InstrumentService) { }
   // Fields
-  adminProfile: Profile = new Profile();
+  adminProfile: Profile = null;
   isLoggedIn = false;
   profiles: Profile[] = [];
   instruments: Instrument[] = [];
+  instrument: Instrument = null;
   selected: Profile = null;
   profile: Profile = null;
-  username: '';
+
   // Methods
   ngOnInit() {
+    this.loadProfile();
     this.isLoggedIn = this.auth.checkLogin();
     this.loadInstruments();
+    this.loadUserProfiles();
   }
 
   reload() {
@@ -59,9 +62,39 @@ export class AdminComponent implements OnInit {
 
   }
   deleteInstrument(instrument: Instrument) {
-
+    this.instrumentSrv.delete(instrument.id).subscribe(
+      data => {
+        this.instrument = data;
+      },
+      err => {
+        console.error('AdminComponent.delete(): Error');
+        console.error(err);
+      }
+    );
   }
-  acceptInstrument() {
+  acceptInstrument(id: number, instrument: Instrument) {
+    this.instrumentSrv.update(id, instrument).subscribe(
+      data => {
+        this.instrument = data;
+      },
+      err => {
+        console.error('AdminComponent.delete(): Error');
+        console.error(err);
+      }
+    );
+  }
+  deactivateProfile(id: number, profile: Profile) {
+    this.profileSrv.update(id, profile).subscribe(
+      data => {
+        this.profile = data;
+      },
+      err => {
+        console.error('AdminComponent.delete(): Error');
+        console.error(err);
+      }
+    );
+  }
+  reactivateProfile() {
 
   }
   setInstrumentSelected(instrument) {
@@ -84,10 +117,22 @@ export class AdminComponent implements OnInit {
   }
 
   loadProfile() {
-    const username = this.auth.getUsername;
-    this.profileSrv.showProfileByUsername(this.username).subscribe(
+    const username = this.auth.getUsername();
+    // console.log(username);
+    this.profileSrv.showProfileByUsername(username).subscribe(
       data => {
         this.adminProfile = data;
+      },
+      err => {
+        console.error('AdminComponent.loadProfile(): Error');
+        console.error(err);
+      }
+    );
+  }
+  loadUserProfiles() {
+    this.profileSrv.index().subscribe(
+      data => {
+        this.profiles = data;
       },
       err => {
         console.error('AdminComponent.loadProfile(): Error');
