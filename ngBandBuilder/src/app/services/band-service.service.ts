@@ -30,12 +30,38 @@ export class BandServiceService {
     return this.http.get<Band[]>(this.url, httpOptions);
   }
 
-  createBand(band: BandRegistrationForm) {
+  show(id: number) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      Authorization: 'Basic ' + this.auth.getCredentials() // When creating a profile you should not need to authenticate. Right?
+      Authorization: 'Basic ' + this.auth.getCredentials()
     })};
-    return this.http.post<Band>(this.url, band, httpOptions);
+
+    return this.http.get<Band>(this.url + id, httpOptions);
+
+  }
+
+  create(band: BandRegistrationForm) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+    return this.http.post<BandRegistrationForm>(this.url, band, httpOptions);
+  }
+
+  update(band: Band) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+    return this.http.put<Band>(this.url, band, httpOptions);
+  }
+
+  delete(id: number) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+    return this.http.delete<Band>(this.url + id, httpOptions);
   }
 
 }
