@@ -14,6 +14,7 @@ import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-
 import { RegistrationComponent } from './components/registration/registration.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BandComponent } from './components/band/band.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     RegistrationComponent,
     BandRegistrationComponent,
     FooterComponent,
-    ProfileComponent
+    ProfileComponent,
+    BandComponent
   ],
   imports: [
     BrowserModule,

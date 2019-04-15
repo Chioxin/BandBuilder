@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { JesseTestPageComponent } from './components/jesse-test-page/jesse-test-page.component';
 import { BandRegistrationComponent } from './components/band-registration/band-registration.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { BandComponent } from './components/band/band.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -12,7 +13,9 @@ const routes: Routes = [
   { path: 'jessetestpage', component: JesseTestPageComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'bandregistration', component: BandRegistrationComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profiles', component: ProfileComponent },
+  { path: 'bands', component: BandComponent },
+  // { path: 'admin', component: AdminComponent }
 ];
 
 @NgModule({
