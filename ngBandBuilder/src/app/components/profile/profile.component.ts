@@ -1,4 +1,9 @@
+import { UserInstrument } from './../../models/user-instrument';
+import { UserInstrumentService } from './../../services/user-instrument.service';
+import { Profile } from './../../models/profile';
+import { ProfileService } from 'src/app/services/profile.service';
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,9 +12,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor() { }
+  // FIELDS
+
+  myProfile: Profile = null;
+  myInstruments: UserInstrument[] = [];
+
+  // CONSTRUCTOR
+
+  constructor(
+    private auth: AuthService,
+    private userInstrumentSvc: UserInstrumentService,
+    private profileSvc: ProfileService
+  ) { }
+
+  // INIT
 
   ngOnInit() {
+  }
+
+  // METHODS
+
+  loadProfile(id: number) {
+    this.profileSvc.show(id).subscribe(
+      data => {
+        this.myProfile = data;
+      },
+      err => {
+        console.error('ERROR GETTING PROFILE BY ID (' + id + ')');
+        console.error(err);
+      }
+    );
+  }
+
+  loadInstruments(pid: number) {
+    this.userInstrumentSvc.showByProfileId(pid).subscribe(
+      data => {
+        this.myInstruments = data;
+      },
+      err => {
+        console.error('ERROR GETTING USER INTRUMENTS BY PROFILE ID (' + pid + ')');
+      }
+    );
   }
 
 }

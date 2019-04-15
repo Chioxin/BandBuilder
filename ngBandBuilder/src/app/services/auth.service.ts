@@ -1,3 +1,4 @@
+import { Profile } from './../models/profile';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -84,5 +85,11 @@ export class AuthService {
 
   getUsernamePassword() {
     return {username: localStorage.getItem('username'), password: localStorage.getItem('password')};
+  }
+
+  getUserProfile() {
+    const creds = localStorage.getItem('credentials');
+    const username = creds.substring(0, creds.indexOf(':'));
+    console.log(username);
   }
 }

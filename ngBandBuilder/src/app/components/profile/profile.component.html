@@ -1,3 +1,26 @@
-<p>
-  profile works!
-</p>
+<div id="titleArea">
+  <img src="{{myProfile.image.url}}">
+  <span>{{myProfile.user.username}}</span>
+</div>
+<div id="aboutMe">
+  <div class="container">
+    <p>{{myProfile.aboutMe}}</p>
+
+    <div class="card" *ngFor="let item of myInstruments">
+      <div class="card-header">
+        <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
+        {{item.instrument.name}}
+      </div>
+    </div>
+
+    <ul>
+      <li *ngFor="let instrument of myInstruments">
+
+      </li>
+    </ul>
+  </div>
+
+</div>
+<div id="details">
+
+</div>

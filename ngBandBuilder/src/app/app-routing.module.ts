@@ -1,3 +1,4 @@
+import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'jessetestpage', component: JesseTestPageComponent },
   { path: 'registration', component: RegistrationComponent },
   { path: 'bandregistration', component: BandRegistrationComponent },
-  { path: 'profile', component: ProfileComponent }
+  { path: 'profile', component: ProfileComponent },
+  { path: 'gtestpage', component: GregsTestPageComponent}
 ];
 
 @NgModule({
