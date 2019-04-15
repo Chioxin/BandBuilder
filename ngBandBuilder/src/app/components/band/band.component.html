@@ -1,3 +1,35 @@
-<p>
-  band works!
-</p>
+<h1>{{title}}<span class='badge badge-primary'></span></h1>
+
+<div>
+  <table class='table table-striped table-hover'>
+    <thead class='thead-dark'>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Genre</th>
+        <th>About Us</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let myBand of bands'>
+        <td (click)='selected = myBand; setEditBand()'>{{myBand.name}}</td>
+        <th>{{myBand.name}}</th>
+        <th>{{myBand.email}}</th>
+        <th>{{myBand.genre}}</th>
+        <th>{{myBand.aboutUs}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id='bandEdit' *ngIf='editBand && selected'>
+  <form class='form'>
+    <input type="text" name='id' value=editBand.id [(ngModel)]="editBand.id"><br>
+    <input type="text" name='name' [(ngModel)]="editBand.name"><br>
+    <input type="text" name='aboutUs' [(ngModel)]="editBand.aboutUs"><br>
+    <input type="text" name='genre' [(ngModel)]="editBand.genre"><br>
+    <input type="text" name='email' [(ngModel)]="editBand.email"><br>
+    <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+    <button (click)='updateBand()' class='btn btn-success'>Save</button>
+  </form>
+</div>

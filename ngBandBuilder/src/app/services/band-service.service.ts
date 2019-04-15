@@ -10,24 +10,26 @@ import { BandRegistrationForm } from '../models/band-registration-form';
 })
 export class BandServiceService {
 
-  // FIELDS
-
-  private apiRoute = 'api/bands';
+  // api routes
+  private profileRoute = 'api/profiles/';
+  private bandRoute = 'api/bands/';
   private baseUrl = environment.baseUrl;
-  private url = this.baseUrl + this.apiRoute;
+  private profileURL = this.baseUrl + this.profileRoute;
+  private bandURL = this.baseUrl + this.bandRoute;
+  private concat = '/bands';
 
   constructor(
     private http: HttpClient,
     private auth: AuthService
   ) { }
 
-  index() {
+  index(user: string) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
-    return this.http.get<Band[]>(this.url, httpOptions);
+    return this.http.get<Band[]>(this.profileURL + user + this.concat, httpOptions);
   }
 
   show(id: number) {
@@ -36,8 +38,7 @@ export class BandServiceService {
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
-    return this.http.get<Band>(this.url + id, httpOptions);
-
+    return this.http.get<Band>(this.bandURL + id, httpOptions);
   }
 
   create(band: BandRegistrationForm) {
@@ -45,15 +46,15 @@ export class BandServiceService {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
-    return this.http.post<BandRegistrationForm>(this.url, band, httpOptions);
+    return this.http.post<BandRegistrationForm>(this.profileURL, band, httpOptions);
   }
 
-  update(band: Band) {
+  update(id: number, band: Band) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
-    return this.http.put<Band>(this.url, band, httpOptions);
+    return this.http.put<Band>(this.bandURL + id, band, httpOptions);
   }
 
   delete(id: number) {
@@ -61,7 +62,7 @@ export class BandServiceService {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
-    return this.http.delete<Band>(this.url + id, httpOptions);
+    return this.http.delete<Band>(this.bandURL + id, httpOptions);
   }
 
 }

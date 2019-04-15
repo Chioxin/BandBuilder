@@ -59,13 +59,10 @@ public class BandServiceImpl implements BandService {
 	}
 
 	@Override
-	public List<Band> getAllBandsByProfileId(int id) {
-		Optional<Profile> optional = profileRepo.findById(id);
+	public List<Band> getAllBandsByUserUsername(String user) {
+		Profile profile = profileRepo.findByUserUsername(user);
 		List<Band> bandList = null;
-		if (optional.isPresent()) {
-			Profile profile = optional.get();
-			bandList = profile.getBands();
-		}
+		bandList = profile.getBands();
 		return bandList;
 	}
 
@@ -152,7 +149,7 @@ public class BandServiceImpl implements BandService {
 	@Override
 	public Band updateBandById(int id, Band band) {
 		Optional<Band> optional = bandRepo.findById(id);
-		Band managed = null;
+		Band managed = optional.get();
 		if (optional.isPresent()) {
 			managed = optional.get();
 			managed.setAboutUs(band.getAboutUs());
