@@ -1,3 +1,5 @@
+import { Instrument } from './../../models/instrument';
+import { InstrumentService } from './../../services/instrument.service';
 import { UserInstrument } from './../../models/user-instrument';
 import { Image } from './../../models/image';
 import { ImageService } from './../../services/image.service';
@@ -31,12 +33,14 @@ export class ProfileComponent implements OnInit {
   editImage = null;
   editUserInstrument: UserInstrument[] = [];
   newUserInstrument = new UserInstrument();
+  selectedInstrumentId: number;
 
   myViewerUsername = '';
   myProfile: Profile = null;
   myBands: Band[] = [];
   myBandMembers: BandMember[] = [];
   myInstruments: UserInstrument[] = [];
+  instrumentList: Instrument[] = [];
 
   viewerIsOwner = false;
   isEditingProfile = false;
@@ -52,6 +56,7 @@ export class ProfileComponent implements OnInit {
     // private userSvc: UserService,
     private bandSvc: BandServiceService,
     private bMemberSvc: BandMemberService,
+    private instrumentSvc: InstrumentService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -78,6 +83,11 @@ export class ProfileComponent implements OnInit {
   profileSaveEdit() {
     this.flipIsEditingProfile();
     this.udpateProfile();
+  }
+
+  profileCreateInstrument() {
+    console.log(this.selectedInstrumentId);
+    this.createUserInstrument(this.newUserInstrument, this.selectedInstrumentId);
   }
 
   setEditObjects() {
@@ -118,8 +128,9 @@ export class ProfileComponent implements OnInit {
       data => {
         this.myProfile = data;
         const profileId = this.myProfile.id;
-        this.loadInstruments(profileId);
+        this.loadUserInstruments(profileId);
         this.loadBandMembersByProfileId(profileId);
+        this.loadInstruments();
         this.setEditObjects();
         this.checkViewerIsOwner();
       },
@@ -135,9 +146,10 @@ export class ProfileComponent implements OnInit {
       data => {
         this.myProfile = data;
         const profileId = this.myProfile.id;
-        this.loadInstruments(profileId);
+        this.loadUserInstruments(profileId);
         this.loadBandMembersByProfileId(profileId);
         this.loadBandsByUsername(this.myProfile.user.username);
+        this.loadInstruments();
         this.setEditObjects();
         this.checkViewerIsOwner();
       },
@@ -148,7 +160,7 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  loadInstruments(pid: number) {
+  loadUserInstruments(pid: number) {
     this.userInstrumentSvc.showByProfileId(pid).subscribe(
       data => {
         this.myInstruments = data;
@@ -185,12 +197,6 @@ export class ProfileComponent implements OnInit {
   }
 
   udpateProfile() {
-    console.log('HEY WHAT ARE THESE TWO OBJECTS ACTUALLY????');
-    console.log(this.editAddress.id);
-    console.log(this.editAddress);
-    console.log(this.editProfile.id);
-    console.log(this.editProfile);
-
     this.addressSvc.update(this.editAddress.id, this.editAddress).subscribe(
       dataAddress => {
         this.editProfile.address = dataAddress;
@@ -206,6 +212,40 @@ export class ProfileComponent implements OnInit {
       },
       err => {
         console.error('FAILED TO UPDATE ADDRESS');
+        console.error(err);
+      }
+    );
+  }
+
+  loadInstruments() {
+    this.instrumentSvc.index().subscribe(
+      data => {
+        this.instrumentList = data;
+      },
+      err => {
+        console.error('FAILED TO LOAD INSTRUMENT LIST');
+        console.error(err);
+      }
+    );
+  }
+
+  createUserInstrument(userInstrument: UserInstrument, instrumentId: number) {
+    this.instrumentSvc.show(instrumentId).subscribe(
+      dataInstrument => {
+        userInstrument.instrument = dataInstrument;
+        userInstrument.profile = this.myProfile;
+        this.userInstrumentSvc.create(userInstrument).subscribe(
+          dataUserInstrument => {
+            this.loadProfileByUser(this.myProfile.user.username);
+          },
+          err => {
+            console.error('FAILED TO CREATE A USER INSTRUMENT');
+            console.error(err);
+          }
+        );
+      },
+      err => {
+        console.error('FAILED TO FIND INSTRUMENT BY ID (' + instrumentId + ')');
         console.error(err);
       }
     );

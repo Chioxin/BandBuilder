@@ -16,7 +16,6 @@
         </div>
         <div *ngIf="isEditingProfile">
           <form>
-            <input type="text" name="username" placeholder="{{myProfile.user.username}}" [(ngModel)]="editUser.username">
             <input type="text" name="firstName" placeholder="{{myProfile.firstName}}" [(ngModel)]="editProfile.firstName">
             <input type="text" name="lastName" placeholder="{{myProfile.lastName}}" [(ngModel)]="editProfile.lastName">
             <input type="text" name="street" placeholder="{{myProfile.address.street}}" [(ngModel)]="editAddress.street">
@@ -50,14 +49,31 @@
   <hr>
   <div id="aboutMe">
     <p>{{myProfile.aboutMe}}</p>
+    <div *ngIf="viewerIsOwner">
+      <form>
+        <button class="btn btn-primary" (click)="profileCreateInstrument()">Add Instrument</button>
+        <select name="instrument" [(ngModel)]="selectedInstrumentId">
+          <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
+        </select>
+        Experience: <input type="text" name="experience" [(ngModel)]="newUserInstrument.experience">
+        Description: <input type="text" name="description" [(ngModel)]="newUserInstrument.description">
+      </form>
+    </div>
     <div class="card" *ngFor="let item of myInstruments">
       <div class="card-header">
         <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
         {{item.instrument.name}}
       </div>
+      <div class="card-body">
+        <blockquote>{{item.experience}}</blockquote>
+        <blockquote>{{item.description}}</blockquote>
+      </div>
     </div>
   </div>
-  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1>
+
+
+
+  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1><button class="btn btn-primary" [routerLink]="['/bandregistration']" *ngIf="!viewerIsOwner">New Band</button>
   <hr>
 
 
