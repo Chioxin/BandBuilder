@@ -1,5 +1,40 @@
 <h1>{{title}}<span class='badge badge-primary'></span></h1>
 
+<div *ngIf="myBand">
+  <div>
+    <h1>Band Profile: {{myBand.name}}</h1>
+    <hr>
+    <img src="{{myBand.image.url}}" alt="">
+  </div>
+
+  <div>
+    <h1>Band Members</h1>
+    <hr>
+    <div class="card" *ngFor="let member of myBandMembers">
+      <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt=""></div>
+      <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt=""></div>
+      <div class="card-body" *ngIf="!member.profile">{{member.description}}</div>
+      <div class="card-body" *ngIf="member.profile">{{member.profile.aboutMe}}</div>
+      <div class="card-footer" *ngIf="myViewerUsername">
+        <button class="btn btn-warning">Remove Member</button>
+        <button class="btn btn-danger">Remove Position</button>
+      </div>
+    </div>
+  </div>
+
+  <div>
+    <h1>About: {{myBand.name}}</h1>
+    <hr>
+    <blockquote>{{myBand.aboutUs}}</blockquote>
+  </div>
+</div>
+
+
+
+
+
+
+
 <div>
   <table class='table table-striped table-hover'>
     <thead class='thead-dark'>

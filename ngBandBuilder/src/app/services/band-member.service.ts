@@ -36,7 +36,7 @@ export class BandMemberService {
       })
     };
 
-    return this.http.get<BandMember[]>(`/api/bands/${id}/bandmembers/`, httpOptions);
+    return this.http.get<BandMember[]>(`${this.baseUrl}api/bands/${id}/bandmembers/`, httpOptions);
   }
 
   showByProfileId(pid: number) {
