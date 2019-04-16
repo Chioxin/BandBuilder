@@ -11,6 +11,7 @@ export class BandMember {
   experience: string;
   createdAt: Date;
   joinedAt: Date;
+  active: boolean;
 
   constructor(
     id?: number,
@@ -20,7 +21,8 @@ export class BandMember {
     description?: string,
     experience?: string,
     createdAt?: Date,
-    joinedAt?: Date
+    joinedAt?: Date,
+    active?: boolean
   ) {
     this.id = id;
     this.band = band;
@@ -30,6 +32,7 @@ export class BandMember {
     this.experience = experience;
     this.createdAt = createdAt;
     this.joinedAt = joinedAt;
+    this.active = active;
   }
 
 }

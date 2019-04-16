@@ -98,6 +98,21 @@ export class BandComponent implements OnInit {
 
   // METHODS - BUTTONS
 
+  bandRemoveProfileFromMember(bandMember: BandMember) {
+    const member = Object.assign({}, bandMember);
+    member.profile = null;
+    this.updateMember(member);
+  }
+
+  bandRemovePosition(bandMember: BandMember) {
+    const member = Object.assign({}, bandMember);
+    if (member.profile) {
+      member.profile = null;
+    }
+    member.active = false;
+    this.updateMember(member);
+  }
+
   // METHODS - SERVICES
 
   updateBand(id: number): void {
@@ -204,6 +219,18 @@ export class BandComponent implements OnInit {
       },
       err => {
         console.error('FAILED TO LOAD BAND MEMBERS BY BAND ID (' + id + ')');
+        console.error(err);
+      }
+    );
+  }
+
+  updateMember(member: BandMember) {
+    this.bandMemberService.update(member.id, member).subscribe(
+      data => {
+        this.loadBandMembersByBandId(this.myBand.id);
+      },
+      err => {
+        console.error('FAILED TO REMOVE PROFILE FROM BANDMEMBER ID (' + member.id + ')');
         console.error(err);
       }
     );
