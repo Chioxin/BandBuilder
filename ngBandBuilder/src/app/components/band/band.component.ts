@@ -19,6 +19,8 @@ import { identifierName } from '@angular/compiler';
   styleUrls: ['./band.component.css']
 })
 export class BandComponent implements OnInit {
+  // for bootstrap
+  currentJustify = 'start';
 
   profile: Profile = null;
   title = 'Band Profile Page';
