@@ -10,18 +10,31 @@
   <div>
     <h1>Band Members</h1>
     <hr>
-    <div class="card" *ngFor="let member of myBandMembers">
-      <div *ngIf="member.active">
-        <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt=""></div>
-        <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt=""></div>
-        <div class="card-body" *ngIf="!member.profile">{{member.description}}</div>
-        <div class="card-body" *ngIf="member.profile">{{member.profile.aboutMe}}</div>
-        <div class="card-footer" *ngIf="viewerIsOwner">
-          <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
-          <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+    <div *ngIf="!editBandMember">
+      <div class="card" *ngFor="let member of myBandMembers">
+        <div *ngIf="member.active">
+          <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt=""></div>
+          <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt=""></div>
+          <div class="card-body" *ngIf="!member.profile">{{member.description}}</div>
+          <div class="card-body" *ngIf="member.profile">{{member.profile.aboutMe}}</div>
+          <div class="card-footer" *ngIf="viewerIsOwner">
+            <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
+            <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+            <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
+            <button class="btn btn-success" (click)="bandClaimPosition(member)" *ngIf="!member.profile">Claim Position</button>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+
+  <div *ngIf="editBandMember">
+    <form>
+      <input type="text" name="description" [(ngModel)]="editBandMember.description">
+      <input type="text" name="experience" [(ngModel)]="editBandMember.experience">
+      <button class="btn btn-success" (click)="bandSavePosition()">Save</button>
+      <button class="btn btn-danger" (click)="bandCancelEditPosition()">Cancel</button>
+    </form>
   </div>
 
   <div>
