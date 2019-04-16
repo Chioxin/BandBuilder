@@ -12,22 +12,24 @@
           <span>{{myProfile.address.street}}, {{myProfile.address.street2}}</span><br>
           <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
           <span>Phone: {{myProfile.address.phone}}, Email: {{myProfile.email}}</span><br>
-          <button class="btn btn-primary">Edit</button>
+          <button class="btn btn-primary" (click)="flipIsEditingProfile()">Edit</button>
         </div>
         <div *ngIf="isEditingProfile">
           <form>
-            <input type="text" name="username" placeholder="myProfile.user.username" [(ngModel)]="editUser.username">
-            <input type="text" name="firstName" placeholder="myProfile.firstName" [(ngModel)]="editProfile.firstName">
-            <input type="text" name="lastName" placeholder="myProfile.lastName" [(ngModel)]="editProfile.lastName">
-            <input type="text" name="street" placeholder="myProfile.address.street" [(ngModel)]="editAddress.street">
-            <input type="text" name="street2" placeholder="myProfile.address.street2" [(ngModel)]="editAddress.street2">
-            <input type="text" name="city" placeholder="myProfile.address.city" [(ngModel)]="editAddress.city">
-            <input type="text" name="state" placeholder="myProfile.address.state" [(ngModel)]="editAddress.state">
-            <input type="text" name="zip" placeholder="myProfile.address.zip" [(ngModel)]="editAddress.zip">
-            <input type="text" name="phone" placeholder="myProfile.address.phone" [(ngModel)]="editAddress.phone">
-            <input type="text" name="email" placeholder="myProfile.email" [(ngModel)]="editProfile.email">
+            <input type="text" name="username" placeholder="{{myProfile.user.username}}" [(ngModel)]="editUser.username">
+            <input type="text" name="firstName" placeholder="{{myProfile.firstName}}" [(ngModel)]="editProfile.firstName">
+            <input type="text" name="lastName" placeholder="{{myProfile.lastName}}" [(ngModel)]="editProfile.lastName">
+            <input type="text" name="street" placeholder="{{myProfile.address.street}}" [(ngModel)]="editAddress.street">
+            <input type="text" name="street2" placeholder="{{myProfile.address.street2}}" [(ngModel)]="editAddress.street2">
+            <input type="text" name="city" placeholder="{{myProfile.address.city}}" [(ngModel)]="editAddress.city">
+            <input type="text" name="state" placeholder="{{myProfile.address.state}}" [(ngModel)]="editAddress.state">
+            <input type="text" name="zip" placeholder="{{myProfile.address.zip}}" [(ngModel)]="editAddress.zip">
+            <input type="text" name="phone" placeholder="{{myProfile.address.phone}}" [(ngModel)]="editAddress.phone">
+            <input type="text" name="email" placeholder="{{myProfile.email}}" [(ngModel)]="editProfile.email"><br>
+            <button class="btn btn-success" (click)="profileSaveEdit()">Save</button>
+            <button class="btn btn-danger" (click)="profileCancelEdit()">Cancel</button>
           </form>
-       </div>
+        </div>
       </div>
     </div>
 
@@ -60,14 +62,18 @@
 
 
   <div id="myBands">
-
+    <div id="myBandsAsMember">
+      <ul>
+        <li *ngFor="let band of myBands">{{band.name}}</li>
+      </ul>
+    </div>
 
   </div>
   <h1>Bands "{{myProfile.user.username}}" is a member of.</h1>
   <hr>
   <div id="myBandsAsMember">
     <ul>
-      <li *ngFor="let member of myBandMembers">{{member.instrument.name}}</li>
+      <li *ngFor="let member of myBandMembers">{{member.band.name}}</li>
     </ul>
   </div>
 </div>
