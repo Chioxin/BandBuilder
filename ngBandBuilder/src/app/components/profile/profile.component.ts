@@ -131,6 +131,10 @@ export class ProfileComponent implements OnInit {
     this.removeUserInstrumentById(id);
   }
 
+  profileRemoveMember(bandMember: BandMember) {
+    this.removeMyProfileFromMember(bandMember);
+  }
+
   // METHODS - SERVICES
 
   loadProfileById(id: number) {
@@ -270,6 +274,19 @@ export class ProfileComponent implements OnInit {
        },
       err => {
         console.error('FAILED TO REMOVE USER INSTRUMENT BY ID (' + id + ')');
+        console.error(err);
+      }
+    );
+  }
+
+  removeMyProfileFromMember(bandMember: BandMember) {
+    bandMember.profile = null;
+    this.bMemberSvc.update(bandMember.id, bandMember).subscribe(
+      data => {
+        this.loadProfileByUser(this.myProfile.user.username);
+      },
+      err => {
+        console.error('FAILED TO REMOVE SELF FROM BANDMEMBER BY ID (' + bandMember.id + ')');
         console.error(err);
       }
     );
