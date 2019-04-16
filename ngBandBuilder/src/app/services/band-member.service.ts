@@ -67,7 +67,7 @@ export class BandMemberService {
       })
     };
 
-    return this.http.put<BandMember[]>(this.url + id, bandMember, httpOptions);
+    return this.http.put<BandMember>(this.url + id, bandMember, httpOptions);
   }
   delete(id: number) {
     const httpOptions = {

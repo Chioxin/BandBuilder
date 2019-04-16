@@ -50,7 +50,16 @@ public class UserInstrumentServiceImpl implements UserInstrumentService {
 
 	@Override
 	public Boolean deleteUserInstrumentById(int id) {
-		return null;
+		Boolean deleted = false;
+		
+		Optional<UserInstrument> opt = userInstrumentRepo.findById(id);
+		if (opt.isPresent()) {
+			UserInstrument managed = opt.get();
+			managed.setActive(false);
+			userInstrumentRepo.saveAndFlush(managed);
+			deleted = true;
+		}
+		return deleted;
 	}
 
 }

@@ -117,6 +117,7 @@ public class BandMemberServiceImpl implements BandMemberService {
 		managed.setInstrument(bandMember.getInstrument());
 		managed.setJoinedAt(bandMember.getJoinedAt());
 		managed.setProfile(bandMember.getProfile());
+		bandMemberRepo.saveAndFlush(managed);
 		
 		return managed;
 	}

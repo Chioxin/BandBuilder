@@ -1,6 +1,6 @@
 <div *ngIf="myProfile" class="container">
   <div id="titleArea">
-    <h1>Profile: "{{myProfile.user.username}}"</h1>
+    <h1>Profile: "{{myProfile.firstName}} {{myProfile.lastName}}"</h1>
 
     <div class="row" id="titleOwnerView" *ngIf="viewerIsOwner">
       <div class="col">
@@ -8,7 +8,7 @@
       </div>
       <div class="col">
         <div *ngIf="!isEditingProfile">
-          <span>{{myProfile.user.username}} ({{myProfile.firstName}} {{myProfile.lastName}})</span><br>
+          <span>{{myProfile.firstName}} {{myProfile.lastName}}</span><br>
           <span>{{myProfile.address.street}}, {{myProfile.address.street2}}</span><br>
           <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
           <span>Phone: {{myProfile.address.phone}}, Email: {{myProfile.email}}</span><br>
@@ -16,7 +16,6 @@
         </div>
         <div *ngIf="isEditingProfile">
           <form>
-            <input type="text" name="username" placeholder="{{myProfile.user.username}}" [(ngModel)]="editUser.username">
             <input type="text" name="firstName" placeholder="{{myProfile.firstName}}" [(ngModel)]="editProfile.firstName">
             <input type="text" name="lastName" placeholder="{{myProfile.lastName}}" [(ngModel)]="editProfile.lastName">
             <input type="text" name="street" placeholder="{{myProfile.address.street}}" [(ngModel)]="editAddress.street">
@@ -38,7 +37,7 @@
           <img id="profileImage" src="{{myProfile.image.url}}">
         </div>
         <div class="col">
-          <span>{{myProfile.user.username}}</span><br>
+          <span>{{myProfile.firstName}} {{myProfile.lastName}}</span><br>
           <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
         </div>
       </div>
@@ -50,30 +49,59 @@
   <hr>
   <div id="aboutMe">
     <p>{{myProfile.aboutMe}}</p>
+    <div *ngIf="viewerIsOwner">
+      <form>
+        <button class="btn btn-primary" (click)="profileCreateInstrument()">Add Instrument</button>
+        <select name="instrument" [(ngModel)]="selectedInstrumentId">
+          <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
+        </select>
+        Experience: <input type="text" name="experience" [(ngModel)]="newUserInstrument.experience">
+        Description: <input type="text" name="description" [(ngModel)]="newUserInstrument.description">
+      </form>
+    </div>
     <div class="card" *ngFor="let item of myInstruments">
-      <div class="card-header">
-        <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
-        {{item.instrument.name}}
+      <div *ngIf="item.active">
+        <div class="card-header">
+          <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
+          {{item.instrument.name}}
+        </div>
+        <div class="card-body">
+          <blockquote>{{item.experience}}</blockquote>
+          <blockquote>{{item.description}}</blockquote>
+        </div>
+        <div class="card-footer" *ngIf="viewerIsOwner">
+          <button class="btn btn-primary">Edit Instrument</button>
+          <button class="btn btn-danger" (click)="profileRemoveInstrument(item.id)">Remove Instrument</button>
+        </div>
       </div>
     </div>
   </div>
-  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1>
+
+
+
+  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1><button class="btn btn-primary" [routerLink]="['/bandregistration']" *ngIf="viewerIsOwner">New Band</button>
   <hr>
-
-
   <div id="myBands">
-    <div id="myBandsAsMember">
-      <ul>
-        <li *ngFor="let band of myBands">{{band.name}}</li>
-      </ul>
+    <div id="myBandsAsLeader">
+      <div class="card" *ngFor="let band of myBands">
+        <div class="card-header">
+          {{band.name}}<br>
+          <img src="{{band.image.url}}" alt="">
+        </div>
+        <div class="card-body">
+          <blockquote>{{band.aboutUs}}</blockquote>
+        </div>
+      </div>
     </div>
 
   </div>
   <h1>Bands "{{myProfile.user.username}}" is a member of.</h1>
   <hr>
   <div id="myBandsAsMember">
-    <ul>
-      <li *ngFor="let member of myBandMembers">{{member.band.name}}</li>
-    </ul>
+    <div class="card" *ngFor="let member of myBandMembers">
+      <div class="card-header">Plays {{member.instrument.name}} for {{member.band.name}}</div>
+      <div class="card-body"><img src="{{member.instrument.image.url}}" alt=""></div>
+      <div class="card-footer" *ngIf="viewerIsOwner"><button class="btn btn-danger" (click)="profileRemoveMember(member)">Remove Myself From Band</button></div>
+    </div>
   </div>
 </div>
