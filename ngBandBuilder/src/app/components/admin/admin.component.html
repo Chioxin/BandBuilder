@@ -18,18 +18,18 @@
       <th>Description</th>
       <!-- <th>Image</th> -->
       <th>Active</th>
-      <th>Approved</th>
+      <!-- <th>Approved</th> -->
       <th></th>
 
     </tr>
     <!-- <tr *ngFor= "let instrument of instruments " [ngClass]="formatCompletedProfile(instrument)" (click)="setInstrumentSelected(instrument)"> -->
 
-      <tr  *ngFor="let instrument of instruments " [ngClass]="formatCompletedInstrument(instrument)" >
+      <tr  *ngFor="let instrument of instruments | myInstrumentFilter" [ngClass]="formatCompletedInstrument(instrument)" >
         <td>{{instrument.name}}</td>
         <td>{{instrument.description}}</td>
         <td (click)="setInstrumentSelected(instrument)">{{instrument.active}}</td>
         <!-- <td ><input type="checkbox" name="active" [(ngModel)] = "instrument.active"/>{{instrument.active}}</td> -->
-        <td><input  type="checkbox" name="approved" [(ngModel)]="instrument.approved" />{{instrument.approved}}</td>
+        <!-- <td><input  type="checkbox" name="approved" [(ngModel)]="instrument.approved" />{{instrument.approved}}</td> -->
         <button type="button" class="btn btn-danger" (click)="deleteInstrument(instrument)">Delete</button>
         <button type="button" class="btn btn-success" (click)="acceptInstrument(instrument)">Accept</button>
       </tr>

@@ -1,3 +1,4 @@
+import { InstrumentPipe } from './../../pipes/instrument.pipe';
 import { SearchByKeywordPipe } from 'src/app/pipes/search-by-keyword.pipe';
 import { ProfileService } from './../../services/profile.service';
 import { Component, OnInit } from '@angular/core';
@@ -23,11 +24,13 @@ export class AdminComponent implements OnInit {
               private router: Router,
               private profileSrv: ProfileService,
               private instrumentSrv: InstrumentService,
-              private searchByKeywordPipe: SearchByKeywordPipe
+              private searchByKeywordPipe: SearchByKeywordPipe,
+              private instrumentPipe: InstrumentPipe
   ) { }
   // Fields
   adminProfile: Profile = null;
   isLoggedIn = false;
+  myflag = false;
   profiles: Profile[] = [];
   instruments: Instrument[] = [];
   instrument: Instrument = null;
@@ -72,6 +75,7 @@ export class AdminComponent implements OnInit {
     this.instrumentSrv.delete(instrument.id).subscribe(
       data => {
         this.instrument = data;
+        this.loadInstruments();
       },
       err => {
         console.error('AdminComponent.delete(): Error');
