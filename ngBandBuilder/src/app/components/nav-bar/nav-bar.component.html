@@ -2,14 +2,14 @@
 <nav class="navbar navbar-light bg-light">
   <span  [routerLink]="['/home']" class="navbar-brand mb-0 h1">Band Builder</span>
   <span class="navbar-brand mb-0 h1">{{selected}}</span>
-  <form>
+  <form #navForm="ngForm">
     <div #loggedIn *ngIf="!isLoggedIn">
       <input type="text" name="username" placeholder="username" [(ngModel)]="newUser.username">
       <input type="text" name="password" placeholder="password" [(ngModel)]="newUser.password">
       <button class="btn btn-primary" (click)="login() ">Login</button>
       <button [routerLink]="['/registration']" class="btn btn-success">Register</button>
     </div>
-    <div *ngIf="isLoggedIn">
+    <div  *ngIf="isLoggedIn">
       <button [routerLink]="['/home']" class="btn btn-danger" (click)="logout() ">Logout</button>
       <button  class="btn btn-dark" (click)="admin() " [routerLink]="['/admin']">Admin</button>
       <button type="button" class="btn btn-info" [routerLink]="['/profiles']">Profile</button>

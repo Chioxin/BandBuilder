@@ -3,6 +3,7 @@ import { AuthService } from './auth.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
+import { InstrumentForm } from '../models/instrument-form';
 @Injectable({
   providedIn: 'root'
 })
@@ -44,14 +45,16 @@ export class InstrumentService {
 
   }
 
-  create(instrument: Instrument) {
+  create(newInstrument: InstrumentForm) {
+    console.log(newInstrument);
+
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type': 'application/json',
         Authorization: 'Basic ' + this.auth.getCredentials() // When creating a profile you should not need to authenticate. Right?
       })
     };
-    return this.http.post<Instrument>(this.url, instrument, httpOptions);
+    return this.http.post<Instrument>(this.url, newInstrument, httpOptions);
   }
 
   update(id: number, instrument: Instrument) {

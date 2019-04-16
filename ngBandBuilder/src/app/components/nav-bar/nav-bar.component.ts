@@ -3,9 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, NgForm } from '@angular/forms';
 import { logging } from 'protractor';
 import { userInfo } from 'os';
+import { formArrayNameProvider } from '@angular/forms/src/directives/reactive_directives/form_group_name';
 
 @Component({
   selector: 'app-nav-bar',
@@ -60,9 +61,11 @@ export class NavBarComponent implements OnInit {
       }
     );
   }
-  logout() {
+  logout(navForm: NgForm) {
     this.auth.logout();
     this.isLoggedIn = false;
+    this.selected = null;
+    // navForm.reset();
   }
   admin() {
 
