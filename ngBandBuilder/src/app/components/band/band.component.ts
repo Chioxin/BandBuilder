@@ -28,7 +28,10 @@ export class BandComponent implements OnInit {
   myBand: Band;
   myBandMembers: BandMember[];
 
+  editBandMember: BandMember = null;
+
   viewerIsOwner = false;
+  myViewerProfile: Profile = null;
 
   // for bootstrap
   currentJustify = 'start';
@@ -52,6 +55,7 @@ export class BandComponent implements OnInit {
     private addressService: AddressService,
     private imageService: ImageService,
     private bandMemberService: BandMemberService,
+    private profileSvc: ProfileService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -61,6 +65,7 @@ export class BandComponent implements OnInit {
   ngOnInit(
   ) {
     this.myViewerUsername = this.auth.getUsername();
+    this.loadProfileByUser(this.myViewerUsername);
     this.loadBand(this.getRoute());
 
     //LEGACY
@@ -71,6 +76,10 @@ export class BandComponent implements OnInit {
   // METHODS
 
   // METHODS - UTILITIES
+
+  getViewerProfileByUsername() {
+
+  }
 
   checkViewerIsOwner() {
     if (this.myViewerUsername === this.myBand.leader.user.username) {
@@ -110,6 +119,24 @@ export class BandComponent implements OnInit {
       member.profile = null;
     }
     member.active = false;
+    this.updateMember(member);
+  }
+
+  bandEditPosition(bandMember: BandMember) {
+    this.editBandMember = Object.assign({}, bandMember);
+  }
+
+  bandCancelEditPosition() {
+    this.editBandMember = null;
+  }
+
+  bandSavePosition() {
+    this.updateMember(this.editBandMember);
+  }
+
+  bandClaimPosition(bandMember: BandMember) {
+    const member = Object.assign({}, bandMember);
+    member.profile = this.myViewerProfile;
     this.updateMember(member);
   }
 
@@ -227,10 +254,23 @@ export class BandComponent implements OnInit {
   updateMember(member: BandMember) {
     this.bandMemberService.update(member.id, member).subscribe(
       data => {
+        this.editBandMember = null;
         this.loadBandMembersByBandId(this.myBand.id);
       },
       err => {
         console.error('FAILED TO REMOVE PROFILE FROM BANDMEMBER ID (' + member.id + ')');
+        console.error(err);
+      }
+    );
+  }
+
+  loadProfileByUser(username: string) {
+    this.profileSvc.showProfileByUsername(username).subscribe(
+      data => {
+        this.myViewerProfile = data;
+      },
+      err => {
+        console.error('ERROR GETTING PROFILE BY USERNAME (' + username + ')');
         console.error(err);
       }
     );
