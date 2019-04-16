@@ -1,15 +1,16 @@
+import { AddressService } from './address.service';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
 import { Band } from '../models/band';
 import { BandRegistrationForm } from '../models/band-registration-form';
+import { Address } from '../models/address';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BandServiceService {
-
   // api routes
   private profileRoute = 'api/profiles/';
   private bandRoute = 'api/bands/';
@@ -17,6 +18,10 @@ export class BandServiceService {
   private profileURL = this.baseUrl + this.profileRoute;
   private bandURL = this.baseUrl + this.bandRoute;
   private concat = '/bands';
+
+  // address api routes
+  private addressRoute = 'api/addresses/';
+  private addressURL = this.baseUrl + this.addressRoute;
 
   constructor(
     private http: HttpClient,

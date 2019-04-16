@@ -18,6 +18,16 @@ export class BandMemberService {
     private http: HttpClient,
     private auth: AuthService
   ) { }
+
+  index(id: number, user: string) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.get<BandMember[]>(`/api/bands/${id}/bandmembers/`, httpOptions);
+  }
+
   showByBandId(id: number) {
     const httpOptions = {
       headers: new HttpHeaders({
