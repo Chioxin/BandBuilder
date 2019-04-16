@@ -1,20 +1,22 @@
 <span>
   <h3>Admin Page</h3>
 </span>
-<!-- Search form -->
 
+<!-- Search form Admin-->
 <div *ngIf="adminProfile">
   <!-- <img src="https://alghazitour.co.id/wp-content/uploads/admin-user-icon.gif" alt="admin image" class="img-thumbnail"> -->
   <img src="{{adminProfile.image.url}}" alt="admin image" class="img-thumbnail">
   <h3> Username: {{adminProfile.user.username}}</h3>
 </div>
 <hr>
+<!-- div for retriving instruments -->
 <div id="listOfInstruments">
   <h3>Instrument Approvals</h3>
   <table class="table table-striped">
     <tr class="thead-dark">
       <th>Name</th>
       <th>Description</th>
+      <th>Image</th>
       <th>Active</th>
       <th>Approved</th>
 
@@ -33,8 +35,22 @@
   </div>
   <hr>
 
+<!-- div for retrieving profiles -->
+<form id="addInstrumentForm">
+  <h3>Add new Instrument</h3>
+
+<input type="text" name="name" placeholder="name" [(ngModel)]="newInstrument.instrumentName">
+<input type="text" name="description" placeholder="description" [(ngModel)]="newInstrument.instrumentDescription">
+<input type="text" name="approved" placeholder="approved" [(ngModel)]="newInstrument.instrumentApproved">
+<input type="text" name="active" placeholder="active" [(ngModel)]="newInstrument.instrumentActive">
+<input type="text" name="imageUrl" placeholder="image url" [(ngModel)]="newInstrument.imageURL">
+<input type="text" name="imageDescription" placeholder="image description" [(ngModel)]="newInstrument.imageDescription">
+<input type="text" name="imageAlt" placeholder="image alt" [(ngModel)]="newInstrument.imageAlt">
+<button type="button" class="btn btn-success" (click)="addInstrument(newInstrument)"> Save</button>
+</form>
+<hr>
+<h3>Sort Profiles by Username</h3>
   <div class="md-form mt-0">
-    <h3>Sort by Username</h3>
     <input  [(ngModel)]="searchText" class="form-control"  placeholder="Search" type="text"  aria-label="Search" autocomplete="off" placeholder="&#61442;  Start searching for a profile">
   </div>
 <hr>

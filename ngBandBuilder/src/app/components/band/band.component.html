@@ -13,7 +13,6 @@
     <tbody>
       <tr *ngFor='let myBand of bands'>
         <td (click)='selected = myBand; setEditBand()'>{{myBand.name}}</td>
-        <th>{{myBand.name}}</th>
         <th>{{myBand.email}}</th>
         <th>{{myBand.genre}}</th>
         <th>{{myBand.aboutUs}}</th>
@@ -22,14 +21,78 @@
   </table>
 </div>
 
-<div id='bandEdit' *ngIf='editBand && selected'>
-  <form class='form'>
-    <input type="text" name='id' value=editBand.id [(ngModel)]="editBand.id"><br>
-    <input type="text" name='name' [(ngModel)]="editBand.name"><br>
-    <input type="text" name='aboutUs' [(ngModel)]="editBand.aboutUs"><br>
-    <input type="text" name='genre' [(ngModel)]="editBand.genre"><br>
-    <input type="text" name='email' [(ngModel)]="editBand.email"><br>
-    <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
-    <button (click)='updateBand()' class='btn btn-success'>Save</button>
-  </form>
-</div>
+<!-- <div id='bandEdit' *ngIf='editBand && selected'>
+    <form class='form'>
+      <input type="text" name='id' value=editBand.id [(ngModel)]="editBand.id"><br>
+      <input type="text" name='name' [(ngModel)]="editBand.name"><br>
+      <input type="text" name='aboutUs' [(ngModel)]="editBand.aboutUs"><br>
+      <input type="text" name='genre' [(ngModel)]="editBand.genre"><br>
+      <input type="text" name='email' [(ngModel)]="editBand.email"><br>
+      <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+      <button (click)='updateBand(editBand)' class='btn btn-success'>Save</button>
+    </form>
+</div> -->
+
+<ngb-accordion [closeOthers]="true">
+    <ngb-panel id="static-1" title='Band Details:'>
+      <ng-template ngbPanelContent>
+          <div id='bandEdit' *ngIf='editBand && selected'>
+              <form class='form'>
+                <input type="hidden" name='id' value=editBand.id [(ngModel)]="editBand.id">
+                <input type="text" name='name' [(ngModel)]="editBand.name"><br>
+                <input type="text" name='aboutUs' [(ngModel)]="editBand.aboutUs"><br>
+                <input type="text" name='genre' [(ngModel)]="editBand.genre"><br>
+                <input type="text" name='email' [(ngModel)]="editBand.email"><br>
+                <input type="text" name='city' value=editBand.address.city [(ngModel)]="editBand.address.city"><br>
+                <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+                <button (click)='updateBand(editBand)' class='btn btn-success'>Save</button>
+              </form>
+          </div>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="static-2" title='Band Address:'>
+      <ng-template ngbPanelContent>
+          <div id='addressEdit' *ngIf='editBand && selected'>
+              <form class='form'>
+                <input type="text" name='street' value=editBand.address.street [(ngModel)]="editBand.address.street"><br>
+                <input type="text" name='street2' value=editBand.address.street2 [(ngModel)]="editBand.address.street2"><br>
+                <input type="text" name='city' value=editBand.address.city [(ngModel)]="editBand.address.city"><br>
+                <input type="text" name='state' value=editBand.address.state [(ngModel)]="editBand.address.state"><br>
+                <input type="text" name='zip' value=editBand.address.zip [(ngModel)]="editBand.address.zip"><br>
+                <input type="text" name='phone' value=editBand.address.phone [(ngModel)]="editBand.address.phone"><br>
+                <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+                <button (click)='updateAddress(editBand.address)' class='btn btn-success'>Save</button>
+              </form>
+          </div>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="static-3" title="Band Image:">
+      <ng-template ngbPanelContent>
+          <div id='imageEdit' *ngIf='editBand && selected'>
+              <form class='form'>
+                <input type="text" name='url' value=editBand.image.url [(ngModel)]="editBand.image.url"><br>
+                <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+                <button (click)='updateImage(editBand.image)' class='btn btn-success'>Save</button>
+              </form>
+          </div>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="static-4" title="Band Members:">
+        <ng-template ngbPanelContent>
+            <div id='imageEdit' *ngIf='editBand && selected'>
+              <div *ngFor='let myBandMembers of bandMembers'>
+                <p>{{myBandMembers.id}}</p>
+              </div>
+            </div>
+        </ng-template>
+      </ngb-panel>
+      <ngb-panel id="static-5" title="Band Social Media:">
+          <ng-template ngbPanelContent>
+              <div id='imageEdit' *ngIf='editBand && selected'>
+                <div *ngFor='let myBandSocialMedias of band'>
+                  <p>{{myBandSocialMedias.id}}</p>
+                </div>
+              </div>
+          </ng-template>
+        </ngb-panel>
+  </ngb-accordion>

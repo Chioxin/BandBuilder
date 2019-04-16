@@ -32,10 +32,10 @@ export class ImageService {
   update(id: number, image: Image) {
     const httpOptions = {
       headers: new HttpHeaders({
-        'Content-Type': 'application / json',
+        'Content-Type': 'application/json',
         Authorization: 'Basic ' + this.auth.getCredentials()
       })
     };
-    return this.http.put<Image>(this.url + id, image, httpOptions);
+    return this.http.put<Image>('http://localhost:8090/api/images/' + id, image, httpOptions);
   }
 }

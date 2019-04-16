@@ -9,6 +9,7 @@ import { Instrument } from 'src/app/models/instrument';
 import { instantiateRootComponent } from '@angular/core/src/render3/instructions';
 import { Image } from 'src/app/models/image';
 import { InstrumentService } from 'src/app/services/instrument.service';
+import { InstrumentForm } from 'src/app/models/instrument-form';
 
 @Component({
   selector: 'app-admin',
@@ -23,7 +24,7 @@ export class AdminComponent implements OnInit {
               private profileSrv: ProfileService,
               private instrumentSrv: InstrumentService,
               private searchByKeywordPipe: SearchByKeywordPipe
-              ) { }
+  ) { }
   // Fields
   adminProfile: Profile = null;
   isLoggedIn = false;
@@ -33,6 +34,8 @@ export class AdminComponent implements OnInit {
   selected: Profile = null;
   profile: Profile = null;
   searchText: '';
+// tslint:disable-next-line: new-parens
+  newInstrument: InstrumentForm = new InstrumentForm();
 
   // Methods
   ngOnInit() {
@@ -103,6 +106,7 @@ export class AdminComponent implements OnInit {
   }
   setInstrumentSelected(instrument) {
     this.selected = instrument;
+
   }
   setProfileSelected(profile) {
     this.selected = profile;
@@ -144,7 +148,16 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-  searchByKeyWord(value: string){
-
+  addInstrument(newInstrument: InstrumentForm) {
+    this.instrumentSrv.create(newInstrument).subscribe(
+      data => {
+        this.loadInstruments();
+        this.newInstrument = new InstrumentForm();
+      },
+      err => {
+        console.error('AdminComponent.addInstrument(): Error');
+        console.error(err);
+      }
+    );
   }
 }
