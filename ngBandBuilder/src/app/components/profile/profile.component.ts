@@ -191,7 +191,7 @@ export class ProfileComponent implements OnInit {
     console.log(this.editProfile.id);
     console.log(this.editProfile);
 
-    this.addressSvc.udpate(this.editAddress.id, this.editAddress).subscribe(
+    this.addressSvc.update(this.editAddress.id, this.editAddress).subscribe(
       dataAddress => {
         this.editProfile.address = dataAddress;
         this.profileSvc.update(this.myProfile.id, this.editProfile).subscribe(
