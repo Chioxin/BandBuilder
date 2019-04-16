@@ -60,20 +60,26 @@
       </form>
     </div>
     <div class="card" *ngFor="let item of myInstruments">
-      <div class="card-header">
-        <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
-        {{item.instrument.name}}
-      </div>
-      <div class="card-body">
-        <blockquote>{{item.experience}}</blockquote>
-        <blockquote>{{item.description}}</blockquote>
+      <div *ngIf="item.active">
+        <div class="card-header">
+          <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
+          {{item.instrument.name}}
+        </div>
+        <div class="card-body">
+          <blockquote>{{item.experience}}</blockquote>
+          <blockquote>{{item.description}}</blockquote>
+        </div>
+        <div class="card-footer" *ngIf="viewerIsOwner">
+          <button class="btn btn-primary">Edit Instrument</button>
+          <button class="btn btn-danger" (click)="profileRemoveInstrument(item.id)">Remove Instrument</button>
+        </div>
       </div>
     </div>
   </div>
 
 
 
-  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1><button class="btn btn-primary" [routerLink]="['/bandregistration']" *ngIf="!viewerIsOwner">New Band</button>
+  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1><button class="btn btn-primary" [routerLink]="['/bandregistration']" *ngIf="viewerIsOwner">New Band</button>
   <hr>
 
 

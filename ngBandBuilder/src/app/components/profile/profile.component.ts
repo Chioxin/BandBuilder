@@ -59,7 +59,7 @@ export class ProfileComponent implements OnInit {
     private instrumentSvc: InstrumentService,
     private router: Router,
     private route: ActivatedRoute
-  ) { }
+    ) { }
 
   // INIT
 
@@ -70,25 +70,7 @@ export class ProfileComponent implements OnInit {
 
   // METHODS
 
-  flipIsEditingProfile() {
-    this.setEditObjects();
-    this.isEditingProfile = !this.isEditingProfile;
-  }
-
-  profileCancelEdit() {
-    this.flipIsEditingProfile();
-    this.setEditObjects();
-  }
-
-  profileSaveEdit() {
-    this.flipIsEditingProfile();
-    this.udpateProfile();
-  }
-
-  profileCreateInstrument() {
-    console.log(this.selectedInstrumentId);
-    this.createUserInstrument(this.newUserInstrument, this.selectedInstrumentId);
-  }
+  // METHODS - UTILITY
 
   setEditObjects() {
     this.editAddress = this.myProfile.address;
@@ -122,6 +104,34 @@ export class ProfileComponent implements OnInit {
       this.loadProfileByUser(target);
     }
   }
+
+  flipIsEditingProfile() {
+    this.setEditObjects();
+    this.isEditingProfile = !this.isEditingProfile;
+  }
+
+  // METHODS - BUTTONS
+
+  profileCancelEdit() {
+    this.flipIsEditingProfile();
+    this.setEditObjects();
+  }
+
+  profileSaveEdit() {
+    this.flipIsEditingProfile();
+    this.udpateProfile();
+  }
+
+  profileCreateInstrument() {
+    console.log(this.selectedInstrumentId);
+    this.createUserInstrument(this.newUserInstrument, this.selectedInstrumentId);
+  }
+
+  profileRemoveInstrument(id: number) {
+    this.removeUserInstrumentById(id);
+  }
+
+  // METHODS - SERVICES
 
   loadProfileById(id: number) {
     this.profileSvc.show(id).subscribe(
@@ -234,8 +244,10 @@ export class ProfileComponent implements OnInit {
       dataInstrument => {
         userInstrument.instrument = dataInstrument;
         userInstrument.profile = this.myProfile;
+        userInstrument.active = true;
         this.userInstrumentSvc.create(userInstrument).subscribe(
           dataUserInstrument => {
+            this.newUserInstrument = new UserInstrument();
             this.loadProfileByUser(this.myProfile.user.username);
           },
           err => {
@@ -246,6 +258,18 @@ export class ProfileComponent implements OnInit {
       },
       err => {
         console.error('FAILED TO FIND INSTRUMENT BY ID (' + instrumentId + ')');
+        console.error(err);
+      }
+    );
+  }
+
+  removeUserInstrumentById(id: number) {
+    this.userInstrumentSvc.delete(id).subscribe(
+      data => {
+        this.loadProfileByUser(this.myProfile.user.username);
+       },
+      err => {
+        console.error('FAILED TO REMOVE USER INSTRUMENT BY ID (' + id + ')');
         console.error(err);
       }
     );
