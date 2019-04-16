@@ -1,4 +1,4 @@
-import { Instrument } from './instrument';
+import { UserInstrument } from './user-instrument';
 import { Band } from './band';
 import { Image } from './image';
 import { Address } from './address';
@@ -18,7 +18,7 @@ export class Profile {
 	updatedAt: string;
 	bands: Band[];
 	bandMembers: BandMember[];
-	instruments: Instrument[];
+	userInstruments: UserInstrument[];
   active: boolean;
 
   constructor(
@@ -34,7 +34,7 @@ export class Profile {
     updatedAt?: string,
     bands?: Band[],
     bandMembers?: BandMember[],
-    instruments?: Instrument[],
+    userInstruments?: UserInstrument[],
     active?: boolean
   ) {
     this.id = id;
@@ -49,7 +49,7 @@ export class Profile {
     this.updatedAt = updatedAt;
     this.bands = bands;
     this.bandMembers = bandMembers;
-    this.instruments = instruments;
+    this.userInstruments = userInstruments;
     this.active = active;
   }
 

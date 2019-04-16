@@ -33,7 +33,7 @@ export class AddressService {
     return this.http.get<Address>(this.url + id, httpOptions);
   }
 
-  udpate(id: number, address: Address) {
+  update(id: number, address: Address) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + this.auth.getCredentials()

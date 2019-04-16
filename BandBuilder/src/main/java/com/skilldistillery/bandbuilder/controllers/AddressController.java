@@ -59,7 +59,7 @@ public class AddressController {
 	}
 	
 	@PutMapping("addresses/{aid}")
-	public Address createAddressById (@RequestBody Address updatedAddress, @PathVariable Integer id,
+	public Address createAddressById (@RequestBody Address updatedAddress, @PathVariable("aid") Integer id,
 			HttpServletResponse resp) {
 		
 		updatedAddress = addressSvc.updateAddressById(id, updatedAddress);
