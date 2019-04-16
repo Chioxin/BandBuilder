@@ -19,6 +19,7 @@ const routes: Routes = [
   { path: 'profiles', component: ProfileComponent },
   { path: 'profiles/:id', component: ProfileComponent},
   { path: 'bands', component: BandComponent },
+  { path: 'bands/:id', component: BandComponent },
   { path: 'admin', component: AdminComponent }
 ];
 
