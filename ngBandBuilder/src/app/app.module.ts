@@ -19,7 +19,6 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-page.component';
 import { BandComponent } from './components/band/band.component';
 import { SearchByKeywordPipe } from './pipes/search-by-keyword.pipe';
-
 import { InstrumentPipe } from './pipes/instrument.pipe';
 
 
@@ -49,7 +48,7 @@ import { InstrumentPipe } from './pipes/instrument.pipe';
     FormsModule,
     HttpClientModule
   ],
-  providers: [ SearchByKeywordPipe],
+  providers: [ SearchByKeywordPipe, InstrumentPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
