@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS `image` ;
 
 CREATE TABLE IF NOT EXISTS `image` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `url` VARCHAR(2000) NOT NULL,
+  `url` VARCHAR(2000) NULL,
   `alt` TEXT(1000) NULL,
   `description` TEXT(1000) NULL,
   `active` VARCHAR(45) NULL,

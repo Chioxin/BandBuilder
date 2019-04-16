@@ -1,0 +1,9 @@
+table {
+  text-align: center;
+  margin: auto;
+  width: 50% !important;
+}
+form > div > table > tbody > button {
+
+  align-content: center;
+ }

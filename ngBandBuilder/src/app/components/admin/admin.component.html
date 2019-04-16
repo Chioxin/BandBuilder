@@ -10,27 +10,30 @@
 </div>
 <hr>
 <!-- div for retriving instruments -->
-<div id="listOfInstruments">
+<div id="listOfInstruments" >
   <h3>Instrument Approvals</h3>
-  <table class="table table-striped">
-    <tr class="thead-dark">
+  <table class="table table-striped" >
+    <tr class="thead-dark" >
       <th>Name</th>
       <th>Description</th>
-      <th>Image</th>
+      <!-- <th>Image</th> -->
       <th>Active</th>
       <th>Approved</th>
+      <th></th>
 
     </tr>
     <!-- <tr *ngFor= "let instrument of instruments " [ngClass]="formatCompletedProfile(instrument)" (click)="setInstrumentSelected(instrument)"> -->
-      <tr *ngFor="let instrument of instruments " [ngClass]="formatCompletedInstrument(instrument)">
+
+      <tr  *ngFor="let instrument of instruments " [ngClass]="formatCompletedInstrument(instrument)" >
         <td>{{instrument.name}}</td>
         <td>{{instrument.description}}</td>
         <td (click)="setInstrumentSelected(instrument)">{{instrument.active}}</td>
         <!-- <td ><input type="checkbox" name="active" [(ngModel)] = "instrument.active"/>{{instrument.active}}</td> -->
         <td><input  type="checkbox" name="approved" [(ngModel)]="instrument.approved" />{{instrument.approved}}</td>
-        <button type="button" class="btn btn-danger" (click)="deleteInstrument(instrument.id)">Delete</button>
-        <button type="button" class="btn btn-success" (click)="acceptInstrument(instrument.id)">Accept</button>
+        <button type="button" class="btn btn-danger" (click)="deleteInstrument(instrument)">Delete</button>
+        <button type="button" class="btn btn-success" (click)="acceptInstrument(instrument)">Accept</button>
       </tr>
+
     </table>
   </div>
   <hr>
@@ -41,8 +44,8 @@
 
 <input type="text" name="name" placeholder="name" [(ngModel)]="newInstrument.instrumentName">
 <input type="text" name="description" placeholder="description" [(ngModel)]="newInstrument.instrumentDescription">
-<input type="text" name="approved" placeholder="approved" [(ngModel)]="newInstrument.instrumentApproved">
-<input type="text" name="active" placeholder="active" [(ngModel)]="newInstrument.instrumentActive">
+Approved: <input type="checkbox" name="approved" placeholder="approved" [(ngModel)]="newInstrument.instrumentApproved">
+Active: <input type="checkbox" name="active" placeholder="active" [(ngModel)]="newInstrument.instrumentActive">
 <input type="text" name="imageUrl" placeholder="image url" [(ngModel)]="newInstrument.imageURL">
 <input type="text" name="imageDescription" placeholder="image description" [(ngModel)]="newInstrument.imageDescription">
 <input type="text" name="imageAlt" placeholder="image alt" [(ngModel)]="newInstrument.imageAlt">
@@ -57,11 +60,12 @@
 <div id="listOfProfiles">
   <h3>Profiles</h3>
   <table class="table table-striped">
-    <tr class="thead-dark">
+    <tr class="thead-dark" span="">
       <th>Username</th>
       <th>Active</th>
       <th>Role</th>
       <th>Enabled</th>
+      <th></th>
     </tr>
     <tr *ngFor="let profile of profiles | searchByKeyword:searchText " [ngClass]="formatCompletedProfile(profile)"
       (click)="setProfileSelected(profile)">
