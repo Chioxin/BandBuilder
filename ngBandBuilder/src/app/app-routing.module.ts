@@ -1,3 +1,4 @@
+import { UserInstrument } from './models/user-instrument';
 import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-page.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { NgModule } from '@angular/core';
@@ -21,6 +22,7 @@ const routes: Routes = [
   { path: 'bands', component: BandComponent },
   { path: 'bands/:id', component: BandComponent },
   { path: 'admin', component: AdminComponent }
+  { path: 'userinstruments', component: UserInstrument }
 ];
 
 @NgModule({

@@ -72,6 +72,14 @@ export class ProfileComponent implements OnInit {
 
   // METHODS - UTILITY
 
+  redirectBand(id: number) {
+    this.router.navigate(['/bands/' + id]);
+  }
+
+  redirectUserInstrument(id: number) {
+    this.router.navigate(['/userinstruments/' + id])
+  }
+
   setEditObjects() {
     this.editAddress = this.myProfile.address;
     this.editImage = this.myProfile.image;
@@ -230,6 +238,19 @@ export class ProfileComponent implements OnInit {
       }
     );
   }
+
+  // updateUserInstrument() {
+  //   this.userInstrumentSvc.update(this.editUserInstrument.id, this.editUserInstrument).subscribe(
+  //     data => {
+  //       this.editUserInstrument = data;
+  //       this.loadProfileByUser(this.myProfile.user.username);
+  //     },
+  //     err => {
+  //       console.error('FAILED TO UPDATE ADDRESS');
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
   loadInstruments() {
     this.instrumentSvc.index().subscribe(
