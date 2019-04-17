@@ -12,6 +12,8 @@ import { AddressService } from 'src/app/services/address.service';
 import { Address } from 'src/app/models/address';
 import { ImageService } from 'src/app/services/image.service';
 import { identifierName } from '@angular/compiler';
+import { Instrument } from 'src/app/models/instrument';
+import { InstrumentService } from 'src/app/services/instrument.service';
 
 
 @Component({
@@ -30,6 +32,8 @@ export class BandComponent implements OnInit {
 
   editBandMember: BandMember = null;
   newBandMember: BandMember = null;
+  selectedInstrumentId: number;
+  instrumentList: Instrument[] = [];
 
   viewerIsOwner = false;
   myViewerProfile: Profile = null;
@@ -57,6 +61,7 @@ export class BandComponent implements OnInit {
     private imageService: ImageService,
     private bandMemberService: BandMemberService,
     private profileSvc: ProfileService,
+    private instrumentSvc: InstrumentService,
     private router: Router,
     private route: ActivatedRoute
   ) { }
@@ -68,6 +73,7 @@ export class BandComponent implements OnInit {
     this.myViewerUsername = this.auth.getUsername();
     this.loadProfileByUser(this.myViewerUsername);
     this.loadBand(this.getRoute());
+    this.loadInstruments();
 
     //LEGACY
     this.getUserName();
@@ -150,7 +156,11 @@ export class BandComponent implements OnInit {
   }
 
   bandSaveAddBandMember() {
-
+    this.newBandMember.instrument = new Instrument();
+    this.newBandMember.instrument.id = this.selectedInstrumentId;
+    this.newBandMember.band = this.myBand;
+    this.newBandMember.active = true;
+    this.createBandMember(this.newBandMember);
   }
 
   // METHODS - SERVICES
@@ -284,6 +294,31 @@ export class BandComponent implements OnInit {
       },
       err => {
         console.error('ERROR GETTING PROFILE BY USERNAME (' + username + ')');
+        console.error(err);
+      }
+    );
+  }
+
+  loadInstruments() {
+    this.instrumentSvc.index().subscribe(
+      data => {
+        this.instrumentList = data;
+      },
+      err => {
+        console.error('FAILED TO LOAD INSTRUMENT LIST');
+        console.error(err);
+      }
+    );
+  }
+
+  createBandMember(bandMember: BandMember) {
+    this.bandMemberService.create(bandMember).subscribe(
+      data => {
+        this.loadBandMembersByBandId(this.myBand.id);
+        this.newBandMember = null;
+      },
+      err => {
+        console.error('FAILED TO CREATE NEW BAND MEMBER');
         console.error(err);
       }
     );

@@ -8,10 +8,19 @@
   </div>
 
   <div>
-    <h1>Band Members</h1><button class="btn btn-primary">Add Member</button>
+    <h1>Band Members</h1><button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
     <hr>
 
     <div *ngIf="newBandMember">
+      <form>
+        <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
+        <button class="btn btn-danger" (click)="bandCancelAddBandMember()">Reject</button>
+        <select name="instrument" [(ngModel)]="selectedInstrumentId">
+            <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
+          </select>
+        <input type="text" name="experience" [(ngModel)]="newBandMember.experience">
+        <input type="text" name="description" [(ngModel)]="newBandMember.description">
+      </form>
 
     </div>
 
