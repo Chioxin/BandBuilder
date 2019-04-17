@@ -30,6 +30,7 @@ export class BandComponent implements OnInit {
   myBand: Band;
   myBandMembers: BandMember[];
 
+  editBand: Band = null;
   editBandMember: BandMember = null;
   newBandMember: BandMember = null;
   selectedInstrumentId: number;
@@ -37,20 +38,20 @@ export class BandComponent implements OnInit {
 
   viewerIsOwner = false;
   myViewerProfile: Profile = null;
+  myViewerUsername: string;
 
   // for bootstrap
-  currentJustify = 'start';
+  // currentJustify = 'start';
 
-  profile: Profile = null;
-  title = 'Band Profile Page';
-  bands: Band[] = [];
-  band: Band;
-  bandMembers: BandMember[] = [];
-  selected: Band = null;
-  newBand: Band = new Band();
-  editBand: Band = null;
+  // profile: Profile = null;
+  // title = 'Band Profile Page';
+  // bands: Band[] = [];
+  // band: Band;
+  // bandMembers: BandMember[] = [];
+  // selected: Band = null;
+  // newBand: Band = new Band();
+  // editBand: Band = null;
 
-  myViewerUsername: string;
 
   // CONSTRUCTOR
 
@@ -76,17 +77,13 @@ export class BandComponent implements OnInit {
     this.loadInstruments();
 
     //LEGACY
-    this.getUserName();
-    this.reload();
+    // this.getUserName();
+    // this.reload();
   }
 
   // METHODS
 
   // METHODS - UTILITIES
-
-  getViewerProfileByUsername() {
-
-  }
 
   checkViewerIsOwner() {
     if (this.myViewerUsername === this.myBand.leader.user.username) {
@@ -104,13 +101,13 @@ export class BandComponent implements OnInit {
     localStorage.setItem('username', this.auth.getUsername());
   }
 
-  displayTable(): void {
-    this.selected = null;
-  }
+  // displayTable(): void {
+  //   this.selected = null;
+  // }
 
-  setEditBand(): void {
-    this.editBand = Object.assign({}, this.selected);
-  }
+  // setEditBand(): void {
+  //   this.editBand = Object.assign({}, this.selected);
+  // }
 
   // METHODS - BUTTONS
 
@@ -163,90 +160,104 @@ export class BandComponent implements OnInit {
     this.createBandMember(this.newBandMember);
   }
 
+  bandDeleteBand() {
+    this.deleteBand();
+  }
+
+  bandEditBand() {
+    this.editBand = Object.assign({}, this.myBand);
+  }
+
+  bandSaveBand() {
+    this.updateBand(this.editBand);
+  }
+
+  bandCancelBand() {
+    this.editBand = null;
+  }
+
   // METHODS - SERVICES
 
-  updateBand(id: number): void {
-    id = this.editBand.id;
-    this.bandSvc.update(id, this.editBand).subscribe(
-        data => {
-          this.reload();
-          this.editBand = null;
-          this.selected = data;
-        },
-        err => {
-          console.error('BandComponent.updateBand(): Error');
-          console.error(err);
-        }
-      );
-    }
+  // updateBand(id: number): void {
+  //   id = this.editBand.id;
+  //   this.bandSvc.update(id, this.editBand).subscribe(
+  //       data => {
+  //         this.reload();
+  //         this.editBand = null;
+  //         this.selected = data;
+  //       },
+  //       err => {
+  //         console.error('BandComponent.updateBand(): Error');
+  //         console.error(err);
+  //       }
+  //     );
+  //   }
 
-  updateAddress(): void {
-    this.addressService.update(this.editBand.address.id, this.editBand.address).subscribe(
-      data => {
-        this.reload();
-        this.editBand = null;
-        this.selected.address = data;
-      },
-      err => {
-        console.error('BandComponent.updateAddress(): Error');
-        console.error(err);
-      }
-    );
-  }
+  // updateAddress(): void {
+  //   this.addressService.update(this.editBand.address.id, this.editBand.address).subscribe(
+  //     data => {
+  //       this.reload();
+  //       this.editBand = null;
+  //       this.selected.address = data;
+  //     },
+  //     err => {
+  //       console.error('BandComponent.updateAddress(): Error');
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
-  updateImage(): void {
-    this.imageService.update(this.editBand.image.id, this.editBand.image).subscribe(
-      data => {
-        this.reload();
-        this.editBand = null;
-        this.selected.image = data;
-      },
-      err => {
-        console.error('BandComponent.updateImage(): Error');
-        console.error(err);
-      }
-    );
-  }
+  // updateImage(): void {
+  //   this.imageService.update(this.editBand.image.id, this.editBand.image).subscribe(
+  //     data => {
+  //       this.reload();
+  //       this.editBand = null;
+  //       this.selected.image = data;
+  //     },
+  //     err => {
+  //       console.error('BandComponent.updateImage(): Error');
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
-  updateBandMembers(): void {
-    this.bandMemberService.index(this.editBand.id, this.auth.getUsername()).subscribe(
-      data => {
-        this.reload();
-        this.editBand = null;
-        this.bandMembers = data;
-      },
-      err => {
-        console.error('BandComponent.reload(): Error');
-        console.error(err);
-      }
-    );
-  }
+  // updateBandMembers(): void {
+  //   this.bandMemberService.index(this.editBand.id, this.auth.getUsername()).subscribe(
+  //     data => {
+  //       this.reload();
+  //       this.editBand = null;
+  //       this.bandMembers = data;
+  //     },
+  //     err => {
+  //       console.error('BandComponent.reload(): Error');
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
-  deleteBand(band: Band) {
-    // this.todoService.delete(todo);
-    // this.todos = this.todoService.index();
-    this.bandSvc.delete(band.id).subscribe(
-      data => {
-        this.reload();
-      },
-      err => {
-        console.error('BandComponent.deleteBand(): Error');
-        console.error(err);
-      }
-    );
-  }
+  // deleteBand(band: Band) {
+  //   this.bandSvc.delete(band.id).subscribe(
+  //     data => {
+  //       this.router.navigateByUrl('profiles/' + this.myViewerProfile.id);
+  //     },
+  //     err => {
+  //       console.error('BandComponent.deleteBand(): Error');
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
-  reload() {
-    this.bandSvc.index(this.auth.getUsername()).subscribe(
-      data => {
-        this.bands = data;
-      },
-      err => {
-        console.error('BandComponent.reload(): Error');
-        console.error(err);
-      }
-    );
-  }
+  // reload() {
+  //   this.bandSvc.index(this.auth.getUsername()).subscribe(
+  //     data => {
+  //       this.bands = data;
+  //     },
+  //     err => {
+  //       console.error('BandComponent.reload(): Error');
+  //       console.error(err);
+  //     }
+  //   );
+  // }
 
   loadBand(id: number) {
     this.bandSvc.show(id).subscribe(
@@ -287,6 +298,19 @@ export class BandComponent implements OnInit {
     );
   }
 
+  updateBand(band: Band) {
+    this.bandSvc.update(band.id, band).subscribe(
+      data => {
+        this.editBand = null;
+        this.loadBand(this.myBand.id);
+      },
+      err => {
+        console.error('FAILED TO UPDATE BAND BY ID (' + band.id + ')');
+        console.error(err);
+      }
+    );
+  }
+
   loadProfileByUser(username: string) {
     this.profileSvc.showProfileByUsername(username).subscribe(
       data => {
@@ -319,6 +343,19 @@ export class BandComponent implements OnInit {
       },
       err => {
         console.error('FAILED TO CREATE NEW BAND MEMBER');
+        console.error(err);
+      }
+    );
+  }
+
+  deleteBand() {
+    this.myBand.active = false;
+    this.bandSvc.update(this.myBand.id, this.myBand).subscribe(
+      data => {
+        this.router.navigateByUrl('profiles/' + this.myViewerProfile.id);
+      },
+      err => {
+        console.error('FAILED TO DELETE BAND BY ID (' + this.myBand.id + ')');
         console.error(err);
       }
     );

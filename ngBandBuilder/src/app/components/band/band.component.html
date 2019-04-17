@@ -1,14 +1,30 @@
-<h1>{{title}}<span class='badge badge-primary'></span></h1>
-
 <div *ngIf="myBand">
   <div>
     <h1>Band Profile: {{myBand.name}}</h1>
+    <div *ngIf="viewerIsOwner">
+      <button class="btn btn-danger" (click)="bandDeleteBand()">DELETE BAND</button>
+      <button class="btn btn-primary" (click)="bandEditBand()">Edit Band</button>
+    </div>
     <hr>
     <img src="{{myBand.image.url}}" alt="">
   </div>
 
+  <div *ngIf="editBand">
+    <form>
+      <input type="text" name="name" [(ngModel)]="editBand.name">
+      <input type="text" name="aboutUs" [(ngModel)]="editBand.aboutUs">
+      <input type="text" name="genre" [(ngModel)]="editBand.genre">
+      <input type="text" name="timeCommitment" [(ngModel)]="editBand.timeCommitment">
+      <button class="btn btn-danger" (click)="bandSaveBand()">Save</button>
+      <button class="btn btn-primary" (click)="bandCancelBand()">Cancel</button>
+    </form>
+  </div>
+
   <div>
-    <h1>Band Members</h1><button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
+    <h1>Band Members</h1>
+    <div *ngIf="viewerIsOwner">
+      <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
+    </div>
     <hr>
 
     <div *ngIf="newBandMember">
@@ -31,11 +47,13 @@
           <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt=""></div>
           <div class="card-body" *ngIf="!member.profile">{{member.description}}</div>
           <div class="card-body" *ngIf="member.profile">{{member.profile.aboutMe}}</div>
-          <div class="card-footer" *ngIf="viewerIsOwner">
+          <div class="card-footer" >
+            <span *ngIf="viewerIsOwner">
             <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
             <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
             <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
-            <button class="btn btn-success" (click)="bandClaimPosition(member)" *ngIf="!member.profile">Claim Position</button>
+          </span>
+          <button class="btn btn-success" (click)="bandClaimPosition(member)" *ngIf="!member.profile">Claim Position</button>
           </div>
         </div>
       </div>
@@ -64,7 +82,7 @@
 
 
 
-<div>
+<!-- <div>
   <table class='table table-striped table-hover'>
     <thead class='thead-dark'>
       <tr>
@@ -238,4 +256,4 @@
                 </div>
           </ng-template>
         </ngb-tab>
-  </ngb-tabset>
+  </ngb-tabset> -->
