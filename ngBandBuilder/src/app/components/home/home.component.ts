@@ -11,6 +11,8 @@ export class HomeComponent implements OnInit {
 
   // FIELDS
   bands: Band[] = [];
+  searchBy = 'Name';
+  searchKeyword = '';
 
   // CONSTRUCTOR
 

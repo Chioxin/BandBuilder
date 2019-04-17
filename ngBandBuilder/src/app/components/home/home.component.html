@@ -12,7 +12,24 @@
     <ul>
       <li *ngFor="let band of bands">{{band.name}} <img src="{{band.image.url}}" alt=""></li>
     </ul>
-    <img src="" alt="">
+
+    <form>
+      <select class="form-control" name="searchBy" [(ngModel)]='searchBy'>
+        <option value="Name" >Name</option>
+        <option value="Genre" >Genre</option>
+        <option value="City" >City</option>
+        <option value="State" >State</option>
+        <option value="Zip" >Zip</option>
+      </select>
+      <input class="form-control" type="text" name="keyword" [(ngModel)]='searchKeyword'>
+    </form>
+
+    <div>
+      <ul>
+        <li *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword">{{searchBand.name}} <img src="{{searchBand.image.url}}" alt=""></li>
+      </ul>
+    </div>
+
       <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
