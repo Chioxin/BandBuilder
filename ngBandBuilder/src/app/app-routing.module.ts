@@ -21,7 +21,7 @@ const routes: Routes = [
   { path: 'profiles/:id', component: ProfileComponent},
   { path: 'bands', component: BandComponent },
   { path: 'bands/:id', component: BandComponent },
-  { path: 'admin', component: AdminComponent }
+  { path: 'admin', component: AdminComponent },
   { path: 'userinstruments', component: UserInstrument }
 ];
 
