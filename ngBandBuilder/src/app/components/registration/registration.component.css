@@ -1,9 +1,14 @@
 table {
+  padding: 10%;
   text-align: center;
   margin: auto;
   width: 50% !important;
 }
-form > div > table > tbody > button {
 
+
+ div  {
   align-content: center;
- }
+  text-align: center;
+  justify-content: center;
+}
+
