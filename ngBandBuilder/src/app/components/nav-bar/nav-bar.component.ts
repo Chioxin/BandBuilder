@@ -32,8 +32,6 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit() {
     this.isLoggedIn = this.auth.checkLogin();
-    this.loadProfile();
-    // this.isAdmin();
   }
 
   register() {
@@ -73,11 +71,9 @@ export class NavBarComponent implements OnInit {
     this.isLoggedIn = false;
     this.selected = null;
     this.isAdmin = false;
-    // navForm.reset();
   }
   loadProfile() {
     const username = this.auth.getUsername();
-    // console.log(username);
     this.profileSrv.showProfileByUsername(username).subscribe(
       data => {
         this.profile = data;
