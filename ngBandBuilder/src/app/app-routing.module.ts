@@ -22,7 +22,7 @@ const routes: Routes = [
   { path: 'bands', component: BandComponent },
   { path: 'bands/:id', component: BandComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'userinstruments', component: UserInstrument }
+  { path: 'userinstruments/:id', component: UserInstrument }
 ];
 
 @NgModule({

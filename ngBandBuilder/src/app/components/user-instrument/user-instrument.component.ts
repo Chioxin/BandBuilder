@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { UserInstrumentService } from 'src/app/services/user-instrument.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-user-instrument',
@@ -7,7 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserInstrumentComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private userInstrumentService: UserInstrumentService,
+    private auth: AuthService
+    ) { }
 
   ngOnInit() {
   }

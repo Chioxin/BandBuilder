@@ -77,7 +77,7 @@ export class ProfileComponent implements OnInit {
   }
 
   redirectUserInstrument(id: number) {
-    this.router.navigate(['/userinstruments/' + id])
+    this.router.navigate(['/userinstruments/profiles/' + id])
   }
 
   setEditObjects() {
