@@ -21,6 +21,7 @@ import { BandComponent } from './components/band/band.component';
 import { SearchByKeywordPipe } from './pipes/search-by-keyword.pipe';
 import { InstrumentPipe } from './pipes/instrument.pipe';
 import { UserInstrumentComponent } from './components/user-instrument/user-instrument.component';
+import { SearchBandPipe } from './pipes/search-band.pipe';
 
 
 // search module
@@ -41,7 +42,8 @@ import { UserInstrumentComponent } from './components/user-instrument/user-instr
     AdminComponent,
     SearchByKeywordPipe,
     InstrumentPipe,
-    UserInstrumentComponent
+    UserInstrumentComponent,
+    SearchBandPipe
   ],
   imports: [
     BrowserModule,
