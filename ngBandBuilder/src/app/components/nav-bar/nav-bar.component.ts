@@ -53,10 +53,23 @@ export class NavBarComponent implements OnInit {
     // this.newUser = new User();
   }
 
+  checkIfUserExist() {
+    this.profileSrv.showProfileByUsername(this.newUser.username).subscribe(
+      data => {
+        console.log('User (' + this.newUser.username + ') exist');
+        this.login();
+      },
+      err => {
+        console.log('User (' + this.newUser.username + ') does not exist');
+        this.newUser = new User();
+        return false;
+      }
+    );
+  }
+
   login() {
     this.auth.login(this.newUser.username, this.newUser.password).subscribe(
       dataLogin => {
-        this.selected = 'Logged in!!!';
         this.isLoggedIn = true;
         this.newUser = new User();
         this.loadProfile();
@@ -66,11 +79,15 @@ export class NavBarComponent implements OnInit {
       }
     );
   }
-  logout(navForm: NgForm) {
+  logout() {
     this.auth.logout();
-    this.isLoggedIn = false;
-    this.selected = null;
-    this.isAdmin = false;
+
+    if (!this.auth.checkLogin()) {
+      this.isLoggedIn = false;
+      this.selected = null;
+      this.isAdmin = false;
+      this.router.navigateByUrl('home');
+    }
   }
   loadProfile() {
     const username = this.auth.getUsername();
