@@ -1,9 +1,11 @@
 footer > div {
-  position: fixed;
+  /* position: fixed; */
   left: 0;
   bottom: 0;
-  height: 50px;
   width: 100%;
+  height: 50px;
+  /* padding: 0%; */
+  padding-bottom: 1%;
   background-color: white;
   color: black;
   text-align: center;
@@ -11,12 +13,10 @@ footer > div {
   color: #eac67a;
 }
 footer {
-  padding-top: 1%;
-  margin-top: 1%;
-  border-top: 5px;
-  padding-bottom: 1%;
-  margin-bottom: 1%;
+  padding-top: .1px;
+  margin-top: 1px;
+  border-top: 3px;
+  padding-bottom: .1px;
+  margin-bottom: 1px;
   border-bottom: 5px;
-
-
 }

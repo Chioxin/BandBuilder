@@ -1,4 +1,17 @@
  img {
+   width: 300px;
    height: 200px;
-   width: 200px;
+   border: #eac67a;
+   /* border-radius: 100%; */
  }
+html {
+  padding-bottom: 5%;
+  margin-bottom: 1px;
+  background-color: white;
+  filter: grayscale(20%);
+  background-blend-mode: multiply;
+}
+
+#addInstrumentForm {
+row-gap: 1px;
+}
