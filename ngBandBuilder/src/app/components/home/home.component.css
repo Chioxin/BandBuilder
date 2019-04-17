@@ -6,7 +6,10 @@
   border: 0cm;
 
 }
-
+ img{
+  height: 400px;
+  width: 500px;
+}
 #home-div {
   /* color: #233237; */
   color: #18121E;
@@ -28,6 +31,7 @@
 }
 html {
   /* background-color: #0C4A60; */
+
   padding: 10%;
   margin: 0%;
   border: 0cm;
@@ -54,5 +58,12 @@ html > div:nth-child(3){
   text-align: left;
 
 }
-html > h4  {
+html > div:nth-child(6) > ul > li {
+  list-style-type: none;
+  font-size: x-large;
+}
+html > form > select {
+box-sizing: border-box;
+-moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
 }
