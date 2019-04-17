@@ -34,6 +34,7 @@ export class UserInstrumentComponent implements OnInit {
     this.userInstrumentService.update(route, this.editUserInstrument).subscribe(
       data => {
         this.editUserInstrument = data;
+        this.redirectUserInstrument();
       },
       err => {
         console.error('err getting userInstrument');
