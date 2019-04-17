@@ -24,6 +24,7 @@ export class NavBarComponent implements OnInit {
   profile: Profile = new Profile();
   adminRole = false;
   selected = '';
+  isAdmin = false;
 
   constructor(private auth: AuthService,
     private router: Router,
@@ -32,7 +33,7 @@ export class NavBarComponent implements OnInit {
   ngOnInit() {
     this.isLoggedIn = this.auth.checkLogin();
     this.loadProfile();
-    this.isAdmin();
+    // this.isAdmin();
   }
 
   register() {
@@ -61,7 +62,6 @@ export class NavBarComponent implements OnInit {
         this.isLoggedIn = true;
         this.newUser = new User();
         this.loadProfile();
-        this.isAdmin();
       },
       err => {
         console.error(err);
@@ -72,6 +72,7 @@ export class NavBarComponent implements OnInit {
     this.auth.logout();
     this.isLoggedIn = false;
     this.selected = null;
+    this.isAdmin = false;
     // navForm.reset();
   }
   loadProfile() {
@@ -80,6 +81,7 @@ export class NavBarComponent implements OnInit {
     this.profileSrv.showProfileByUsername(username).subscribe(
       data => {
         this.profile = data;
+        this.checkAdmin();
       },
       err => {
         console.error('AdminComponent.loadProfile(): Error');
@@ -87,14 +89,12 @@ export class NavBarComponent implements OnInit {
       }
     );
   }
-  isAdmin() {
-    // this.profile.user.username = this.auth.getUsername();
-    console.log(this.newUser.username);
-
+  checkAdmin() {
     if (this.profile.user.role === 'admin') {
+      this.isAdmin = true;
       return true;
-    }
-    else {
+    } else {
+      this.isAdmin = false;
       return false;
     }
   }
