@@ -20,6 +20,7 @@ import { GregsTestPageComponent } from './components/gregs-test-page/gregs-test-
 import { BandComponent } from './components/band/band.component';
 import { SearchByKeywordPipe } from './pipes/search-by-keyword.pipe';
 import { InstrumentPipe } from './pipes/instrument.pipe';
+import { UserInstrumentComponent } from './components/user-instrument/user-instrument.component';
 
 
 // search module
@@ -39,7 +40,8 @@ import { InstrumentPipe } from './pipes/instrument.pipe';
     BandComponent,
     AdminComponent,
     SearchByKeywordPipe,
-    InstrumentPipe
+    InstrumentPipe,
+    UserInstrumentComponent
   ],
   imports: [
     BrowserModule,
