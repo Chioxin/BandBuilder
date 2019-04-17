@@ -29,6 +29,7 @@ export class BandComponent implements OnInit {
   myBandMembers: BandMember[];
 
   editBandMember: BandMember = null;
+  newBandMember: BandMember = null;
 
   viewerIsOwner = false;
   myViewerProfile: Profile = null;
@@ -138,6 +139,18 @@ export class BandComponent implements OnInit {
     const member = Object.assign({}, bandMember);
     member.profile = this.myViewerProfile;
     this.updateMember(member);
+  }
+
+  bandAddNewBandMember() {
+    this.newBandMember = new BandMember();
+  }
+
+  bandCancelAddBandMember() {
+    this.newBandMember = null;
+  }
+
+  bandSaveAddBandMember() {
+
   }
 
   // METHODS - SERVICES

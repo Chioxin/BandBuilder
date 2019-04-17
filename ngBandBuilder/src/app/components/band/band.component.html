@@ -8,9 +8,14 @@
   </div>
 
   <div>
-    <h1>Band Members</h1>
+    <h1>Band Members</h1><button class="btn btn-primary">Add Member</button>
     <hr>
-    <div *ngIf="!editBandMember">
+
+    <div *ngIf="newBandMember">
+
+    </div>
+
+    <div *ngIf="!editBandMember || !newBandMember">
       <div class="card" *ngFor="let member of myBandMembers">
         <div *ngIf="member.active">
           <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt=""></div>
