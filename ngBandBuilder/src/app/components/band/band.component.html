@@ -34,6 +34,14 @@
             <ng-template ngbTabContent>
               <div>
                 <h1>Band Members</h1>
+                <div *ngIf="editBandMember">
+                    <form>
+                      <input type="text" name="description" [(ngModel)]="editBandMember.description">
+                      <input type="text" name="experience" [(ngModel)]="editBandMember.experience">
+                      <button class="btn btn-success" (click)="bandSavePosition()">Save</button>
+                      <button class="btn btn-danger" (click)="bandCancelEditPosition()">Cancel</button>
+                    </form>
+                  </div>
                 <div *ngIf="viewerIsOwner">
                   <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
                 </div>
@@ -78,18 +86,11 @@
                   </div>
                 </div>
               </div>
-              <div *ngIf="editBandMember">
-                <form>
-                  <input type="text" name="description" [(ngModel)]="editBandMember.description">
-                  <input type="text" name="experience" [(ngModel)]="editBandMember.experience">
-                  <button class="btn btn-success" (click)="bandSavePosition()">Save</button>
-                  <button class="btn btn-danger" (click)="bandCancelEditPosition()">Cancel</button>
-                </form>
-              </div>
+
             </ng-template>
           </ngb-tab>
-        </ngb-tabset>
-        <ngb-tabset *ngIf="viewerIsOwner">
+
+        <!-- <ngb-tabset *ngIf="viewerIsOwner"> -->
           <ngb-tab title="About Band Details">
             <ng-template ngbTabContent>
               <br>
@@ -103,6 +104,7 @@
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
+      <!-- </ngb-tabset> -->
       </div>
     </div>
   </div>
