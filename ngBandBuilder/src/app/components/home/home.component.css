@@ -49,7 +49,7 @@ html > div:nth-child(3){
   /* margin-top: 10px; */
   border-top: 150px;
   padding-top: 150px;
-  color: #984b43;
+  color: lightgray;
   /* filter: grayscale(10%); */
   text-align: left;
 
