@@ -9,6 +9,7 @@ import { BandRegistrationComponent } from './components/band-registration/band-r
 import { ProfileComponent } from './components/profile/profile.component';
 import { BandComponent } from './components/band/band.component';
 import { AdminComponent } from './components/admin/admin.component';
+import { UserInstrumentComponent } from './components/user-instrument/user-instrument.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -22,7 +23,7 @@ const routes: Routes = [
   { path: 'bands', component: BandComponent },
   { path: 'bands/:id', component: BandComponent },
   { path: 'admin', component: AdminComponent },
-  { path: 'userinstruments', component: UserInstrument }
+  { path: 'userinstruments/:id', component: UserInstrumentComponent }
 ];
 
 @NgModule({
