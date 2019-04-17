@@ -1,10 +1,10 @@
-/* img {
-  /* size: inherit;
+img {
+  /* /* size: inherit; */
   width: 400px;
   height: 300px;
   image-resolution: 100%;
   border-image: 5%;
-  border-radius: 50%;
+  border-radius: 10%;
   align-content: center;
   text-align: center;
 }
@@ -25,8 +25,8 @@ html {
   background-blend-mode: multiply;
   padding-left: 50px;
   padding-right: 50px;
-  font-size: x-large;
-  border: #18121e;
+  /* font-size: x-large; */
+  /* border: #18121e; */
 }
 div {
   background-color: #eac67a;
@@ -37,6 +37,17 @@ html > div > div:nth-child(3) > h1 {
   color: #984b43;
 }
 html > div > div:nth-child(1) > div {
-  text-align: center;
+  text-align: left;
 }
-*/
+ /* div > div.card-head > img{
+  text-align: center;
+
+} */
+#ngb-tab-1-panel > div > h1 {
+  color: #984b43;
+}
+#ngb-tab-0{
+/* border: #984b43; */
+background-color: black;
+}
+
