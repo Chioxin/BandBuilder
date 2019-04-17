@@ -34,6 +34,15 @@ export class UserInstrumentService {
     return this.http.get<UserInstrument[]>(this.url + 'profiles/' + pid, httpOptions);
   }
 
+  select(id: number) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.get<UserInstrument>(this.url + id, httpOptions);
+  }
+
   update(id: number, userInstrument: UserInstrument) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',

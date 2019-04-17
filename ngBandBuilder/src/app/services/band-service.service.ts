@@ -60,7 +60,7 @@ export class BandServiceService {
       'Content-Type': 'application/json',
       Authorization: 'Basic ' + this.auth.getCredentials()
     })};
-    return this.http.post<BandRegistrationForm>(this.profileURL, band, httpOptions);
+    return this.http.post<Band>(this.bandURL, band, httpOptions);
   }
 
   update(id: number, band: Band) {

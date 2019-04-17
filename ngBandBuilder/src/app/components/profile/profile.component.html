@@ -1,111 +1,3 @@
-<!-- <div *ngIf="myProfile" class="container">
-  <div id="titleArea">
-    <h1>Profile: "{{myProfile.firstName}} {{myProfile.lastName}}"</h1>
-
-    <div class="row" id="titleOwnerView" *ngIf="viewerIsOwner">
-      <div class="col">
-        <img id="profileImage" src="{{myProfile.image.url}}">
-      </div>
-      <div class="col">
-        <div *ngIf="!isEditingProfile">
-          <span>{{myProfile.firstName}} {{myProfile.lastName}}</span><br>
-          <span>{{myProfile.address.street}}, {{myProfile.address.street2}}</span><br>
-          <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
-          <span>Phone: {{myProfile.address.phone}}, Email: {{myProfile.email}}</span><br>
-          <button class="btn btn-primary" (click)="flipIsEditingProfile()">Edit</button>
-        </div>
-        <div *ngIf="isEditingProfile">
-          <form>
-            <input type="text" name="firstName" placeholder="{{myProfile.firstName}}" [(ngModel)]="editProfile.firstName">
-            <input type="text" name="lastName" placeholder="{{myProfile.lastName}}" [(ngModel)]="editProfile.lastName">
-            <input type="text" name="street" placeholder="{{myProfile.address.street}}" [(ngModel)]="editAddress.street">
-            <input type="text" name="street2" placeholder="{{myProfile.address.street2}}" [(ngModel)]="editAddress.street2">
-            <input type="text" name="city" placeholder="{{myProfile.address.city}}" [(ngModel)]="editAddress.city">
-            <input type="text" name="state" placeholder="{{myProfile.address.state}}" [(ngModel)]="editAddress.state">
-            <input type="text" name="zip" placeholder="{{myProfile.address.zip}}" [(ngModel)]="editAddress.zip">
-            <input type="text" name="phone" placeholder="{{myProfile.address.phone}}" [(ngModel)]="editAddress.phone">
-            <input type="text" name="email" placeholder="{{myProfile.email}}" [(ngModel)]="editProfile.email"><br>
-            <button class="btn btn-success" (click)="profileSaveEdit()">Save</button>
-            <button class="btn btn-danger" (click)="profileCancelEdit()">Cancel</button>
-          </form>
-        </div>
-      </div>
-    </div>
-
-    <div class="row" id="titleView" *ngIf="!viewerIsOwner">
-        <div class="col">
-          <img id="profileImage" src="{{myProfile.image.url}}">
-        </div>
-        <div class="col">
-          <span>{{myProfile.firstName}} {{myProfile.lastName}}</span><br>
-          <span>{{myProfile.address.city}}, {{myProfile.address.state}}, {{myProfile.address.zip}}</span><br>
-        </div>
-      </div>
-
-
-
-  </div>
-  <h1>About: "{{myProfile.user.username}}"</h1>
-  <hr>
-  <div id="aboutMe">
-    <p>{{myProfile.aboutMe}}</p>
-    <div *ngIf="viewerIsOwner">
-      <form>
-        <button class="btn btn-primary" (click)="profileCreateInstrument()">Add Instrument</button>
-        <select name="instrument" [(ngModel)]="selectedInstrumentId">
-          <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
-        </select>
-        Experience: <input type="text" name="experience" [(ngModel)]="newUserInstrument.experience">
-        Description: <input type="text" name="description" [(ngModel)]="newUserInstrument.description">
-      </form>
-    </div>
-    <div class="card" *ngFor="let item of myInstruments">
-      <div *ngIf="item.active">
-        <div class="card-header">
-          <img src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}">
-          {{item.instrument.name}}
-        </div>
-        <div class="card-body">
-          <blockquote>{{item.experience}}</blockquote>
-          <blockquote>{{item.description}}</blockquote>
-        </div>
-        <div class="card-footer" *ngIf="viewerIsOwner">
-          <button class="btn btn-primary">Edit Instrument</button>
-          <button class="btn btn-danger" (click)="profileRemoveInstrument(item.id)">Remove Instrument</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-  <h1>Bands "{{myProfile.user.username}}" is the leader of.</h1><button class="btn btn-primary" [routerLink]="['/bandregistration']" *ngIf="viewerIsOwner">New Band</button>
-  <hr>
-  <div id="myBands">
-    <div id="myBandsAsLeader">
-      <div class="card" *ngFor="let band of myBands">
-        <div class="card-header">
-          {{band.name}}<br>
-          <img src="{{band.image.url}}" alt="">
-        </div>
-        <div class="card-body">
-          <blockquote>{{band.aboutUs}}</blockquote>
-        </div>
-      </div>
-    </div>
-
-  </div>
-  <h1>Bands "{{myProfile.user.username}}" is a member of.</h1>
-  <hr>
-  <div id="myBandsAsMember">
-    <div class="card" *ngFor="let member of myBandMembers">
-      <div class="card-header">Plays {{member.instrument.name}} for {{member.band.name}}</div>
-      <div class="card-body"><img src="{{member.instrument.image.url}}" alt=""></div>
-      <div class="card-footer" *ngIf="viewerIsOwner"><button class="btn btn-danger" (click)="profileRemoveMember(member)">Remove Myself From Band</button></div>
-    </div>
-  </div>
-</div> -->
-
 <div *ngIf="myProfile" class="container">
   <div id="titleArea" class="col">
     <div id="titleOwnerView" *ngIf="viewerIsOwner">
@@ -234,7 +126,44 @@
                       <input type="text" class="form-control" name="zip" placeholder="{{myProfile.address.zip}}" [(ngModel)]="editProfile.address.zip" disabled>
                   </div>
                   <button class="btn btn-primary" (click)="flipIsEditingProfile()">Edit</button>
-                </div>
+              </div>
+              <div *ngIf="isEditingProfile" class="container">
+                  <br>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="street">Street</span>
+                      </div>
+                      <input type="text" class="form-control" name="street" placeholder="{{myProfile.address.street}}" [(ngModel)]="editProfile.address.street">
+                  </div>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="street2">Street 2</span>
+                      </div>
+                      <input type="text" class="form-control" name="street" placeholder="{{myProfile.address.street2}}" [(ngModel)]="editProfile.address.street2">
+                  </div>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="city">City</span>
+                      </div>
+                      <input type="text" class="form-control" name="city" placeholder="{{myProfile.address.city}}" [(ngModel)]="editProfile.address.city">
+                  </div>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="city">State</span>
+                      </div>
+                      <input type="text" class="form-control" name="state" placeholder="{{myProfile.address.state}}" [(ngModel)]="editProfile.address.state">
+                  </div>
+                  <div class="input-group mb-3">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text" id="zip">Zip Code</span>
+                      </div>
+                      <input type="text" class="form-control" name="zip" placeholder="{{myProfile.address.zip}}" [(ngModel)]="editProfile.address.zip">
+                  </div>
+                  <div class="form-group">
+                      <button class="btn btn-primary" (click)="profileSaveEdit()">Save</button>
+                      <button class="btn btn-danger" (click)="profileCancelEdit()">Cancel</button>
+                  </div>
+              </div>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Instruments">
@@ -249,9 +178,9 @@
               </thead>
               <tbody>
                 <tr *ngFor='let myInstrument of myInstruments'>
-                    <td (click)="redirectUserInstrument(myInstrument.id)">{{myInstrument.instrument.name}}</td>
-                  <td>{{myInstrument.experience}}</td>
-                  <td>{{myInstrument.description}}</td>
+                    <td (click)="redirectUserInstrument(myInstrument.id)" *ngIf="myInstrument.active">{{myInstrument.instrument.name}}</td>
+                    <td (click)="redirectUserInstrument(myInstrument.id)" *ngIf="myInstrument.active">{{myInstrument.experience}}</td>
+                    <td (click)="redirectUserInstrument(myInstrument.id)" *ngIf="myInstrument.active">{{myInstrument.description}}</td>
                 </tr>
               </tbody>
             </table>
