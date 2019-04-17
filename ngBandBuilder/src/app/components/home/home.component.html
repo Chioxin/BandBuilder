@@ -9,6 +9,10 @@
     <h3><strong>Mission:</strong> </h3>
       <h4><strong>Our app connects musicians with other musicians that are interested in forming bands around their shared musical interests.</strong> </h4>
     </div>
+    <ul>
+      <li *ngFor="let band of bands">{{band.name}} <img src="{{band.image.url}}" alt=""></li>
+    </ul>
+    <img src="" alt="">
       <!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">

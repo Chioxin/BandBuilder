@@ -1,3 +1,4 @@
+import { BandServiceService } from './../../services/band-service.service';
 import { Band } from './../../models/band';
 import { Component, OnInit } from '@angular/core';
 
@@ -9,11 +10,32 @@ import { Component, OnInit } from '@angular/core';
 export class HomeComponent implements OnInit {
 
   // FIELDS
-  band: Band = null;
+  bands: Band[] = [];
 
-  constructor() { }
+  // CONSTRUCTOR
+
+  constructor(
+    private bandSvc: BandServiceService
+  ) { }
+
+  // INIT
 
   ngOnInit() {
+    this.loadBands();
+  }
+
+  // METHODS
+
+  loadBands() {
+    this.bandSvc.indexAll().subscribe(
+      data => {
+        this.bands = data;
+      },
+      err => {
+        console.log('ERROR GETTING ALL BANDS');
+        console.log(err);
+      }
+    );
   }
 
 }

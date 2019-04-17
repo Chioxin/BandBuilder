@@ -37,6 +37,15 @@ export class BandServiceService {
     return this.http.get<Band[]>(this.profileURL + user + this.concat, httpOptions);
   }
 
+  indexAll() {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.get<Band[]>(this.bandURL, httpOptions);
+  }
+
   show(id: number) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
