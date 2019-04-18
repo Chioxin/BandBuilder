@@ -103,7 +103,7 @@
 
                 </div>
 
-                <div *ngIf="!editBandMember && !newBandMember">
+                <!-- <div *ngIf="!editBandMember && !newBandMember">
                     <div class="card" *ngFor="let member of myBandMembers">
                       <div *ngIf="member.active">
                         <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt="">
@@ -126,10 +126,10 @@
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> -->
                 <div *ngIf="!editBandMember && !newBandMember" class="row">
                   <div class="card-columns">
-                    <div class="card" *ngFor="let member of myBandMembers">
+                    <div class="card" *ngFor="let member of myBandMembers" (click)="goToProfile(member.profile)">
                         <img class="card-img-top" *ngIf="!member.profile" src="{{member.instrument.image.url}}" alt="">
                         <img class="card-img-top" *ngIf="member.profile" src="{{member.profile.image.url}}" alt="">
                         <div class="card-body">
@@ -144,8 +144,7 @@
                     </div>
                   </div>
                 </div>
-
-
+              </div>
             </ng-template>
           </ngb-tab>
 
@@ -305,8 +304,6 @@
                       </div>
                     </div>
                   </div>
-
-
               </ng-template>
             </ngb-tab>
 
