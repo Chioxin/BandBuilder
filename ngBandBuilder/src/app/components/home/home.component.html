@@ -80,13 +80,19 @@
 </form>
 
 <div>
-  <div class="">
-
+  <div class="card-columns searchDisplay">
+    <div class="card bandCard" *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword">
+      <img class="card-img-top" src="{{searchBand.image.url}}" alt="">
+      <div class="card-body">
+        <h5>{{searchBand.name}}</h5>
+        <p>Genre: {{searchBand.genre}}<br> Location: {{searchBand.address.city}}, {{searchBand.address.state}}</p>
+      </div>
+    </div>
   </div>
-  <ul>
+  <!-- <ul>
     <li *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword">{{searchBand.name}}<br>
       <img src="{{searchBand.image.url}}" alt="" (click)="goToBand(searchBand)" ></li>
-  </ul>
+  </ul> -->
 </div>
 
 

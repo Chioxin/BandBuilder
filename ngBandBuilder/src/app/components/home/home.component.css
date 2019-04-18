@@ -96,3 +96,11 @@ html > form > div > div.col-10 > input {
   border-bottom-color: #18121e;
   color: white;
 }
+
+.searchDisplay {
+  column-count: 3;
+}
+
+.bandCard {
+  width: 25rem;
+}
