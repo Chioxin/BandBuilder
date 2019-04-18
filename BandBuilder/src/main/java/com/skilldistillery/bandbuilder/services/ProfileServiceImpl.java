@@ -108,6 +108,7 @@ public class ProfileServiceImpl implements ProfileService {
 		if (opt.isPresent()) {
 			managed = opt.get();
 			
+			managed.setActive(profile.isActive());
 			managed.setUser(profile.getUser());
 			managed.setFirstName(profile.getFirstName());
 			managed.setLastName(profile.getLastName());
