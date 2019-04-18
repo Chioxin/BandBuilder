@@ -18,6 +18,7 @@
             </div>
           </div>
         </div>
+        <br>
         <div *ngIf="editBand ">
           <form>
             <div class="input-group mb-3">
@@ -55,7 +56,7 @@
           </form>
           <hr>
         </div>
-        <ngb-tabset *ngIf="viewerIsOwner">
+        <ngb-tabset *ngIf="viewerIsOwner" type="pills">
           <ngb-tab title="Band Member Details">
             <ng-template ngbTabContent>
               <div>
@@ -87,8 +88,6 @@
                 <div *ngIf="viewerIsOwner && !editBandMember && !newBandMember">
                   <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
                 </div>
-                <hr>
-
                 <div *ngIf="newBandMember">
                   <form>
                     <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
@@ -105,11 +104,9 @@
                 </div>
 
                 <div *ngIf="!editBandMember && !newBandMember">
-
                     <div class="card" *ngFor="let member of myBandMembers">
                       <div *ngIf="member.active">
-                        <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}"
-                            alt="">
+                        <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt="">
                         </div>
                         <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt="">
                         </div>
@@ -127,6 +124,23 @@
                             Position</button>
                         </div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="!editBandMember && !newBandMember" class="row">
+                  <div class="card-columns">
+                    <div class="card" *ngFor="let member of myBandMembers">
+                        <img class="card-img-top" *ngIf="!member.profile" src="{{member.instrument.image.url}}" alt="">
+                        <img class="card-img-top" *ngIf="member.profile" src="{{member.profile.image.url}}" alt="">
+                        <div class="card-body">
+                          <h5 class="card-title">{{member.profile.firstName}} {{member.profile.lastName}}</h5>
+                          <p class="card-text">{{member.profile.aboutMe}}</p>
+                          <div *ngIf="viewerIsOwner">
+                              <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
+                            <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+                            <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
+                          </div>
+                        </div>
                     </div>
                   </div>
                 </div>
