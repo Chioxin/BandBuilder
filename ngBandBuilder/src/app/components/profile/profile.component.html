@@ -14,8 +14,8 @@
             </div>
           </div>
         </div>
-      <ngb-tabset *ngIf="viewerIsOwner">
-        <ngb-tab title="User Details">
+      <ngb-tabset *ngIf="viewerIsOwner" type="pills">
+        <ngb-tab title="User Details" >
           <ng-template ngbTabContent>
             <div *ngIf="!isEditingProfile" class="container">
               <br>

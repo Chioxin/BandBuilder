@@ -24,48 +24,37 @@
               <div class="input-group-prepend">
                 <span class="input-group-text" id="name">Name:</span>
               </div>
-
               <input type="text" name="name" class="form-control" [(ngModel)]="editBand.name">
-
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="name">About Us:</span>
               </div>
-
               <input type="text" name="aboutUs" class="form-control" [(ngModel)]="editBand.aboutUs">
-
             </div>
-            <!-- <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <span class="input-group-text" id ="name">Genre:</span>
-              </div>
-
-              <input type="text" name="aboutUs" class="form-control" [(ngModel)]="editBand.aboutUs" disabled>
-
-            </div> -->
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="name">Genre:</span>
               </div>
-
               <input type="text" name="genre" class="form-control" [(ngModel)]="editBand.genre">
-
             </div>
             <div class="input-group mb-3">
               <div class="input-group-prepend">
                 <span class="input-group-text" id="name">Time Commitment:</span>
               </div>
-
               <input type="text" name="timeCommitment" class="form-control" [(ngModel)]="editBand.timeCommitment">
-
             </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="name">Band Image Url</span>
+                </div>
+                <input type="text" name="bandImage" class="form-control" [(ngModel)]="editBand.image.url">
+              </div>
             <button class="btn btn-danger" (click)="bandSaveBand()">Save</button>
             <button class="btn btn-primary" (click)="bandCancelBand()">Cancel</button>
           </form>
           <hr>
         </div>
-<hr>
         <ngb-tabset *ngIf="viewerIsOwner">
           <ngb-tab title="Band Member Details">
             <ng-template ngbTabContent>
