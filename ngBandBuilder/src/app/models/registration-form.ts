@@ -13,6 +13,7 @@ export class RegistrationForm {
   profileLastName: string;
   profileEmail: string;
   profileAboutMe: string;
+  profileActive: boolean;
 
   // Address Entity
   addressId: number;

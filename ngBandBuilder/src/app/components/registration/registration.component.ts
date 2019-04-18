@@ -58,7 +58,6 @@ export class RegistrationComponent implements OnInit {
   }
 
   createProfile() {
-    console.log(this.regInfo);
     this.profileSvc.create(this.regInfo).subscribe(
       dataProfile => {
         this.router.navigateByUrl('profiles/' + dataProfile.id);
