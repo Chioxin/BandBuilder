@@ -76,6 +76,10 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/bands/' + id]);
   }
 
+  redirectCreateBand() {
+    this.router.navigate(['/bandregistration/']);
+  }
+
   redirectUserInstrument(id: number) {
     this.router.navigate(['/userinstruments/' + id]);
   }

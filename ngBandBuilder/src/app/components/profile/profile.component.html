@@ -169,7 +169,7 @@
         </ngb-tab>
         <ngb-tab title="Instruments">
           <ng-template ngbTabContent>
-            <table class='table table-striped table-hover'>
+            <!-- <table class='table table-striped table-hover'>
               <thead class='thead-dark'>
                 <tr>
                   <th>Name</th>
@@ -184,7 +184,54 @@
                     <td (click)="redirectUserInstrument(myInstrument.id)" *ngIf="myInstrument.active">{{myInstrument.description}}</td>
                 </tr>
               </tbody>
-            </table>
+            </table> -->
+            <div *ngIf="viewerIsOwner" class="container">
+              <br>
+              <form>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="zip">Experience</span>
+                    </div>
+                    <select name="instrument" class="form-control" [(ngModel)]="selectedInstrumentId">
+                        <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
+                      </select>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="zip">Experience</span>
+                    </div>
+                    <input type="text" class="form-control" name="experience" [(ngModel)]="newUserInstrument.experience">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="zip">Description</span>
+                    </div>
+                    <input type="text" class="form-control" name="description" [(ngModel)]="newUserInstrument.description">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" (click)="profileCreateInstrument()">Add Instrument</button>
+                </div>
+              </form>
+            </div>
+            <br>
+            <div *ngFor="let item of myInstruments">
+              <div *ngIf="item.active">
+                <div class="card w-50 card-group" >
+                  <div class="card">
+                    <!-- <img class="card-img-top" src="{{item.instrument.image.url}}" alt="{{item.instrument.image.alt}}"> -->
+                    <div class="card-body">
+                      <h5 class="card-title">{{item.instrument.name}}</h5>
+                      <p class="card-text">{{item.experience}}</p>
+                      <p class="card-text">{{item.description}}</p>
+                    </div>
+                    <div class="card-footer">
+                      <button class="btn btn-primary" (click)="redirectUserInstrument(item.id)">Edit Instrument</button>
+                        <button class="btn btn-danger" (click)="profileRemoveInstrument(item.id)">Remove Instrument</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </ng-template>
         </ngb-tab>
         <ngb-tab title="Bands">
@@ -205,6 +252,9 @@
                 </tr>
               </tbody>
             </table>
+            <div>
+                <button class="btn btn-primary" (click)="redirectCreateBand()">Create Band</button>
+            </div>
           </ng-template>
         </ngb-tab>
       </ngb-tabset>

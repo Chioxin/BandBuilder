@@ -5,8 +5,16 @@
   padding: 5px;
   width: 150px;
 }
-html{
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+
+/* html{
   background-color: #eac67a;
   background-blend-mode: multiply;
   filter: grayscale(50%);
-}
+} */
