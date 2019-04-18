@@ -30,9 +30,7 @@ export class AuthService {
     };
 
     // create request to authenticate credentials
-    return this.http
-      .get(this.baseUrl + 'authenticate', httpOptions)
-      .pipe(
+    return this.http.get(this.baseUrl + 'authenticate', httpOptions).pipe(
         tap((res) => {
           localStorage.setItem('credentials' , credentials);
           return res;
