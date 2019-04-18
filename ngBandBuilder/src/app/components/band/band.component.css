@@ -25,8 +25,8 @@ html {
   background-blend-mode: multiply;
   padding-left: 50px;
   padding-right: 50px;
-  /* font-size: x-large; */
-  /* border: #18121e; */
+  font-size: x-large;
+  border: #18121e;
 }
 div {
   background-color: #eac67a;
