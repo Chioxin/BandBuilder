@@ -128,20 +128,23 @@
                   </div>
                 </div> -->
                 <div *ngIf="!editBandMember && !newBandMember" class="row">
-                  <div class="card-columns">
-                    <div class="card" *ngFor="let member of myBandMembers" (click)="goToProfile(member.profile)">
-                        <img class="card-img-top" *ngIf="!member.profile" src="{{member.instrument.image.url}}" alt="">
-                        <img class="card-img-top" *ngIf="member.profile" src="{{member.profile.image.url}}" alt="">
-                        <div class="card-body">
-                          <h5 class="card-title">{{member.profile.firstName}} {{member.profile.lastName}}</h5>
-                          <p class="card-text">{{member.profile.aboutMe}}</p>
-                          <div *ngIf="viewerIsOwner">
+                  <div *ngFor="let member of myBandMembers">
+                      <div class="card" *ngIf="member.active">
+                          <img class="card-img-top" *ngIf="!member.profile" src="{{member.instrument.image.url}}" alt="">
+                          <img class="card-img-top" *ngIf="member.profile" src="{{member.profile.image.url}}" alt="">
+                          <div class="card-body">
+                            <div *ngIf="member.profile">
+                              <h5 class="card-title">{{member.profile.firstName}} {{member.profile.lastName}}</h5>
+                              <p class="card-text">{{member.profile.aboutMe}}</p>
+                            </div>
+                            <div *ngIf="viewerIsOwner">
                               <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
-                            <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
-                            <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
-                          </div>
-                        </div>
-                    </div>
+                              <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+                              <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
+                              <button class="btn btn-danger" (click)="goToProfile(member.profile)" *ngIf="member.profile">Visit Profile</button>
+                            </div>
+                      </div>
+                  </div>
                   </div>
                 </div>
               </div>
