@@ -90,3 +90,9 @@ html > form > div:nth-child(1) {
   justify-content: center;
   align-self: center;
 }
+
+html > form > div > div.col-10 > input {
+  background-color: #984b43;
+  border-bottom-color: #18121e;
+  color: white;
+}
