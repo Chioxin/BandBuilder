@@ -35,7 +35,7 @@ export class BandComponent implements OnInit {
   newBandMember: BandMember = null;
   selectedInstrumentId: number;
   instrumentList: Instrument[] = [];
-
+  bandMemberCard: Band = null;
   viewerIsOwner = false;
   myViewerProfile: Profile = null;
   myViewerUsername: string;
