@@ -341,7 +341,7 @@ INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phon
 INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (6, '15054 Halifax Way', NULL, 'Littleton', 'Colorado', '80121', '7205556743', '2019-04-10 22:38:48', '2019-04-10 22:38:48', 1);
 INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (7, '3317 E Colfax Ave', NULL, 'Denver', 'Colorado', '80226', '3033771666', '2019-04-11 09:38:48', '2019-04-11 09:38:48', 1);
 INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (8, '17900 Trading Post Rd', NULL, 'Morrison', 'Colorado', '80465', '7204567654', '2019-04-17 22:38:48', '2019-04-17 22:38:48', 1);
-INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (9, '1419 H St', NULL, 'Sacramento', 'California', '95814', '3039876567', '2019-04-17 23:38:48', '2019-04-17 23:38:48', 1);
+INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (9, '1419 Houston Steet', NULL, 'Sacramento', 'California', '95814', '3039876567', '2019-04-17 23:38:48', '2019-04-17 23:38:48', 1);
 
 COMMIT;
 
@@ -373,11 +373,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bandbuilderdb`;
-INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (1, 'justin ', 'blake', 'biebs@gmail.com', 'I have played the guitar since I was a small boy. My first guitar was gifted to me by my grandfather who was also a guitarest. ', 1, 1, '2019-04-01 22:08:48', '2019-04-14 22:08:48', 1, 1);
-INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (2, 'selena', 'smith', 'selena20@gmail.com', 'I have been playing the piano for quite sometime. ', 2, 2, '2019-04-08 22:08:48', '2019-04-04 22:08:48', 2, 1);
-INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (3, 'steve', 'jackson', 'stevejackson@gmail.com', 'I can play the electric guitar very well. Enjoy teaching others build their talent skills. ', 3, 3, '2019-04-08 23:18:48', '2019-04-08 23:18:48', 3, 1);
-INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (4, 'rachel', 'chelsea', 'rachelchelsea@gmail.com', 'I can play the drums.', 4, 4, '2019-04-09 23:18:48', '2019-04-09 23:18:48', 4, 1);
-INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (5, 'matthew', 'adams', 'matthewadams@gmail.com', 'I can play the bass. I typically play at my local church on Sundays. ', 5, 5, '2019-04-10 02:18:48', '2019-04-10 02:18:48', 5, 1);
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (1, 'Justin ', 'Blake', 'biebs@gmail.com', 'I have played the guitar since I was a small boy. My first guitar was gifted to me by my grandfather who was also a guitarest. ', 1, 1, '2019-04-01 22:08:48', '2019-04-14 22:08:48', 1, 1);
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (2, 'Selena', 'Smith', 'selena20@gmail.com', 'I have been playing the piano for quite sometime. ', 2, 2, '2019-04-08 22:08:48', '2019-04-04 22:08:48', 2, 1);
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (3, 'Steve', 'Jackson', 'stevejackson@gmail.com', 'I can play the electric guitar very well. Enjoy teaching others build their talent skills. ', 3, 3, '2019-04-08 23:18:48', '2019-04-08 23:18:48', 3, 1);
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (4, 'Rachel', 'Chelsea', 'rachelchelsea@gmail.com', 'I can play the drums.', 4, 4, '2019-04-09 23:18:48', '2019-04-09 23:18:48', 4, 1);
+INSERT INTO `profile` (`id`, `first_name`, `last_name`, `email`, `about_me`, `address_id`, `image_id`, `created_at`, `updated_at`, `user_id`, `active`) VALUES (5, 'Matthew', 'Adams', 'matthewadams@gmail.com', 'I can play the bass. I typically play at my local church on Sundays. ', 5, 5, '2019-04-10 02:18:48', '2019-04-10 02:18:48', 5, 1);
 
 COMMIT;
 
@@ -387,11 +387,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `bandbuilderdb`;
-INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (1, 'guitar', 1, 6, 'This is a guitar', 1);
-INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (2, 'piano', 1, 7, 'This is a piano', 1);
-INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (3, 'electric guitar', 1, 8, 'This is a electric guitar', 1);
-INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (4, 'drums', 1, 9, 'This is a drums', 1);
-INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (5, 'bass guitar', 1, 10, 'This is a bass guitar', 1);
+INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (1, 'Guitar', 1, 6, 'This is a guitar', 1);
+INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (2, 'Piano', 1, 7, 'This is a piano', 1);
+INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (3, 'Electric Guitar', 1, 8, 'This is a electric guitar', 1);
+INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (4, 'Drums', 1, 9, 'This is a drums', 1);
+INSERT INTO `instrument` (`id`, `name`, `approved`, `image_id`, `description`, `active`) VALUES (5, 'Bass Guitar', 1, 10, 'This is a bass guitar', 1);
 
 COMMIT;
 
