@@ -177,7 +177,9 @@ export class BandComponent implements OnInit {
   }
 
   goToProfile(profile: Profile) {
-    this.router.navigateByUrl(`profiles/${profile.id}`);
+    if (profile != null) {
+      this.router.navigateByUrl(`profiles/${profile.id}`);
+    }
   }
 
   // METHODS - SERVICES
