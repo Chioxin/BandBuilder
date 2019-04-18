@@ -63,21 +63,21 @@ Active: <input type="checkbox" name="active" placeholder="active" class="form-co
   <table class="table table-striped">
     <tr class="thead-dark" span="">
       <th>Username</th>
-      <th>Active</th>
       <th>Role</th>
+      <th>Active</th>
       <th>Enabled</th>
       <th></th>
     </tr>
     <tr *ngFor="let profile of profiles | searchByKeyword:searchText " [ngClass]="formatCompletedProfile(profile)"
       (click)="setProfileSelected(profile)">
       <td>{{profile.user.username}}</td>
-      <td>{{profile.user.active}}</td>
       <td>{{profile.user.role}}</td>
+      <td>{{profile.active}}</td>
       <!-- <td >{{profile.user.enabled}}</td> -->
-      <td><input type="checkbox" name="enabled" [(ngModel)]="profile.user.enabled" />{{profile.user.enabled}}</td>
+      <!-- <td><input type="checkbox" name="enabled" [(ngModel)]="profile.user.enabled" />{{profile.user.enabled}}</td> -->
       <!-- <td (click)="setProfileSelected(profile)">{{profile.user.active}}</td> -->
-      <button type="button" class="btn btn-danger" (click)="deactivateProfile()">Deactive</button>
-      <button type="button" class="btn btn-primary" (click)="reactivateProfile()">Reactivate</button>
+      <button type="button" class="btn btn-danger" (click)="deactivateProfile(profile.id, profile)">Deactive</button>
+      <button type="button" class="btn btn-primary" (click)="reactivateProfile(profile.id, profile)">Reactivate</button>
     </tr>
   </table>
   <hr>

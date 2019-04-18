@@ -95,9 +95,10 @@ export class AdminComponent implements OnInit {
     );
   }
   deactivateProfile(id: number, profile: Profile) {
+    profile.active = false;
     this.profileSrv.update(id, profile).subscribe(
       data => {
-        this.profile = data;
+        this.loadUserProfiles();
       },
       err => {
         console.error('AdminComponent.delete(): Error');
@@ -105,7 +106,17 @@ export class AdminComponent implements OnInit {
       }
     );
   }
-  reactivateProfile() {
+  reactivateProfile(id: number, profile: Profile) {
+    profile.active = true;
+    this.profileSrv.update(id, profile).subscribe(
+      data => {
+        this.loadUserProfiles();
+      },
+      err => {
+        console.error('AdminComponent.delete(): Error');
+        console.error(err);
+      }
+    );
 
   }
   setInstrumentSelected(instrument) {
