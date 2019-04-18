@@ -1,9 +1,9 @@
-import { AuthService } from './../../services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { Router } from '@angular/router';
 import { BandServiceService } from './../../services/band-service.service';
 import { Band } from './../../models/band';
 import { Component, OnInit } from '@angular/core';
 import { NgbCarouselConfig } from '@ng-bootstrap/ng-bootstrap';
-import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -26,9 +26,8 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private bandSvc: BandServiceService,
-    private auth: AuthService,
-    private route: Route,
     private router: Router,
+    private auth: AuthService,
     config: NgbCarouselConfig
   ) {  // customize default values of carousels used by this component tree
     config.interval = 5000;
@@ -45,6 +44,10 @@ export class HomeComponent implements OnInit {
 
   // METHODS
 
+  goToBand(band: Band) {
+    this.router.navigateByUrl(`bands/${band.id}`);
+  }
+
   loadBands() {
     this.bandSvc.indexAll().subscribe(
       data => {
@@ -55,12 +58,6 @@ export class HomeComponent implements OnInit {
         console.log(err);
       }
     );
-  }
-
-  goToBand(band: Band) {
-    if (this.auth.checkLogin) {
-      this.router.navigateByUrl('')
-    }
   }
 
 }
