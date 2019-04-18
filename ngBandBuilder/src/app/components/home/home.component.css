@@ -1,22 +1,21 @@
 .img-fluid {
-  max-width: 80%;
+  max-width: 50%;
   height: auto;
   padding: 0%;
   margin: 0%;
   border: 0cm;
-
 }
- img{
-  height: 400px;
-  width: 500px;
+img {
+  height: 300px;
+  width: 400px;
 }
 #home-div {
   /* color: #233237; */
-  color: #18121E;
+  color: #18121e;
   /* background-color: #eac67a; */
-  opacity: .6;
+  opacity: 0.6;
   /* background-image: none; */
-  background-image: url('https://data.whicdn.com/images/167519304/large.jpg');
+  background-image: url("https://data.whicdn.com/images/167519304/large.jpg");
   /* background-image: url('https://www.makeitinmusic.com/wp-content/uploads/2012/11/band-image.jpeg'); */
   background-color: #984b43;
   background-size: 50%;
@@ -27,7 +26,6 @@
   border: 0%;
   /* width: 100px; */
   background-position: center;
-
 }
 html {
   /* background-color: #0C4A60; */
@@ -49,21 +47,46 @@ html {
   text-align: center;
   font-family: Arial, Helvetica, sans-serif;
 }
-html > div:nth-child(3){
+html > div:nth-child(3) {
   /* margin-top: 10px; */
   border-top: 150px;
   padding-top: 150px;
   color: lightgray;
   /* filter: grayscale(10%); */
   text-align: left;
-
 }
 html > div:nth-child(6) > ul > li {
   list-style-type: none;
   font-size: x-large;
 }
 html > form > select {
-box-sizing: border-box;
--moz-box-sizing: border-box;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+}
+html > form > div:nth-child(1) > select {
+  /* width: 50%; */
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
+  background-color: #984b43;
+  border-bottom-color: #18121e;
+  color: #18121e;
+}
+html > form > div:nth-child(2) > input {
+  /* width: 50%; */
+  text-align: center;
+  align-content: center;
+  align-self: center;
+  background-color: #984b43;
+  border: #18121e;
+  color: #18121e;
+  justify-content: center;
+}
+html > form > div:nth-child(1) {
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  align-self: center;
 }

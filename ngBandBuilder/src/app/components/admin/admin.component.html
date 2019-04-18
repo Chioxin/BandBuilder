@@ -1,4 +1,4 @@
-<html>
+  <html>
 <span>
   <h3>Admin Page</h3>
 </span>
@@ -43,13 +43,13 @@
 <form id="addInstrumentForm">
   <h3>Add new Instrument</h3>
 
-<input type="text" name="name" placeholder="name" [(ngModel)]="newInstrument.instrumentName">
-<input type="text" name="description" placeholder="description" [(ngModel)]="newInstrument.instrumentDescription">
-Approved: <input type="checkbox" name="approved" placeholder="approved" [(ngModel)]="newInstrument.instrumentApproved">
-Active: <input type="checkbox" name="active" placeholder="active" [(ngModel)]="newInstrument.instrumentActive">
-<input type="text" name="imageUrl" placeholder="image url" [(ngModel)]="newInstrument.imageURL">
-<input type="text" name="imageDescription" placeholder="image description" [(ngModel)]="newInstrument.imageDescription">
-<input type="text" name="imageAlt" placeholder="image alt" [(ngModel)]="newInstrument.imageAlt">
+<input type="text" name="name" placeholder="name" class="form-control" [(ngModel)]="newInstrument.instrumentName"><br>
+<input type="text" name="description" placeholder="description" class="form-control" [(ngModel)]="newInstrument.instrumentDescription"><br>
+Approved: <input type="checkbox" name="approved" placeholder="approved" class="form-control" [(ngModel)]="newInstrument.instrumentApproved"><br>
+Active: <input type="checkbox" name="active" placeholder="active" class="form-control" [(ngModel)]="newInstrument.instrumentActive"><br>
+<input type="text" name="imageUrl" placeholder="image url" class="form-control" [(ngModel)]="newInstrument.imageURL"><br>
+<input type="text" name="imageDescription" placeholder="image description" class="form-control" [(ngModel)]="newInstrument.imageDescription"><br>
+<input type="text" name="imageAlt" placeholder="image alt"  class="form-control" [(ngModel)]="newInstrument.imageAlt"><br>
 <button type="button" class="btn btn-success" (click)="addInstrument(newInstrument)"> Save</button>
 </form>
 <hr>

@@ -12,27 +12,27 @@
       musical interests.</strong> </h4>
 </div>
 <ul>
-  <li *ngFor="let band of bands">{{band.name}} <img src="{{band.image.url}}" alt=""></li>
-  <ngb-carousel >
+  <!-- <li *ngFor="let band of bands">{{band.name}} <img src="{{band.image.url}}" alt=""></li> -->
+  <ngb-carousel>
     <ng-template ngbSlide>
       <img [src]="images[0]" alt="Random first slide">
       <div class="carousel-caption">
-        <h3>10 seconds between slides...</h3>
-        <p>This carousel uses customized default values.</p>
+        <h3>Piss-ant Graphite...</h3>
+        <p>Local band playing small venues in Colorado.</p>
       </div>
     </ng-template>
     <ng-template ngbSlide>
       <img [src]="images[1]" alt="Random second slide">
       <div class="carousel-caption">
-        <h3>No mouse events...</h3>
-        <p>This carousel doesn't pause or resume on mouse events</p>
+        <h3>Torrent Technician...</h3>
+        <p>Small group of friends that enjoy music.</p>
       </div>
     </ng-template>
     <ng-template ngbSlide>
-      <img [src]="images[2]"  alt="Random third slide">
+      <img [src]="images[2]" alt="Random third slide">
       <div class="carousel-caption">
-        <h3>No keyboard...</h3>
-        <p>This carousel uses customized default values.</p>
+        <h3>Haven...</h3>
+        <p>Just as the name states.</p>
       </div>
     </ng-template>
 
@@ -62,14 +62,19 @@
 </div> -->
 
 <form>
-  <select class="form-control" name="searchBy" [(ngModel)]='searchBy'>
-    <option value="Name">Name</option>
-    <option value="Genre">Genre</option>
-    <option value="City">City</option>
-    <option value="State">State</option>
-    <option value="Zip">Zip</option>
-  </select>
-  <input class="form-control" type="text" name="keyword" [(ngModel)]='searchKeyword'>
+  <div >
+    <select class="form-control" name="searchBy" [(ngModel)]='searchBy'>
+      <option value="Name">Name</option>
+      <option value="Genre">Genre</option>
+      <option value="City">City</option>
+      <option value="State">State</option>
+      <option value="Zip">Zip</option>
+    </select>
+  </div>
+  <div >
+    <input class="form-control" type="text" name="keyword" placeholder="Search drop down and keyword"
+      [(ngModel)]='searchKeyword'>
+  </div>
 </form>
 
 <div>
