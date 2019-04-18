@@ -81,7 +81,7 @@
 
 <div>
   <div class="card-columns searchDisplay">
-    <div class="card bandCard" *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword">
+    <div class="card bandCard" *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword" (click)="goToBand(searchBand)">
       <img class="card-img-top" src="{{searchBand.image.url}}" alt="">
       <div class="card-body">
         <h5>{{searchBand.name}}</h5>
