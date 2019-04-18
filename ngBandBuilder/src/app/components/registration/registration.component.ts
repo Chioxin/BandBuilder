@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { RegistrationForm } from './../../models/registration-form';
 import { Component, OnInit } from '@angular/core';
@@ -19,6 +20,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(
     private profileSvc: ProfileService,
+    private router: Router,
     private auth: AuthService
   ) { }
 
@@ -56,11 +58,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   createProfile() {
-    console.log(this.regInfo);
     this.profileSvc.create(this.regInfo).subscribe(
       dataProfile => {
-        console.log('WE GOT HERE YAY');
-        // ROUTE USER TO PROFILE PAGE HERE
+        this.router.navigateByUrl('profiles/' + dataProfile.id);
       },
       err => {
         console.error('ERROR CREATING PROFILE');

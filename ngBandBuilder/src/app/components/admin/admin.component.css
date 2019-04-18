@@ -1,0 +1,56 @@
+ img {
+   width: 300px;
+   height: 200px;
+   border: #eac67a;
+   /* border-radius: 100%; */
+ }
+html {
+  padding-bottom: 5%;
+  margin-bottom: 1px;
+  background-color: #eac67a;
+  filter: grayscale(20%);
+  background-blend-mode: multiply;
+
+  color: #984b43;
+  filter: grayscale(50%);
+}
+
+#addInstrumentForm {
+row-gap: 1px;
+}
+#addInstrumentForm > input:nth-child(2) {
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+
+}
+#addInstrumentForm > input:nth-child(4){
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+}
+#addInstrumentForm > input:nth-child(8){
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+}
+#addInstrumentForm > input:nth-child(10){
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+}
+#addInstrumentForm > input:nth-child(12){
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+}
+#addInstrumentForm > input:nth-child(14) {
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+}
+html > div.md-form.mt-0 > input{
+  background-color: #984b43;
+  color: #18121e;
+  width: 50%;
+}

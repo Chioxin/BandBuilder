@@ -1,0 +1,31 @@
+<br>
+<div *ngIf="editUserInstrument">
+  <form class='form container'>
+      <br>
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Instrument</span>
+          </div>
+          <input type="text" class="form-control" name="instrumentName" placeholder="{{editUserInstrument.instrument.name}}" disabled>
+      </div>
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Description</span>
+          </div>
+          <input type="text" class="form-control" name="description" placeholder="{{editUserInstrument.description}}" [(ngModel)]="editUserInstrument.description">
+      </div>
+      <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon1">Experience</span>
+          </div>
+          <input type="text" class="form-control" name="experience" placeholder="{{editUserInstrument.experience}}" [(ngModel)]="editUserInstrument.experience">
+      </div>
+      <div class="form-group">
+        <button class="btn btn-primary" (click)="updateUserInstrument()">Save</button>
+        <button class="btn btn-danger" (click)="cancelEdit()">Cancel</button>
+      </div>
+      <div class="form-group">
+          <button class="btn btn-danger" (click)="deleteUserInstrument()">Delete</button>
+      </div>
+  </form>
+</div>

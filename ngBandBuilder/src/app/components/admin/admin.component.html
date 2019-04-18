@@ -1,0 +1,85 @@
+  <html>
+<span>
+  <h3>Admin Page</h3>
+</span>
+
+<!-- Search form Admin-->
+<div *ngIf="adminProfile">
+  <!-- <img src="https://alghazitour.co.id/wp-content/uploads/admin-user-icon.gif" alt="admin image" class="img-thumbnail"> -->
+  <img src="{{adminProfile.image.url}}" alt="admin image" class="img-thumbnail">
+  <h3> Username: {{adminProfile.user.username}}</h3>
+</div>
+<hr>
+<!-- div for retriving instruments -->
+<div id="listOfInstruments" >
+  <h3>Instrument Approvals</h3>
+  <table class="table table-striped" >
+    <tr class="thead-dark" >
+      <th>Name</th>
+      <th>Description</th>
+      <!-- <th>Image</th> -->
+      <th>Active</th>
+      <!-- <th>Approved</th> -->
+      <th></th>
+
+    </tr>
+    <!-- <tr *ngFor= "let instrument of instruments " [ngClass]="formatCompletedProfile(instrument)" (click)="setInstrumentSelected(instrument)"> -->
+
+      <tr  *ngFor="let instrument of instruments | myInstrumentFilter" [ngClass]="formatCompletedInstrument(instrument)" >
+        <td>{{instrument.name}}</td>
+        <td>{{instrument.description}}</td>
+        <td (click)="setInstrumentSelected(instrument)">{{instrument.active}}</td>
+        <!-- <td ><input type="checkbox" name="active" [(ngModel)] = "instrument.active"/>{{instrument.active}}</td> -->
+        <!-- <td><input  type="checkbox" name="approved" [(ngModel)]="instrument.approved" />{{instrument.approved}}</td> -->
+        <button type="button" class="btn btn-danger" (click)="deleteInstrument(instrument)">Delete</button>
+        <button type="button" class="btn btn-success" (click)="acceptInstrument(instrument)">Accept</button>
+      </tr>
+
+    </table>
+  </div>
+  <hr>
+
+<!-- div for retrieving profiles -->
+<form id="addInstrumentForm">
+  <h3>Add new Instrument</h3>
+
+<input type="text" name="name" placeholder="name" class="form-control" [(ngModel)]="newInstrument.instrumentName"><br>
+<input type="text" name="description" placeholder="description" class="form-control" [(ngModel)]="newInstrument.instrumentDescription"><br>
+Approved: <input type="checkbox" name="approved" placeholder="approved" class="form-control" [(ngModel)]="newInstrument.instrumentApproved"><br>
+Active: <input type="checkbox" name="active" placeholder="active" class="form-control" [(ngModel)]="newInstrument.instrumentActive"><br>
+<input type="text" name="imageUrl" placeholder="image url" class="form-control" [(ngModel)]="newInstrument.imageURL"><br>
+<input type="text" name="imageDescription" placeholder="image description" class="form-control" [(ngModel)]="newInstrument.imageDescription"><br>
+<input type="text" name="imageAlt" placeholder="image alt"  class="form-control" [(ngModel)]="newInstrument.imageAlt"><br>
+<button type="button" class="btn btn-success" (click)="addInstrument(newInstrument)"> Save</button>
+</form>
+<hr>
+<h3>Sort Profiles by Username</h3>
+  <div class="md-form mt-0">
+    <input  [(ngModel)]="searchText" class="form-control"  placeholder="Search" type="text"  aria-label="Search" autocomplete="off" placeholder="&#61442;  Start searching for a profile">
+  </div>
+<hr>
+<div id="listOfProfiles">
+  <h3>Profiles</h3>
+  <table class="table table-striped">
+    <tr class="thead-dark" span="">
+      <th>Username</th>
+      <th>Active</th>
+      <th>Role</th>
+      <th>Enabled</th>
+      <th></th>
+    </tr>
+    <tr *ngFor="let profile of profiles | searchByKeyword:searchText " [ngClass]="formatCompletedProfile(profile)"
+      (click)="setProfileSelected(profile)">
+      <td>{{profile.user.username}}</td>
+      <td>{{profile.user.active}}</td>
+      <td>{{profile.user.role}}</td>
+      <!-- <td >{{profile.user.enabled}}</td> -->
+      <td><input type="checkbox" name="enabled" [(ngModel)]="profile.user.enabled" />{{profile.user.enabled}}</td>
+      <!-- <td (click)="setProfileSelected(profile)">{{profile.user.active}}</td> -->
+      <button type="button" class="btn btn-danger" (click)="deactivateProfile()">Deactive</button>
+      <button type="button" class="btn btn-primary" (click)="reactivateProfile()">Reactivate</button>
+    </tr>
+  </table>
+  <hr>
+</div>
+</html>

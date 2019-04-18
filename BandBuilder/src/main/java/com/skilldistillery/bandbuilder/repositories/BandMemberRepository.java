@@ -10,4 +10,5 @@ public interface BandMemberRepository extends JpaRepository<BandMember, Integer>
 
 	public List<BandMember> getBandMembersByBandId(int id);
 	public BandMember getBandMemberById(int id);
+	public List<BandMember> findByProfileId(int id);
 }

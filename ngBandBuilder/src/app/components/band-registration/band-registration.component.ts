@@ -1,7 +1,10 @@
+import { ProfileService } from './../../services/profile.service';
 import { Component, OnInit } from '@angular/core';
 import { BandRegistrationForm } from 'src/app/models/band-registration-form';
 import { AuthService } from 'src/app/services/auth.service';
 import { BandServiceService } from 'src/app/services/band-service.service';
+import { Profile } from 'src/app/models/profile';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -12,28 +15,50 @@ import { BandServiceService } from 'src/app/services/band-service.service';
 export class BandRegistrationComponent implements OnInit {
   // FIELDS
   bandRegistrationForm: BandRegistrationForm = new BandRegistrationForm();
-
-
-  // display created json
-  // bandRegistrationForm = new BandRegistrationForm('', undefined);
+  myProfile: Profile;
 
   constructor(
     private bandSvc: BandServiceService,
-    private auth: AuthService
+    private auth: AuthService,
+    private profileService: ProfileService,
+    private router: Router
     ) { }
 
   ngOnInit() {
+    this.getProfile();
+  }
+
+  redirectBand(id: number) {
+    this.router.navigate(['/bands/' + id]);
+  }
+
+  redirectProfile() {
+    this.router.navigate(['/profiles/']);
+  }
+
+  getProfile() {
+    const tempUser = this.auth.getUsername();
+    this.findProfileByUserName(tempUser);
+  }
+
+  findProfileByUserName(username: string) {
+    this.profileService.showProfileByUsername(username).subscribe(
+      data => {
+        this.myProfile = data;
+      },
+      err => {
+        console.error(err);
+      }
+    );
   }
 
   createBand() {
-    console.log(this.bandRegistrationForm);
-    this.bandSvc.createBand(this.bandRegistrationForm).subscribe(
+    this.bandRegistrationForm.bandLeader = this.myProfile.id;
+    this.bandSvc.create(this.bandRegistrationForm).subscribe(
       dataBand => {
-        console.log('WE GOT HERE YAY');
-        // ROUTE USER TO PROFILE PAGE HERE
+        this.redirectBand(dataBand.id);
       },
       err => {
-        console.error('ERROR CREATING BAND');
         console.error(err);
       }
     );

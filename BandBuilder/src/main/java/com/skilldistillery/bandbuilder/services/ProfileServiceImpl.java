@@ -82,6 +82,7 @@ public class ProfileServiceImpl implements ProfileService {
 			image.setUrl(regInfo.getImageURL());
 			image.setDescription(regInfo.getImageDescription());
 			image.setAlt(regInfo.getImageAlt());
+			image.setActive(true);
 			image = imageRepo.saveAndFlush(image);
 			
 			//Build Profile
@@ -92,6 +93,7 @@ public class ProfileServiceImpl implements ProfileService {
 			profile.setAddress(address);
 			profile.setUser(user);
 			profile.setImage(image);
+			profile.setActive(true);
 			profileRepo.saveAndFlush(profile);
 		}
 		
@@ -137,6 +139,11 @@ public class ProfileServiceImpl implements ProfileService {
 		}
 
 		return deleted;
+	}
+
+	@Override
+	public Profile getProfileByUserName(String username) {
+		return profileRepo.findByUserUsername(username);
 	}
 
 }

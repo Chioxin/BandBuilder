@@ -1,0 +1,26 @@
+table {
+  margin-top: 10%;
+  text-align: center;
+  margin: auto;
+  width: 50% !important;
+  height: max-content;
+}
+
+
+ div  {
+  align-content: center;
+  text-align: center;
+  justify-content: center;
+}
+form {
+  height: max-content;
+  padding-bottom: 5%;
+  margin-bottom: 1px;
+  background-color: #eac67a;
+  filter: grayscale(50%);
+  background-blend-mode: multiply;
+  padding-left: 50px;
+  padding-right: 50px;
+  /* font-size: x-large; */
+  /* border: #18121e; */
+}

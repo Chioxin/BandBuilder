@@ -40,9 +40,9 @@ public class UserInstrumentServiceImpl implements UserInstrumentService {
 		Optional<UserInstrument> optional = userInstrumentRepo.findById(id);
 		if (optional.isPresent()) {
 			UserInstrument managed = optional.get();
-			userInstrument.setDescription(managed.getDescription());
-			userInstrument.setExperience(managed.getExperience());
-			return userInstrumentRepo.saveAndFlush(userInstrument);
+			managed.setDescription(userInstrument.getDescription());
+			managed.setExperience(userInstrument.getExperience());
+			return userInstrumentRepo.saveAndFlush(managed);
 		} else {
 			return null;
 		}
@@ -50,7 +50,16 @@ public class UserInstrumentServiceImpl implements UserInstrumentService {
 
 	@Override
 	public Boolean deleteUserInstrumentById(int id) {
-		return null;
+		Boolean deleted = false;
+		
+		Optional<UserInstrument> opt = userInstrumentRepo.findById(id);
+		if (opt.isPresent()) {
+			UserInstrument managed = opt.get();
+			managed.setActive(false);
+			userInstrumentRepo.saveAndFlush(managed);
+			deleted = true;
+		}
+		return deleted;
 	}
 
 }

@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -28,11 +29,15 @@ private PasswordEncoder encoder;
 protected void configure(HttpSecurity http) throws Exception {
         http
         .csrf().disable()
+        	.antMatcher("/api/bands")
         .authorizeRequests()
-        .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll() // For CORS, the preflight request
-        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()     // will hit the OPTIONS on the route
-        .antMatchers("/api/**").authenticated() // Requests for our REST API must be authorized.
-        .anyRequest().permitAll()               // All other requests are allowed without authorization.
+	        .antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll()
+	        .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+	        .and()
+        .authorizeRequests()
+//       	.antMatchers("/api/**").authenticated() 
+        	.anyRequest().authenticated()               
+//      	.anyRequest().permitAll()               
         .and()
         .httpBasic();                           // Use HTTP Basic Authentication
 

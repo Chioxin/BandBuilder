@@ -1,0 +1,428 @@
+<html>
+<div *ngIf="myBand" class="container">
+  <div id="titleArea" class="col">
+    <div id="titleOwnerView" *ngIf="viewerIsOwner">
+
+      <br>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm">
+            <h1>Band Profile: {{myBand.name}}</h1>
+            <div *ngIf="viewerIsOwner">
+              <button class="btn btn-danger" (click)="bandDeleteBand()">DELETE BAND</button>
+              <button class="btn btn-primary" (click)="bandEditBand()">Edit Band</button>
+            </div>
+            <hr>
+            <div>
+              <img src="{{myBand.image.url}}" alt="">
+            </div>
+          </div>
+        </div>
+        <div *ngIf="editBand ">
+          <form>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="name">Name:</span>
+              </div>
+
+              <input type="text" name="name" class="form-control" [(ngModel)]="editBand.name">
+
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="name">About Us:</span>
+              </div>
+
+              <input type="text" name="aboutUs" class="form-control" [(ngModel)]="editBand.aboutUs">
+
+            </div>
+            <!-- <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id ="name">Genre:</span>
+              </div>
+
+              <input type="text" name="aboutUs" class="form-control" [(ngModel)]="editBand.aboutUs" disabled>
+
+            </div> -->
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="name">Genre:</span>
+              </div>
+
+              <input type="text" name="genre" class="form-control" [(ngModel)]="editBand.genre">
+
+            </div>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="name">Time Commitment:</span>
+              </div>
+
+              <input type="text" name="timeCommitment" class="form-control" [(ngModel)]="editBand.timeCommitment">
+
+            </div>
+            <button class="btn btn-danger" (click)="bandSaveBand()">Save</button>
+            <button class="btn btn-primary" (click)="bandCancelBand()">Cancel</button>
+          </form>
+          <hr>
+        </div>
+<hr>
+        <ngb-tabset *ngIf="viewerIsOwner">
+          <ngb-tab title="Band Member Details">
+            <ng-template ngbTabContent>
+              <div>
+                <h1>Band Members</h1>
+                <div *ngIf="editBandMember ">
+                  <h3>Edit Member:</h3>
+                  <form>
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="description">Description:</span>
+                          </div>
+
+                          <!-- <input type="text" name="timeCommitment" class="form-control" [(ngModel)]="editBand.timeCommitment"> -->
+                          <input type="text" name="description"  class="form-control" [(ngModel)]="editBandMember.description">
+
+                        </div>
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="experience">Experience:</span>
+                          </div>
+
+                          <input type="text" name="experience" class="form-control" [(ngModel)]="editBandMember.experience">
+                        </div>
+                    <button class="btn btn-success" (click)="bandSavePosition()">Save</button>
+                    <button class="btn btn-danger" (click)="bandCancelEditPosition()">Cancel</button>
+                  </form>
+                </div>
+                <hr>
+                <div *ngIf="viewerIsOwner && !editBandMember && !newBandMember">
+                  <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
+                </div>
+                <hr>
+
+                <div *ngIf="newBandMember">
+                  <form>
+                    <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
+                    <button class="btn btn-danger" (click)="bandCancelAddBandMember()">Reject</button>
+                    <select name="instrument" [(ngModel)]="selectedInstrumentId">
+                      <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">
+                        {{anInstrument.name}}
+                      </option>
+                    </select>
+                    <input type="text" name="experience" [(ngModel)]="newBandMember.experience">
+                    <input type="text" name="description" [(ngModel)]="newBandMember.description">
+                  </form>
+
+                </div>
+
+                <div class="card-group" *ngIf="!editBandMember && !newBandMember">
+
+                    <div class="card" *ngFor="let member of myBandMembers">
+                      <div *ngIf="member.active">
+                        <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}"
+                            alt="">
+                        </div>
+                        <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt="">
+                        </div>
+                        <div class="card-body" *ngIf="!member.profile">{{member.description}}</div>
+                        <div class="card-body" *ngIf="member.profile">{{member.profile.aboutMe}}</div>
+                        <div class="card-footer">
+                          <span *ngIf="viewerIsOwner">
+                            <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)"
+                              *ngIf="member.profile">Remove Member</button>
+                            <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+                            <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
+                          </span>
+                          <button class="btn btn-success" (click)="bandClaimPosition(member)"
+                            *ngIf="!member.profile">Claim
+                            Position</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+            </ng-template>
+          </ngb-tab>
+
+          <ngb-tab title="About Band Details" *ngIf="!editBand">
+            <ng-template ngbTabContent>
+              <br>
+              <div class="input-group mb-3">
+
+                <h1>About: {{myBand.name}}</h1>
+                <hr>
+                <blockquote>{{myBand.aboutUs}}</blockquote>
+
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+</html>
+<!-- <html>
+  <div *ngIf="myBand">
+    <div>
+      <h1>Band Profile: {{myBand.name}}</h1>
+    <div *ngIf="viewerIsOwner">
+      <button class="btn btn-danger" (click)="bandDeleteBand()">DELETE BAND</button>
+      <button class="btn btn-primary" (click)="bandEditBand()">Edit Band</button>
+    </div>
+    <hr>
+    <img src="{{myBand.image.url}}" alt="">
+  </div>
+
+  <div *ngIf="editBand">
+    <form>
+      <input type="text" name="name" [(ngModel)]="editBand.name">
+      <input type="text" name="aboutUs" [(ngModel)]="editBand.aboutUs">
+      <input type="text" name="genre" [(ngModel)]="editBand.genre">
+      <input type="text" name="timeCommitment" [(ngModel)]="editBand.timeCommitment">
+      <button class="btn btn-danger" (click)="bandSaveBand()">Save</button>
+      <button class="btn btn-primary" (click)="bandCancelBand()">Cancel</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>Band Members</h1>
+    <div *ngIf="viewerIsOwner">
+      <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
+    </div>
+    <hr>
+
+    <div *ngIf="newBandMember">
+      <form>
+        <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
+        <button class="btn btn-danger" (click)="bandCancelAddBandMember()">Reject</button>
+        <select name="instrument" [(ngModel)]="selectedInstrumentId">
+            <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
+          </select>
+        <input type="text" name="experience" [(ngModel)]="newBandMember.experience">
+        <input type="text" name="description" [(ngModel)]="newBandMember.description">
+      </form>
+
+    </div>
+
+    <div *ngIf="!editBandMember || !newBandMember">
+      <div class="card" *ngFor="let member of myBandMembers">
+        <div *ngIf="member.active">
+          <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt=""></div>
+          <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt=""></div>
+          <div class="card-body" *ngIf="!member.profile">{{member.description}}</div>
+          <div class="card-body" *ngIf="member.profile">{{member.profile.aboutMe}}</div>
+          <div class="card-footer" >
+            <span *ngIf="viewerIsOwner">
+            <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
+            <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+            <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
+          </span>
+          <button class="btn btn-success" (click)="bandClaimPosition(member)" *ngIf="!member.profile">Claim Position</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="editBandMember">
+    <form>
+      <input type="text" name="description" [(ngModel)]="editBandMember.description">
+      <input type="text" name="experience" [(ngModel)]="editBandMember.experience">
+      <button class="btn btn-success" (click)="bandSavePosition()">Save</button>
+      <button class="btn btn-danger" (click)="bandCancelEditPosition()">Cancel</button>
+    </form>
+  </div>
+
+  <div>
+    <h1>About: {{myBand.name}}</h1>
+    <hr>
+    <blockquote>{{myBand.aboutUs}}</blockquote>
+  </div>
+</div>
+</html> -->
+
+
+
+
+
+
+<!-- <div>
+  <table class='table table-striped table-hover'>
+    <thead class='thead-dark'>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Genre</th>
+        <th>About Us</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor='let myBand of bands'>
+        <td (click)='selected = myBand; setEditBand()'>{{myBand.name}}</td>
+        <th>{{myBand.email}}</th>
+        <th>{{myBand.genre}}</th>
+        <th>{{myBand.aboutUs}}</th>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ngb-tabset type="pills" class="col-8">
+    <ngb-tab title="Details">
+      <ng-template ngbTabContent>
+        <div id='bandEdit' class="container" *ngIf='editBand && selected'>
+            <form class='form' class="col-6">
+              <br>
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="hidden" name='id' value=editBand.id [(ngModel)]="editBand.id">
+                <input type="text" class="form-control" name='name' [(ngModel)]="editBand.name">
+              </div>
+              <div class='form-group'>
+                  <label for="aboutUs">About Us</label>
+                  <input type="text" class="form-control" name='aboutUs' [(ngModel)]="editBand.aboutUs">
+              </div>
+              <div class='form-group'>
+                  <label for="genre">Genre</label>
+                  <input type="text" class="form-control" name='genre' [(ngModel)]="editBand.genre">
+              </div>
+              <div class='form-group'>
+                  <label for="email">Email</label>
+                  <input type="text" class="form-control" name='email' [(ngModel)]="editBand.email">
+              </div>
+              <div class='form-group'>
+                  <label for="city">City</label>
+                  <input type="text" class="form-control" name='city' value=editBand.address.city [(ngModel)]="editBand.address.city">
+              </div>
+              <div class='form-group'>
+                <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+                <button (click)='updateBand(editBand)' class='btn btn-success'>Save</button>
+              </div>
+            </form>
+          </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Address">
+      <ng-template ngbTabContent>
+        <div id='addressEdit' class="container" *ngIf='editBand && selected'>
+          <form class='form' class="col-6">
+            <br>
+            <div class="form-group">
+              <label for="street">Street</label>
+              <input type="text" class="form-control" name='street' value=editBand.address.street [(ngModel)]="editBand.address.street">
+            </div>
+            <div class="form-group">
+              <label for="street2">Street 2</label>
+              <input type="text" class="form-control" name='street2' value=editBand.address.street2 [(ngModel)]="editBand.address.street2">
+            </div>
+            <div class="form-group">
+                <label for="city">City</label>
+                <input type="text" class="form-control" name='city' value=editBand.address.city [(ngModel)]="editBand.address.city">
+            </div>
+            <div class="form-group">
+                <label for="state">State</label>
+                <select name="addressState" class="form-control" [(ngModel)]="editBand.address.state">
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="District Of Columbia">District Of Columbia</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="zip">Zip Code</label>
+                <input type="text" class="form-control" name='zip' value=editBand.address.zip [(ngModel)]="editBand.address.zip">
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="text" class="form-control" name='phone' value=editBand.address.phone [(ngModel)]="editBand.address.phone">
+            </div>
+            <button (click)='updateAddress(editBand.address)' class='btn btn-success'>Save</button>
+            <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+          </form>
+        </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Image">
+      <ng-template ngbTabContent>
+          <div id='imageEdit' *ngIf='editBand && selected'>
+              <form class='form'>
+                <input type="text" name='url' value=editBand.image.url [(ngModel)]="editBand.image.url"><br>
+                <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+                <button (click)='updateImage(editBand.image)' class='btn btn-success'>Save</button>
+              </form>
+          </div>
+      </ng-template>
+    </ngb-tab>
+    <ngb-tab title="Band Members">
+        <ng-template ngbTabContent>
+            <div id='bandMemberEdit' *ngIf='editBand && selected'>
+                <form class='form'>
+                  <input type="text" name='url' value=editBand.image.url [(ngModel)]="editBand.image.url"><br>
+                  <button (click)='editBand=null' class='btn btn-danger'>Cancel</button>
+                  <button (click)='updateImage(editBand.image)' class='btn btn-success'>Save</button>
+                </form>
+            </div>
+        </ng-template>
+      </ngb-tab>
+      <ngb-tab title="Band Social Media">
+          <ng-template ngbTabContent>
+              <div id='imageEdit' *ngIf='editBand && selected'>
+                  <div *ngFor='let myBandSocialMedias of band'>
+                    <p>{{myBandSocialMedias.id}}</p>
+                  </div>
+                </div>
+          </ng-template>
+        </ngb-tab>
+  </ngb-tabset> -->

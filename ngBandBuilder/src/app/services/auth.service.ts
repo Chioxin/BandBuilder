@@ -1,3 +1,4 @@
+import { Profile } from './../models/profile';
 
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -29,9 +30,7 @@ export class AuthService {
     };
 
     // create request to authenticate credentials
-    return this.http
-      .get(this.baseUrl + 'authenticate', httpOptions)
-      .pipe(
+    return this.http.get(this.baseUrl + 'authenticate', httpOptions).pipe(
         tap((res) => {
           localStorage.setItem('credentials' , credentials);
           return res;
@@ -60,6 +59,7 @@ export class AuthService {
     localStorage.removeItem('credentials');
     localStorage.removeItem('username');
     localStorage.removeItem('password');
+    localStorage.clear();
   }
 
   checkLogin() {
@@ -84,5 +84,11 @@ export class AuthService {
 
   getUsernamePassword() {
     return {username: localStorage.getItem('username'), password: localStorage.getItem('password')};
+  }
+
+  getUsername() {
+    const creds = atob(localStorage.credentials);
+    const username = creds.substring(0, creds.indexOf(':'));
+    return username;
   }
 }

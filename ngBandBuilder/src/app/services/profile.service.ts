@@ -26,7 +26,7 @@ export class ProfileService {
   index() {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + this.auth.getCredentials()
+      Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
     return this.http.get<Profile[]>(this.url, httpOptions);
@@ -35,7 +35,7 @@ export class ProfileService {
   show(id: number) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + this.auth.getCredentials()
+      Authorization: 'Basic ' + this.auth.getCredentials()
     })};
 
     return this.http.get<Profile>(this.url + id, httpOptions);
@@ -45,9 +45,36 @@ export class ProfileService {
   create(profile: RegistrationForm) {
     const httpOptions = {headers: new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': 'Basic ' + this.auth.getCredentials() // When creating a profile you should not need to authenticate. Right?
+      Authorization: 'Basic ' + this.auth.getCredentials() // When creating a profile you should not need to authenticate. Right?
     })};
     return this.http.post<Profile>(this.url, profile, httpOptions);
+  }
+
+  update(id: number, profile: Profile) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.put<Profile>(this.url + id, profile, httpOptions);
+  }
+
+  delete(id: number) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.delete<Profile>(this.url + id, httpOptions);
+  }
+
+  showProfileByUsername(username: string) {
+    const httpOptions = {headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: 'Basic ' + this.auth.getCredentials()
+    })};
+
+    return this.http.get<Profile>(this.url + 'users/' + username, httpOptions);
   }
 
 }

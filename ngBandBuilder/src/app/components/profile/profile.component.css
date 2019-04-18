@@ -1,0 +1,20 @@
+#profileImage {
+  margin: auto;
+  border: 1px solid rgb(0, 0, 0);
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
+}
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 10px; /* Added */
+}
+
+
+/* html{
+  background-color: #eac67a;
+  background-blend-mode: multiply;
+  filter: grayscale(50%);
+} */

@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.bandbuilder.datatransferobjects.BandMemberDTO;
 import com.skilldistillery.bandbuilder.entities.BandMember;
 import com.skilldistillery.bandbuilder.services.BandMemberService;
 
@@ -33,6 +32,11 @@ public class BandMemberController {
 		return bandMemberSvc.getBandMembersByBandId(id);
 	}
 	
+	@GetMapping("bandmembers/profiles/{pid}")
+	public List<BandMember> getBandMembersByProfileId(@PathVariable("pid") Integer id) {
+		return bandMemberSvc.getBandMembersByProfileId(id);
+	}
+	
 	@GetMapping("bandmembers/{id}")
 	public BandMember selectBandMember(@PathVariable("id") Integer id,
 			HttpServletResponse resp,
@@ -46,17 +50,30 @@ public class BandMemberController {
 		return bandMember;
 	}
 	
+//	@PostMapping("bandmembers")
+//	public BandMember createBandMember(@RequestBody BandMemberDTO bandMemberDTO,
+//			HttpServletResponse resp,
+//			HttpServletRequest req) {
+//		BandMember bandMember = bandMemberSvc.createBandMember(bandMemberDTO);
+//		if (bandMember != null) {
+//			resp.setStatus(201);
+//		} else {
+//			resp.setStatus(400);
+//		}
+//		return bandMember;
+//	}
+	
 	@PostMapping("bandmembers")
-	public BandMember createBandMember(@RequestBody BandMemberDTO bandMemberDTO,
+	public BandMember createBandMember(@RequestBody BandMember bandMember,
 			HttpServletResponse resp,
 			HttpServletRequest req) {
-		BandMember bandMember = bandMemberSvc.createBandMember(bandMemberDTO);
-		if (bandMember != null) {
+		BandMember newBandMember = bandMemberSvc.createBandMember(bandMember);
+		if (newBandMember != null) {
 			resp.setStatus(201);
 		} else {
 			resp.setStatus(400);
 		}
-		return bandMember;
+		return newBandMember;
 	}
 	
 	@PutMapping("bandmembers/{id}")

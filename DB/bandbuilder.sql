@@ -58,7 +58,7 @@ DROP TABLE IF EXISTS `image` ;
 
 CREATE TABLE IF NOT EXISTS `image` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `url` VARCHAR(2000) NOT NULL,
+  `url` VARCHAR(2000) NULL,
   `alt` TEXT(1000) NULL,
   `description` TEXT(1000) NULL,
   `active` VARCHAR(45) NULL,
@@ -340,6 +340,8 @@ INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phon
 INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (5, '3060 Main Street', NULL, 'Parker', 'Colorado', '80108', '3035046423', '2019-04-09 23:18:48', '2019-04-09 23:18:48', 1);
 INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (6, '15054 Halifax Way', NULL, 'Littleton', 'Colorado', '80121', '7205556743', '2019-04-10 22:38:48', '2019-04-10 22:38:48', 1);
 INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (7, '3317 E Colfax Ave', NULL, 'Denver', 'Colorado', '80226', '3033771666', '2019-04-11 09:38:48', '2019-04-11 09:38:48', 1);
+INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (8, '17900 Trading Post Rd', NULL, 'Morrison', 'Colorado', '80465', '7204567654', '2019-04-17 22:38:48', '2019-04-17 22:38:48', 1);
+INSERT INTO `address` (`id`, `street`, `street_2`, `city`, `state`, `zip`, `phone`, `created_at`, `updated_at`, `active`) VALUES (9, '1419 H St', NULL, 'Sacramento', 'California', '95814', '3039876567', '2019-04-17 23:38:48', '2019-04-17 23:38:48', 1);
 
 COMMIT;
 
@@ -360,6 +362,8 @@ INSERT INTO `image` (`id`, `url`, `alt`, `description`, `active`) VALUES (8, 'ht
 INSERT INTO `image` (`id`, `url`, `alt`, `description`, `active`) VALUES (9, 'https://worthly.com/wp-content/uploads/2015/08/Most-Expensive-Drum-Kits.png', 'generic drum set', 'This is an image of a drum set', '1');
 INSERT INTO `image` (`id`, `url`, `alt`, `description`, `active`) VALUES (10 , 'https://media.sweetwater.com/api/i/q-82__ha-4e7259dfbf2cadfe__hmac-f226978006fcf14a7522d3ddfcb6c8d65032d774/images/guitars/Wav4MatBlk/W150494/W150494-body-large.jpg', 'generic bass guitar', 'This is an image of a bass guitar', '1');
 INSERT INTO `image` (`id`, `url`, `alt`, `description`, `active`) VALUES (11, 'https://cdn.mos.cms.futurecdn.net/wpEgipYD7TJYpuYvbb3mi-320-80.jpg', 'generic band ', 'This is an image of a band at practice', '1');
+INSERT INTO `image` (`id`, `url`, `alt`, `description`, `active`) VALUES (12, 'https://i.ytimg.com/vi/23pYfDKyfBk/maxresdefault.jpg', 'This is band 2 image', 'This is band 2 Image', '1');
+INSERT INTO `image` (`id`, `url`, `alt`, `description`, `active`) VALUES (13, 'https://www.amwpro.com/wp-content/uploads/band-on-a-stage.jpg', 'This is band 3 image', 'This is band 3 image', '1');
 
 COMMIT;
 
@@ -398,6 +402,8 @@ COMMIT;
 START TRANSACTION;
 USE `bandbuilderdb`;
 INSERT INTO `band` (`id`, `name`, `about_us`, `genre`, `address_id`, `leader_id`, `image_id`, `email`, `time_commitment`, `updated_at`, `created_at`, `active`) VALUES (1, 'Piss-ant Graphite', 'What starts out as yearning soon becomes manipulated into a carnival of distress, leaving only a sense of unreality and the chance of a new synthesis.', 'Rock', 6, 1, 11, 'thegarageband@gmail.com', 'Test', '2019-04-01 22:38:48', '2019-04-01 22:38:48', 1);
+INSERT INTO `band` (`id`, `name`, `about_us`, `genre`, `address_id`, `leader_id`, `image_id`, `email`, `time_commitment`, `updated_at`, `created_at`, `active`) VALUES (2, 'Torrent Technician', 'As shifting derivatives become distorted through emergent and personal practice, the viewer is left with a tribute to the darkness of our existence', 'Heavy Metal', 8, 2, 12, 'heavymetal@gmail.com', 'Test2', '2019-04-17 22:38:48', '2019-04-17 22:38:48', 1);
+INSERT INTO `band` (`id`, `name`, `about_us`, `genre`, `address_id`, `leader_id`, `image_id`, `email`, `time_commitment`, `updated_at`, `created_at`, `active`) VALUES (3, 'Haven', 'It challenges the binaries we continually reconstruct between Self and Other, between our own ‘cannibal’ and ‘civilized’ selves.', 'Christian Rock', 9, 3, 13, 'haven@gmail.com', 'Test3', '2019-04-17 23:38:48', '2019-04-17 23:38:48', 1);
 
 COMMIT;
 

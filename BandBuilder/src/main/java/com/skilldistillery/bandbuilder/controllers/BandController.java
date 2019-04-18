@@ -45,10 +45,11 @@ public class BandController {
 		return band;
 	}
 	
-	@GetMapping("profiles/{id}/bands")
-	public List<Band> getAllBandsByProfileId(@PathVariable("id") int id, 
+	@GetMapping("profiles/{user}/bands")
+//	@GetMapping("profiles/{id}/bands")
+	public List<Band> getAllBandsByProfileId(@PathVariable("user") String user, 
 			HttpServletResponse response) {
-			List<Band> bandList = bandSvc.getAllBandsByProfileId(id);
+			List<Band> bandList = bandSvc.getAllBandsByUserUsername(user);
 			if(bandList != null) {
 				response.setStatus(200);
 			} else {
@@ -69,7 +70,7 @@ public class BandController {
 		return newBand;
 	}
 	
-	@PutMapping(path = "profiles/{id}/bands")
+	@PutMapping(path = "bands/{id}")
 	public Band updateBand(@RequestBody Band band, 
 			@PathVariable("id") Integer id,
 			HttpServletResponse response) {

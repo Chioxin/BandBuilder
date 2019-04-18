@@ -27,7 +27,7 @@ public class UserInstrumentController {
 	@Autowired
 	private UserInstrumentService userInstrumentSvc;
 
-	@GetMapping(path = "profiles/{id}/userinstruments")
+	@GetMapping(path = "userinstruments/profiles/{id}")
 	public List<UserInstrument> index(@PathVariable("id") int id, 
 			HttpServletResponse response,
 			HttpServletRequest request) {
@@ -81,7 +81,7 @@ public class UserInstrumentController {
 	}
 
 	@DeleteMapping(path = "userinstruments/{id}")
-	public void delete(@PathVariable int id, 
+	public void delete(@PathVariable("id") int id, 
 			HttpServletRequest request, 
 			HttpServletResponse response) {
 		Boolean bool = userInstrumentSvc.deleteUserInstrumentById(id);
