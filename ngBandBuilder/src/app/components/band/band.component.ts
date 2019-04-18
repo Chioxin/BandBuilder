@@ -176,6 +176,10 @@ export class BandComponent implements OnInit {
     this.editBand = null;
   }
 
+  goToProfile(profile: Profile) {
+    this.router.navigateByUrl(`profiles/${profile.id}`);
+  }
+
   // METHODS - SERVICES
 
   // updateBand(id: number): void {
