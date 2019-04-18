@@ -62,25 +62,30 @@
 </div> -->
 
 <form>
-  <div >
-    <select class="form-control" name="searchBy" [(ngModel)]='searchBy'>
-      <option value="Name">Name</option>
-      <option value="Genre">Genre</option>
-      <option value="City">City</option>
-      <option value="State">State</option>
-      <option value="Zip">Zip</option>
-    </select>
-  </div>
-  <div >
-    <input class="form-control" type="text" name="keyword" placeholder="Search drop down and keyword"
-      [(ngModel)]='searchKeyword'>
+  <div class="form-row">
+    <div class="form-group col-2">
+      <select class="form-control" name="searchBy" [(ngModel)]='searchBy'>
+        <option value="Name">Name</option>
+        <option value="Genre">Genre</option>
+        <option value="City">City</option>
+        <option value="State">State</option>
+        <option value="Zip">Zip</option>
+      </select>
+    </div>
+    <div class="col-10">
+      <input class="form-control" type="text" name="keyword" placeholder="Search drop down and keyword"
+        [(ngModel)]='searchKeyword'>
+    </div>
   </div>
 </form>
 
 <div>
+  <div class="">
+
+  </div>
   <ul>
-    <li *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword">{{searchBand.name}}<br> <img
-        src="{{searchBand.image.url}}" alt=""></li>
+    <li *ngFor="let searchBand of bands | searchBand:searchBy:searchKeyword">{{searchBand.name}}<br>
+      <img src="{{searchBand.image.url}}" alt="" (click)="goToBand(searchBand)" ></li>
   </ul>
 </div>
 
