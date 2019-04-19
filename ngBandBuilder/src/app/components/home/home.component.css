@@ -92,15 +92,31 @@ html > form > div:nth-child(1) {
 }
 
 html > form > div > div.col-10 > input {
-  background-color: #984b43;
+  /* background-color: #984b43;
   border-bottom-color: #18121e;
-  color: white;
+  color: white; */
 }
 
 .searchDisplay {
   column-count: 3;
 }
 
-.bandCard {
+.bandCard img{
   width: 25rem;
+  /* width: 100%; */
+}
+html > div:nth-child(6) > div > div:nth-child(2) > img {
+  /* margin-right: 10px; */
+}
+#cards2  {
+  margin-left: 450px;
+  /* margin-right: auto; */
+
+}
+/* .span8 img { width: 100% } */
+
+#center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }

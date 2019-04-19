@@ -1,53 +1,30 @@
-img {
-  /* /* size: inherit; */
-  width: 400px;
-  height: 300px;
-  image-resolution: 100%;
-  border-image: 5%;
-  border-radius: 10%;
-  align-content: center;
-  text-align: center;
+#memberActive{
+  width: 100px;
 }
-button.btn.btn-warning {
-  margin-right: 15px;
+
+#memberInactive{
+  width: 100px;
 }
-button.btn.btn-danger {
-  margin-right: 15px;
+
+#cardImage{
+  width: 200px;
 }
-button.btn.btn-primary {
-  margin-right: 15px;
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 15px; /* Added */
+  margin-top: 15px;
 }
+
+#center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 html {
-  padding-bottom: 5%;
-  margin-bottom: 1px;
   background-color: #eac67a;
   filter: grayscale(50%);
   background-blend-mode: multiply;
-  padding-left: 50px;
-  padding-right: 50px;
-  font-size: x-large;
-  border: #18121e;
 }
-div {
-  background-color: #eac67a;
-  background-blend-mode: multiply;
-  color: #18121e;
-}
-html > div > div:nth-child(3) > h1 {
-  color: #984b43;
-}
-html > div > div:nth-child(1) > div {
-  text-align: left;
-}
- /* div > div.card-head > img{
-  text-align: center;
-
-} */
-#ngb-tab-1-panel > div > h1 {
-  color: #984b43;
-}
-#ngb-tab-0{
-/* border: #984b43; */
-background-color: black;
-}
-

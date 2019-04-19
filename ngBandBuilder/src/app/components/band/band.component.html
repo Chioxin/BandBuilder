@@ -7,17 +7,18 @@
       <div class="container">
         <div class="row">
           <div class="col-sm">
-            <h1>Band Profile: {{myBand.name}}</h1>
-            <div *ngIf="viewerIsOwner">
+            <h1 id="center">Band Profile: {{myBand.name}}</h1>
+            <div id="center" *ngIf="viewerIsOwner">
               <button class="btn btn-danger" (click)="bandDeleteBand()">DELETE BAND</button>
               <button class="btn btn-primary" (click)="bandEditBand()">Edit Band</button>
             </div>
-            <hr>
-            <div>
+            <br>
+            <div id="center">
               <img src="{{myBand.image.url}}" alt="">
             </div>
           </div>
         </div>
+        <br>
         <div *ngIf="editBand ">
           <form>
             <div class="input-group mb-3">
@@ -55,11 +56,11 @@
           </form>
           <hr>
         </div>
-        <ngb-tabset *ngIf="viewerIsOwner">
+        <ngb-tabset *ngIf="viewerIsOwner" type="pills">
           <ngb-tab title="Band Member Details">
             <ng-template ngbTabContent>
               <div>
-                <h1>Band Members</h1>
+                <!-- <h1>Band Members</h1> -->
                 <div *ngIf="editBandMember ">
                   <h3>Edit Member:</h3>
                   <form>
@@ -87,29 +88,45 @@
                 <div *ngIf="viewerIsOwner && !editBandMember && !newBandMember">
                   <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
                 </div>
-                <hr>
-
                 <div *ngIf="newBandMember">
                   <form>
-                    <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
-                    <button class="btn btn-danger" (click)="bandCancelAddBandMember()">Reject</button>
-                    <select name="instrument" [(ngModel)]="selectedInstrumentId">
-                      <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">
-                        {{anInstrument.name}}
-                      </option>
-                    </select>
-                    <input type="text" name="experience" [(ngModel)]="newBandMember.experience">
-                    <input type="text" name="description" [(ngModel)]="newBandMember.description">
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="experience">Experience:</span>
+                          </div>
+                          <input type="text" name="experience" class="form-control" [(ngModel)]="newBandMember.experience">
+                      </div>
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="description">Description:</span>
+                          </div>
+                          <input type="text" name="description" class="form-control" [(ngModel)]="newBandMember.description">
+                      </div>
+                      <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text" id="instrument">Instrument:</span>
+                          </div>
+                          <select class="form-control" name="instrument" [(ngModel)]="selectedInstrumentId">
+                              <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">
+                                {{anInstrument.name}}
+                              </option>
+                            </select>
+                      </div>
+                      <br>
+                      <div class="form-group">
+                        <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
+                        <button class="btn btn-danger" (click)="bandCancelAddBandMember()">Reject</button>
+                      </div><br>
+                    <!-- <input type="text" name="experience" [(ngModel)]="newBandMember.experience">
+                    <input type="text" name="description" [(ngModel)]="newBandMember.description"> -->
                   </form>
 
                 </div>
 
-                <div *ngIf="!editBandMember && !newBandMember">
-
+                <!-- <div *ngIf="!editBandMember && !newBandMember">
                     <div class="card" *ngFor="let member of myBandMembers">
                       <div *ngIf="member.active">
-                        <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}"
-                            alt="">
+                        <div class="card-head" *ngIf="!member.profile"><img src="{{member.instrument.image.url}}" alt="">
                         </div>
                         <div class="card-head" *ngIf="member.profile"><img src="{{member.profile.image.url}}" alt="">
                         </div>
@@ -129,22 +146,78 @@
                       </div>
                     </div>
                   </div>
+                </div> -->
+                <div *ngIf="!editBandMember && !newBandMember">
+                  <div *ngFor="let member of myBandMembers">
+                      <div class="card" *ngIf="member.active" style="width: 50rem;">
+                        <div class="row">
+                              <div class="col-4">
+                                <img id="cardImage" class="card-img-top" *ngIf="!member.profile" src="{{member.instrument.image.url}}" alt="">
+                                <img id="cardImage" class="card-img-top" *ngIf="member.profile" src="{{member.profile.image.url}}" alt="">
+                              </div>
+                              <div class="col">
+                                  <div class="card-body">
+                                      <div *ngIf="member.profile">
+                                        <h5 class="card-title">{{member.profile.firstName}} {{member.profile.lastName}}</h5>
+                                        <p class="card-text">{{member.profile.aboutMe}}</p>
+                                      </div>
+
+                                  </div>
+                                  <div *ngIf="viewerIsOwner">
+                                      <br>
+                                      <br>
+                                      <br>
+                                      <button class="btn btn-warning" (click)="bandRemoveProfileFromMember(member)" *ngIf="member.profile">Remove Member</button>
+                                      <button class="btn btn-danger" (click)="bandRemovePosition(member)">Remove Position</button>
+                                      <button class="btn btn-primary" (click)="bandEditPosition(member)">Edit Position</button>
+                                      <button class="btn btn-danger" (click)="goToProfile(member.profile)" *ngIf="member.profile">Visit Profile</button>
+                                      <button class="btn btn-success" (click)="bandClaimPosition(member)" *ngIf="!member.profile">Claim Position</button>
+                                    </div>
+                              </div>
+
+                        </div>
+                  </div>
+                  </div>
                 </div>
-
-
+              </div>
             </ng-template>
           </ngb-tab>
 
-          <ngb-tab title="About Band Details" *ngIf="!editBand">
+          <ngb-tab title="Band Details" *ngIf="!editBand">
             <ng-template ngbTabContent>
-              <br>
-              <div class="input-group mb-3">
-
-                <h1>About: {{myBand.name}}</h1>
-                <hr>
-                <blockquote>{{myBand.aboutUs}}</blockquote>
-
-              </div>
+                <br>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="street">Name</span>
+                    </div>
+                    <input type="text" class="form-control" name="street" placeholder="{{myBand.name}}" [(ngModel)]="myBand.name" disabled>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="street">Genre</span>
+                    </div>
+                    <input type="text" class="form-control" name="street" placeholder="{{myBand.genre}}" [(ngModel)]="myBand.genre" disabled>
+                </div>
+                <div class="form-inline">
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="city">City</span>
+                        </div>
+                        <input type="text" class="form-control" name="city" placeholder="{{myBand.address.city}}" [(ngModel)]="myBand.address.city" disabled>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                          <span class="input-group-text" id="state">State</span>
+                        </div>
+                        <input type="text" class="form-control" name="state" placeholder="{{myBand.address.state}}" [(ngModel)]="myBand.address.state" disabled>
+                    </div>
+                </div>
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="street">About Us</span>
+                    </div>
+                    <input type="text" class="form-control" name="aboutUs" placeholder="{{myBand.aboutUs}}" [(ngModel)]="myBand.aboutUs" disabled>
+                </div>
             </ng-template>
           </ngb-tab>
         </ngb-tabset>
@@ -162,8 +235,7 @@
                 <button class="btn btn-danger" (click)="bandDeleteBand()">DELETE BAND</button>
                 <button class="btn btn-primary" (click)="bandEditBand()">Edit Band</button>
               </div> -->
-              <hr>
-              <div>
+            <div>
                 <img src="{{myBand.image.url}}" alt="">
               </div>
             </div>
@@ -237,23 +309,23 @@
                             <div class="input-group-prepend">
                               <span class="input-group-text" id="experience">Experience:</span>
                             </div>
-
                             <input type="text" name="experience" class="form-control" [(ngModel)]="editBandMember.experience">
                           </div>
                       <button class="btn btn-success" (click)="bandSavePosition()">Save</button>
                       <button class="btn btn-danger" (click)="bandCancelEditPosition()">Cancel</button>
                     </form>
                   </div>
-                  <hr>
                   <div *ngIf="viewerIsOwner && !editBandMember && !newBandMember">
                     <button class="btn btn-primary" (click)="bandAddNewBandMember()">Add Member</button>
                   </div>
+                  <br>
                   <hr>
 
                   <div *ngIf="newBandMember">
                     <form>
                       <button class="btn btn-success" (click)="bandSaveAddBandMember()">Save</button>
                       <button class="btn btn-danger" (click)="bandCancelAddBandMember()">Reject</button>
+
                       <select name="instrument" [(ngModel)]="selectedInstrumentId">
                         <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">
                           {{anInstrument.name}}
@@ -262,7 +334,6 @@
                       <input type="text" name="experience" [(ngModel)]="newBandMember.experience">
                       <input type="text" name="description" [(ngModel)]="newBandMember.description">
                     </form>
-
                   </div>
 
                   <div *ngIf="!editBandMember && !newBandMember">
@@ -291,8 +362,6 @@
                       </div>
                     </div>
                   </div>
-
-
               </ng-template>
             </ngb-tab>
 

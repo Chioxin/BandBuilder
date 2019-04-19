@@ -190,7 +190,7 @@
               <form>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="zip">Experience</span>
+                      <span class="input-group-text" id="zip">Instrument</span>
                     </div>
                     <select name="instrument" class="form-control" [(ngModel)]="selectedInstrumentId">
                         <option value="{{anInstrument.id}}" *ngFor="let anInstrument of instrumentList">{{anInstrument.name}}</option>
@@ -198,7 +198,7 @@
                 </div>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                      <span class="input-group-text" id="zip">Experience</span>
+                      <span class="input-group-text" id="experience">Experience</span>
                     </div>
                     <input type="text" class="form-control" name="experience" [(ngModel)]="newUserInstrument.experience">
                 </div>

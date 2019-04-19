@@ -18,7 +18,7 @@ html {
 #addInstrumentForm {
 row-gap: 1px;
 }
-#addInstrumentForm > input:nth-child(2) {
+/* #addInstrumentForm > input:nth-child(2) {
   background-color: #984b43;
   color: #18121e;
   width: 50%;
@@ -53,4 +53,4 @@ html > div.md-form.mt-0 > input{
   background-color: #984b43;
   color: #18121e;
   width: 50%;
-}
+} */
