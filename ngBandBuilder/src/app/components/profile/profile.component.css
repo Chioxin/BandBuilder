@@ -12,9 +12,8 @@
   margin-bottom: 10px; /* Added */
 }
 
-
-/* html{
+html {
   background-color: #eac67a;
-  background-blend-mode: multiply;
   filter: grayscale(50%);
-} */
+  background-blend-mode: multiply;
+}

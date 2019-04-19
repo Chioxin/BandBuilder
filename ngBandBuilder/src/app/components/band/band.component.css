@@ -5,3 +5,26 @@
 #memberInactive{
   width: 100px;
 }
+
+#cardImage{
+  width: 200px;
+}
+
+.card {
+  margin: 0 auto; /* Added */
+  float: none; /* Added */
+  margin-bottom: 15px; /* Added */
+  margin-top: 15px;
+}
+
+#center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
+html {
+  background-color: #eac67a;
+  filter: grayscale(50%);
+  background-blend-mode: multiply;
+}

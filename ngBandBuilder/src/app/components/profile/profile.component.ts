@@ -156,6 +156,7 @@ export class ProfileComponent implements OnInit {
         const profileId = this.myProfile.id;
         this.loadUserInstruments(profileId);
         this.loadBandMembersByProfileId(profileId);
+        this.loadBandsByUsername(this.myProfile.user.username);
         this.loadInstruments();
         this.setEditObjects();
         this.checkViewerIsOwner();
