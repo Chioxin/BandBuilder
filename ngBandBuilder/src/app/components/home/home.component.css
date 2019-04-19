@@ -102,15 +102,21 @@ html > form > div > div.col-10 > input {
 }
 
 .bandCard img{
-  /* width: 25rem; */
-  width: 100%;
+  width: 25rem;
+  /* width: 100%; */
 }
 html > div:nth-child(6) > div > div:nth-child(2) > img {
   /* margin-right: 10px; */
 }
 #cards2  {
-  margin-right: 50px;
+  margin-left: 450px;
+  /* margin-right: auto; */
 
 }
 /* .span8 img { width: 100% } */
 
+#center {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
